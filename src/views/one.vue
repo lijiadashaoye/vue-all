@@ -75,6 +75,13 @@
         <button @click="chajian">插件</button>{{chanianData}}
       </div>
 
+      <div>
+        <h3>动态参数路由</h3>
+        <button @click="luyou(1)">参数：1</button>
+        <button @click="luyou(2)">参数：2</button>
+        <router-view />
+      </div>
+
     </div>
   </div>
 </template>
@@ -237,6 +244,19 @@ export default {
       this.$store.dispatch({
         type: "oneStore/asyncChange",
         n: 5
+      });
+    },
+    luyou(num) {
+      new Promise(res => {
+        this.$router.push({
+          name: "one"
+        });
+        res(num);
+      }).then(t => {
+        this.$router.push({
+          name: "canshu",
+          params: { id: t }
+        });
       });
     }
   }

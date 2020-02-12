@@ -7,7 +7,12 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     name: 'one',
-    component: One
+    component: One,
+    children: [{
+      path: '/one/canshu/:id',
+      name: 'canshu',
+      component: () => import( /* webpackChunkName: "canshu" */ '@/components/one/canshu.vue'),
+    }]
   },
   {
     path: '/two',
@@ -23,9 +28,13 @@ const routes = [{
       } else {
         next(false);
       }
-    },
-
-  }
+    }
+  },
+  // {
+  //   path: '/canshu/:id',
+  //   name: 'canshu',
+  //   component: () => import( /* webpackChunkName: "canshu" */ '@/components/one/canshu.vue'),
+  // }
 ]
 
 const router = new VueRouter({
