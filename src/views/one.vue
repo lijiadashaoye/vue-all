@@ -255,7 +255,7 @@ export default {
       }).then(t => {
         this.$router.push({
           name: "canshu",
-          params: { id: t }
+          params: { kk: t } // kk只是一个标识，只要和路由配置处用的名字相同即可
         });
       });
     }

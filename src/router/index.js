@@ -9,7 +9,7 @@ const routes = [{
     name: 'one',
     component: One,
     children: [{
-      path: '/one/canshu/:id',
+      path: '/one/canshu/:kk',
       name: 'canshu',
       component: () => import( /* webpackChunkName: "canshu" */ '@/components/one/canshu.vue'),
     }]

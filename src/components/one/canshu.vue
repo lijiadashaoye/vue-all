@@ -10,7 +10,8 @@ export default {
     };
   },
   mounted() {
-    this.canshu = this.$route.params.id;
+    this.canshu = this.$route.params.kk; // kk只是一个标识，只要和路由配置处用的名字相同即可
   }
 };
 </script>
+kk
