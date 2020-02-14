@@ -9,6 +9,10 @@
         :class="{active:activeNum==='two'}"
         @click="toRoute('two')"
       >two</button>&nbsp;&nbsp;
+      <button
+        :class="{active:activeNum==='three'}"
+        @click="toRoute('four')"
+      >four</button>
     </div>
     <router-view />
   </div>
@@ -31,12 +35,21 @@ export default {
   },
   methods: {
     toRoute(tar) {
-      this.$router.push({
-        name: tar,
-        query: {
-          name: tar
-        }
-      });
+      if (tar !== "four") {
+        this.$router.push({
+          name: tar,
+          query: {
+            name: tar
+          }
+        });
+      } else {
+        this.$router.push({
+          path: "/four",
+          query: {
+            name: tar
+          }
+        });
+      }
     },
     fuwu() {
       return "从App组件传递的服务";

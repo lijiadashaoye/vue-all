@@ -17,7 +17,7 @@ const routes = [{
   {
     path: '/two',
     name: 'two',
-    component: () => import( /* webpackChunkName: "two" */ '../views/two.vue'),
+    component: () => import( /* webpackChunkName: "two" */ '@/views/two.vue'),
     meta: { // 用来定义路由守卫用
       requiresAuth: true
     },
@@ -34,7 +34,19 @@ const routes = [{
   //   path: '/canshu/:id',
   //   name: 'canshu',
   //   component: () => import( /* webpackChunkName: "canshu" */ '@/components/one/canshu.vue'),
-  // }
+  // },
+  // 路由的重定向
+  {
+    path: '/four',
+    redirect: {
+      name: 'three'
+    }
+  },
+  {
+    path: '/three',
+    name: 'three',
+    component: () => import( /* webpackChunkName: "canshu" */ '@/views/three.vue'),
+  }
 ]
 
 const router = new VueRouter({
