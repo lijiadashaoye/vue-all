@@ -21,7 +21,7 @@ const routes = [{
     meta: { // 用来定义路由守卫用
       requiresAuth: true
     },
-    // 写在路由配置里的守卫，类似canActivate
+    // 写在路由配置里的守卫，类似 canActivate
     beforeEnter: (to, from, next) => {
       if (confirm(`在配置路由时，可以添加 beforeEnter 进行进入组件前的验证`)) {
         next();
