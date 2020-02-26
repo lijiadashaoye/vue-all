@@ -146,7 +146,7 @@ export default {
       name: "",
       plugData: {
         show:false,
-        data:'穿给插件的数据'
+        data:'传给插件的数据'
       }
     };
   },
