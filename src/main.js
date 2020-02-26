@@ -15,7 +15,7 @@ for (let i in filters) {
 }
 
 // 插入自定义全局过滤器
-import plugins from './plugins';
+import plugins from '@/plugPages/plugins';
 Vue.use(plugins)
 
 Vue.config.productionTip = false

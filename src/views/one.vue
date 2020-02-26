@@ -4,11 +4,7 @@
     <div class="wap">
       <div>
         <h3>自定义组件</h3>
-        <selfInput
-          :label="'自定义组件'"
-          v-model="selfInput"
-          @change="selfEmit"
-        />
+        <selfInput :label="'自定义组件'" v-model="selfInput" @change="selfEmit" />
       </div>
 
       <div>
@@ -17,11 +13,11 @@
           <template v-slot:header>
             <p>父组件,v-slot:header写法找到插槽, v-slot 只能添加在&lt;template&gt; 上</p>
           </template>
-          <template v-slot:content='{jigou}'>
+          <template v-slot:content="{jigou}">
             <p>父组件：父组件里定义好匹配到子组件里的插槽的名称，和要查到子组件里显示的内容</p>
             {{jigou}}
           </template>
-          <template #footer='g'>
+          <template #footer="g">
             <p>父组件，#footer写法找到插槽</p>
             {{g}}
           </template>
@@ -31,14 +27,17 @@
         <h3>动态加载组件</h3>
         <AsyncComponent />
       </div>
+
       <div>
         <h3>依赖注入</h3>
-        <button @click="seeFuWu">使用依赖注入</button><br>
+        <button @click="seeFuWu">使用依赖注入</button>
+        <br />
         {{seeFuWuData}}
       </div>
       <div>
         <h3>全局根数据</h3>
-        <button @click="getRoot">获取main.js里定义的根的数据</button><br>
+        <button @click="getRoot">获取main.js里定义的根的数据</button>
+        <br />
         {{seeRootData}}
       </div>
       <div>
@@ -64,15 +63,23 @@
         <p>使用mapGetters拿到getter：{{oneGetter2}}</p>
         <p>使用可传参的方式拿到getter：{{oneGetter1}}</p>
         <p>使用mapState拿到state：{{num}}</p>
-        <button @click="changeNum({n:3})">使用mapMutations触发commit</button><br>
+        <button @click="changeNum({n:3})">使用mapMutations触发commit</button>
+        <br />
         <button @click="chongmingming({n:4})">使用mapActions触发action，并重命名在当前组件里使用的action名字</button>
-        <br>
-        <button @click="changeNum1({n:3})">触发commit</button><br>
+        <br />
+        <button @click="changeNum1({n:3})">触发commit</button>
+        <br />
         <button @click="asyncChange1({n:4})">触发dispatch</button>
       </div>
       <div>
         <h3>使用自定义插件</h3>
-        <button @click="chajian">插件</button>{{chanianData}}
+        <button @click="chajian">插件</button>
+        {{chanianData}}
+      </div>
+      <div>
+        <h3>使用vue插件</h3>
+        <button @click="usePlugin">插件</button>
+        <testPlugPage v-if="plugData.show" :plugInputData="plugData"></testPlugPage>
       </div>
 
       <div>
@@ -81,7 +88,6 @@
         <button @click="luyou(2)">参数：2</button>
         <router-view />
       </div>
-
     </div>
   </div>
 </template>
@@ -137,7 +143,11 @@ export default {
         name: 10
       },
       arr: [{ one: 100 }],
-      name: ""
+      name: "",
+      plugData: {
+        show:false,
+        data:'穿给插件的数据'
+      }
     };
   },
   created() {
@@ -183,6 +193,9 @@ export default {
     }
   },
   methods: {
+    usePlugin() {
+      this.plugData.show=!this.plugData.show
+    },
     chajian() {
       this.chanianData = this.$pluginFn(9);
     },
