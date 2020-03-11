@@ -81,6 +81,6 @@ h3 {
   margin: 2px 0;
 }
 .active {
-  color: red;
+  color: #657eeb;
 }
 </style>
