@@ -122,9 +122,38 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 
+/*************************************
+           滤镜
+*************************************/
+.lvjing>div {
+    margin-bottom: 5px;
+    display: flex;
+}
+
+.lvjing>div>p:nth-child(1) {
+    width: 70%;
+}
+
+.lvjing img {
+    width: 30%;
+    height: 70px;
+}
+
+
+.brightness>img {
+    filter: brightness(1.2);
+}
+
+.blurs>img {
+    filter: blur(0.05vw);
+    /* rem px vh vw 都可以*/
+}
+
+
+
 
 /*************************************
-        背景图缩写方法
+        阴影的写法
 *************************************/
 .shadow {
     width: 150px;
@@ -176,7 +205,29 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 .border2 {
-    border-width: 4px 16px;
+    border-width: 10px 26px;
     border-color: indigo;
-    border-style: solid;
+    border-style: double;
+    background-clip: content-box;
+}
+
+
+/*************************************
+        表格样式
+*************************************/
+.isTable {
+    border-collapse: collapse;
+    caption-side: bottom;
+}
+
+.isTable>caption {
+    border: 1px solid red;
+}
+
+.isTable td {
+    border: 1px solid blue;
+}
+
+.isTable input {
+    caret-color: rgba(69, 238, 134);
 }

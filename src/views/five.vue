@@ -10,7 +10,7 @@
           <li>::after用来创建一个伪元素，作为已选中元素的最后一个子元素</li>
           <li>他们常通过 content 属性来为一个元素添加修饰性的内容</li>
           <li>由::before 和::after 生成的伪元素 包含在元素格式框内</li>
-          <li>:after :before 伪类元素与其他盒模型元素是可以相互影响的，就像他们是真正的元素一样，不过是被插入到相关元素中罢了</li>
+          <li>::after ::before 伪类元素与其他盒模型元素是可以相互影响的，就像他们是真正的元素一样，不过是被插入到相关元素中罢了</li>
         </ol>
       </div>
 
@@ -33,9 +33,16 @@
         </ol>
       </div>
 
-      <div>
+      <div class="lvjing">
         <h3>滤镜</h3>
-        <p>brightness(num) 将线性乘数应用于输入图像，使其看起来更亮或更暗，num>=0</p>
+        <div class="brightness">
+          <p>brightness(num) 将线性乘数应用于输入图像，使其看起来更亮或更暗，num>=0</p>
+          <img src="../assets/2.jpeg" />
+        </div>
+        <div class="blurs">
+          <p>blur(num) 将高斯模糊应用于输出图片 num>=0</p>
+          <img src="../assets/2.jpeg" />
+        </div>
       </div>
 
       <div>
@@ -50,6 +57,34 @@
         <p class="border border1">四个不同颜色、形状、大小的值</p>
         <p class="border border2">两个值的</p>
       </div>
+
+      <div>
+        <h3>css 函数</h3>
+        <ol>
+          <li>calc() 允许在声明 CSS 属性值时执行一些计算，运算符的两边必须要有空白字符，比如，calc(50% + -8px)</li>
+        </ol>
+      </div>
+
+      <div>
+        <h3>表格</h3>
+        <table class="isTable">
+          <caption>Caption 表格标题</caption>
+          <tr>
+            <td>Some data</td>
+            <td>Some more data</td>
+          </tr>
+          <tr>
+            <td colspan="2">caret-color 用来定义插入光标（caret）的颜色</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      
     </div>
   </div>
 </template>
@@ -68,9 +103,12 @@ export default {
 @import url("./five.css");
 .content {
   display: flex;
+  flex-wrap: wrap;
 }
 .content > div {
   padding: 5px 10px;
+  min-width: 100px;
   max-width: 300px;
+  flex-shrink: 1;
 }
 </style>
