@@ -111,11 +111,72 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     background-clip: text;
     background-origin: content-box;
     background-position: top 0px right 0px;
+
 }
 
 /*************************************
-背景图缩写方法
+           背景图缩写方法
 *************************************/
 .background2 {
     background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 220px 120px;
+}
+
+
+
+/*************************************
+        背景图缩写方法
+*************************************/
+.shadow {
+    width: 150px;
+    height: 50px;
+    margin-top: 20px;
+    background: rgb(245, 244, 244);
+    /* 阴影也会随着圆角变化 */
+    border-bottom-right-radius: 20px;
+}
+
+/* 阴影模糊半径：值越大，模糊面积越大，阴影就越大越淡。 不能为负值*/
+/* 阴影扩散半径：取正值时，阴影扩大；取负值时，阴影收缩 */
+
+.shadow1 {
+    /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+    box-shadow: 4px 4px 4px 5px rgba(69, 238, 134, 0.8);
+}
+
+.shadow2 {
+    /* 插页(阴影向内) x偏移量 | y偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+    /* inset时，x y 偏移量默认在 top left 数值为负数时，会定位到 right bottom */
+    box-shadow: inset -4px 4px 4px -1px rgba(226, 110, 110, 0.7);
+}
+
+.shadow3 {
+    /* 任意数量的阴影，以逗号分隔 */
+    box-shadow: 5px 5px 2px 3px red, inset 2px 2px 2px 1px rgba(133, 226, 110, 0.7);
+}
+
+
+
+/*************************************
+        border 的写法
+*************************************/
+.border {
+    width: 170px;
+    height: 100px;
+    margin-top: 20px;
+    background: rgb(221, 220, 220);
+    box-sizing: border-box;
+}
+
+.border1 {
+    /* 与margin一样，可以写4个，也可写两个*/
+    border-width: 6px 14px 10px 20px;
+    /*  border-width: 2px 8px;  */
+    border-color: red blue sandybrown yellow;
+    border-style: solid dashed ridge dotted;
+}
+
+.border2 {
+    border-width: 4px 16px;
+    border-color: indigo;
+    border-style: solid;
 }

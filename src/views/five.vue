@@ -32,6 +32,24 @@
           <li>background-size 只能紧接着 background-position 出现，以"/"分割，如：center/80% 、10% 20% / 100px 50px</li>
         </ol>
       </div>
+
+      <div>
+        <h3>滤镜</h3>
+        <p>brightness(num) 将线性乘数应用于输入图像，使其看起来更亮或更暗，num>=0</p>
+      </div>
+
+      <div>
+        <h3>阴影</h3>
+        <p class="shadow shadow1">默认在外侧</p>
+        <p class="shadow shadow2">用 inset 向内侧</p>
+        <p class="shadow shadow3">多重阴影</p>
+      </div>
+
+      <div>
+        <h3>边框</h3>
+        <p class="border border1">四个不同颜色、形状、大小的值</p>
+        <p class="border border2">两个值的</p>
+      </div>
     </div>
   </div>
 </template>
