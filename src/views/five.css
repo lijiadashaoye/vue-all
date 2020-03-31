@@ -117,5 +117,5 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 背景图缩写方法
 *************************************/
 .background2 {
-    background: honeydew no-repeat 10% 98% / 250px 160px url('../assets/timg.jpg');
+    background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 220px 120px;
 }
