@@ -1,18 +1,10 @@
 <template>
   <div>
     <div class="nav">
-      <button
-        :class="{active:activeNum==='one'}"
-        @click="toRoute('one')"
-      >one</button>&nbsp;&nbsp;
-      <button
-        :class="{active:activeNum==='two'}"
-        @click="toRoute('two')"
-      >two</button>&nbsp;&nbsp;
-      <button
-        :class="{active:activeNum==='three'}"
-        @click="toRoute('four')"
-      >four</button>
+      <button :class="{active:activeNum==='one'}" @click="toRoute('one')">one</button>&nbsp;&nbsp;
+      <button :class="{active:activeNum==='two'}" @click="toRoute('two')">two</button>&nbsp;&nbsp;
+      <button :class="{active:activeNum==='three'}" @click="toRoute('four')">four</button>
+      <button :class="{active:activeNum==='five'}" @click="toRoute('five')">five</button>
     </div>
     <router-view />
   </div>

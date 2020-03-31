@@ -127,7 +127,7 @@ export default {
       // this.imgs = this.imgs == img1 ? img2 : img1;
       // import img1 from "../../../assets/1.jpeg";
       // import img2 from "../../../assets/2.jpg";
-      this.imgs = require("@/assets/logo.png");
+      this.imgs = require("@/assets/timg.jpg");
     },
     changeClass() {
       this.isActive1 = !this.isActive1;
