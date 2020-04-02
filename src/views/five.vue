@@ -84,7 +84,24 @@
         </table>
       </div>
 
-      
+      <div>
+        <h3>剪切板操作</h3>
+        <p>使用 document.execCommand 复制，先选中一些内容</p>
+        <button @click="copy">复制</button>&nbsp;&nbsp;
+        <button @click="seeClip">查看剪切板内容</button>
+        <p>使用 Clipboard API 复制</p>
+        <input
+          id="input"
+          type="text"
+          v-model="inp"
+        />
+        <button @click="copy1">复制</button>&nbsp;&nbsp;
+        <button @click="seeClip">查看剪切板内容</button>
+        <p>{{clipContent}}</p>
+
+        <!-- <button @click="cut">剪切</button> -->
+      </div>
+
     </div>
   </div>
 </template>
@@ -92,10 +109,50 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      clipContent: "",
+      inp: null
+    };
   },
-  mounted() {},
-  methods: {}
+  mounted() {
+    // // 监听复制事件
+    // document.addEventListener("copy", function(e) {
+    //   // 若添加了，就可以使用 setData 设置添加到剪切板的内容
+    //   e.preventDefault();
+    //   e.clipboardData.setData("text/plain", "Hello, world!");
+    // });
+  },
+  methods: {
+    // 复制选中的内容
+    copy() {
+      document.execCommand("copy");
+    },
+    copy1() {
+      // 查询浏览器权限
+      navigator.permissions.query({ name: "clipboard-write" }).then(result => {
+        // console.log(result);
+        // console.log(  navigator.clipboard);
+        // navigator.clipboard.writeText() 和 navigator.clipboard.write()
+        // 方法让你往剪贴板写入任意文本或二进制数据。
+        if (result.state == "granted" || result.state == "prompt") {
+          navigator.clipboard.writeText(this.inp).then(
+            function() {
+              console.log("写入成功");
+            },
+            function() {
+              console.log("写入失败");
+            }
+          );
+        }
+      });
+    },
+    // 查看剪切板
+    seeClip() {
+      // navigator.clipboard.readText() 和 navigator.clipboard.read()
+      // 方法让你从剪贴板读取任意文本或二进制数据。
+      navigator.clipboard.readText().then(t => (this.clipContent = t));
+    }
+  }
 };
 </script>
 
