@@ -90,18 +90,31 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input
-          id="input"
-          type="text"
-          v-model="inp"
-        />
+        <input id="input" type="text" v-model="inp" />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
-
-        <!-- <button @click="cut">剪切</button> -->
       </div>
 
+      <div class="column">
+        <h3>多列布局</h3>
+        <p>被多列布局的元素被多列布局被多列布局的元素被多列布局</p>
+      </div>
+
+      <div class="yuanzhui">
+        <h3>圆锥渐变</h3>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <div>
+          <p style="font-weight:bold;">渐变走向不同</p>
+          <p>
+            <span>锥形渐变方向</span>
+            <span>圆形渐变方向</span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>

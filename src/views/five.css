@@ -231,3 +231,71 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .isTable input {
     caret-color: rgba(69, 238, 134);
 }
+
+/*************************************
+        多列布局
+*************************************/
+.column {
+    column-count: 2;
+    /* 列分割线的线型样式  */
+    column-rule: solid 8px red;
+    /* 
+    column-fill:auto 指示内容在各列之间从头开始顺序罗列
+    column-fill:balance 指示内容在各列之间平均分配
+    */
+    column-fill: balance;
+    /* 列间距，看起来像分割线的 margin */
+    column-gap: 4px;
+}
+
+.column>h3 {
+    text-align: center;
+    column-span: all;
+}
+
+/*************************************
+        锥形渐变
+*************************************/
+.yuanzhui>p {
+    display: inline-block;
+    margin-right: 5px;
+    width: 100px;
+    height: 100px;
+}
+
+.yuanzhui>div {
+    background: url('../assets/88.jpg') no-repeat left bottom/65% 65%;
+    height: 140px;
+}
+
+.yuanzhui>div>p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.yuanzhui span {
+    margin-right: 25px;
+}
+
+/* 圆锥形渐变的色标则用角度(或弧度)来指定 */
+/* 如果第一个或最后一个色标指定角度，则它们的值分别为0deg和360deg */
+/* 默认情况下，颜色从一个色标处的颜色平滑过渡到下一个色标处的颜色，
+   颜色之间的中点是颜色过渡之间的中点。 */
+.yuanzhui>p:nth-of-type(1) {
+    background: conic-gradient(red 40deg, yellow 100deg, blue 150deg, pink);
+}
+
+/* 若不想要渐变，需要明确分界 */
+.yuanzhui>p:nth-of-type(2) {
+    background: conic-gradient(red 50deg, yellow 50deg, yellow 160deg, blue 160deg, blue 360deg);
+
+}
+
+.yuanzhui>p:nth-of-type(3) {
+    background: conic-gradient(#fff 90deg, #000 0.25turn 0.5turn, #fff 1rad 1.5rad, #000 300grad);
+    background-size: 25% 25%;
+}
+
+.yuanzhui>p:nth-of-type(4) {
+    background: palevioletred;
+}
