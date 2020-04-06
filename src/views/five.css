@@ -323,3 +323,21 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 
+/*************************************
+        网格布局
+*************************************/
+.gridTip {
+    font-size: 14px;
+    margin: 0;
+}
+
+.grid1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgb(218, 250, 215);
+}
+.grid1 div{
+    border:1px solid rgb(228, 165, 165);
+    border-radius:3px;
+    background-color: antiquewhite;
+}
