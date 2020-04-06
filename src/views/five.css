@@ -331,13 +331,103 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     margin: 0;
 }
 
-.grid1 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.grid {
     background-color: rgb(218, 250, 215);
 }
-.grid1 div{
-    border:1px solid rgb(228, 165, 165);
-    border-radius:3px;
+
+.setKuan {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#kuandu {
+    margin: 0 5px 5px 0;
+}
+
+.showGrid {
+    width: 430px;
+    height: 200px;
+    background: url('../assets/1.png') center/contain;
+}
+
+.grid div {
+    border: 1px solid rgb(228, 165, 165);
+    border-radius: 3px;
     background-color: antiquewhite;
+}
+
+.grid1 {
+    display: grid;
+    /* repeat(3, 1fr) 表示重复3次，每次是 1个网格宽度
+       fr 指代一个网格宽度的单位值
+    */
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+.grid2 {
+    display: grid;
+    /* 设置网格间距，写法同 margin 
+    grid-gap: 2px 10px;
+    等同于分开写：
+    grid-row-gap: 2px;
+    grid-column-gap: 10px;
+    */
+    grid-row-gap: 2px;
+    grid-column-gap: 10px;
+
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 30px);
+}
+
+.wrapper>div {
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+
+.box1 {
+    /* 
+    跨行写法一：grid-row: 1 / span 3;
+    表示从第一行，跨3行，span 关键字表示‘跨’，前后都可以加 span (看 box4)
+    
+    跨行写法二：grid-row: 1 / span 3;
+    表示从第一行，跨到第4行，指定起始和结束行号
+
+    跨行写法三：详细指定起始和结束
+     grid-column-start: 1;
+     grid-column-end: 2;
+     grid-row-start: 1;
+     grid-row-end: 4;
+
+    跨行写法四：使用 grid-area: 1 / 1 / 4 / 2; 值的顺序如下：
+    类似 margin 从 top 逆时针到 right 依次罗列
+          top              left            bottom           right
+    grid-row-start / grid-column-start /grid-row-end / grid-column-end
+
+    跨行写法五：反方向写
+    */
+    grid-column-start: -4;
+    grid-column-end: -3;
+    grid-row-start: -4;
+    grid-row-end: -1;
+}
+
+.box2 {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+}
+
+.box3 {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.box4 {
+    grid-column: 2 / span 2;
+    grid-row: span 3 / span 4;
 }

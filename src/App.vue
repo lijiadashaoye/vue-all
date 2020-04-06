@@ -1,10 +1,22 @@
 <template>
   <div>
     <div class="nav">
-      <button :class="{active:activeNum==='one'}" @click="toRoute('one')">one</button>&nbsp;&nbsp;
-      <button :class="{active:activeNum==='two'}" @click="toRoute('two')">two</button>&nbsp;&nbsp;
-      <button :class="{active:activeNum==='three'}" @click="toRoute('four')">four</button>
-      <button :class="{active:activeNum==='five'}" @click="toRoute('five')">five</button>
+      <button
+        :class="{active:activeNum==='one'}"
+        @click="toRoute('one')"
+      >one</button>&nbsp;&nbsp;
+      <button
+        :class="{active:activeNum==='two'}"
+        @click="toRoute('two')"
+      >two</button>&nbsp;&nbsp;
+      <button
+        :class="{active:activeNum==='three'}"
+        @click="toRoute('four')"
+      >four</button>
+      <button
+        :class="{active:activeNum==='five'}"
+        @click="toRoute('five')"
+      >five</button>
     </div>
     <router-view />
   </div>
@@ -68,7 +80,8 @@ export default {
   padding: 2px 8px;
 }
 p,
-h3 {
+h3,
+h4 {
   padding: 2px;
   margin: 2px 0;
 }

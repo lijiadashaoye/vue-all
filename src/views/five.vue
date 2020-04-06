@@ -145,12 +145,56 @@
         <h3>网格布局</h3>
         <p class="gridTip">只需要按行或者列控制布局（一维）用弹性盒子</p>
         <p class="gridTip">只需要同时按行和列控制布局（二维）用网格</p>
-        <div class="grid1">
+        <h4>repeat() 函数网格</h4>
+        <div class="grid grid1">
           <div>One</div>
           <div>Two</div>
           <div>Three</div>
           <div>Four</div>
           <div>Five</div>
+        </div>
+        <h4>自适应宽度弹性网格</h4>
+        <p class="gridTip">子元素宽度可以固定，也可以使用 minmax() 设置宽度区间，但排列会随父元素宽度变化,
+          如：minmax(100px,1fr)、minmax(100px,auto)、minmax(100px,200px)
+        </p>
+        <div class="setKuan">
+          <label
+            style="font-size:14px;"
+            for="kuandu1"
+          >父元素宽度：</label>
+          <input
+            id="kuandu1"
+            v-model="kuan1"
+          > <span>px</span>
+        </div>
+        <div class="setKuan">
+          <label
+            style="font-size:14px;"
+            for="kuandu2"
+          >子元素宽度：</label>
+          <input
+            id="kuandu2"
+            v-model="kuan2"
+          > <span>px</span>
+        </div>
+        <div
+          class="grid grid2"
+          :style="{width: `${kuan1}px`,'grid-template-columns': `repeat(auto-fill, minmax(${kuan2}px, 1fr))`
+          }"
+        >
+          <div>One</div>
+          <div>Two</div>
+          <div>Three</div>
+        </div>
+        <div>
+          <p>网格的跨行、跨列</p>
+          <div class="wrapper">
+            <div class="box1">One</div>
+            <div class="box2">Two</div>
+            <div class="box3">Three</div>
+            <div class="box4">Four</div>
+          </div>
+          <div class="showGrid"></div>
         </div>
       </div>
 
@@ -162,8 +206,10 @@
 export default {
   data() {
     return {
+      // 剪切板数据
       clipContent: "",
       inp: null,
+      // 图标类型列表
       shubiao: [
         "auto",
         "default",
@@ -201,7 +247,10 @@ export default {
         "zoom-out",
         "grab",
         "grabbing"
-      ]
+      ],
+      // 网格宽度
+      kuan1: 260,
+      kuan2: 80
     };
   },
   mounted() {
@@ -255,7 +304,7 @@ export default {
 .content > div {
   padding: 5px 10px;
   min-width: 100px;
-  max-width: 300px;
+  max-width: 400px;
   flex-shrink: 1;
 }
 </style>
