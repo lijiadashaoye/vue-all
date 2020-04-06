@@ -1,6 +1,6 @@
 /****************
 css 获取自定义data-*数据
-attr() 目前支持的仅有伪元素的 content 属性
+attr() 目前支持的仅有伪元素的 content 属性，把想添加的内容以此罗列
 ******************/
 .self-data span[data-descr] {
     position: relative;
@@ -11,16 +11,16 @@ attr() 目前支持的仅有伪元素的 content 属性
 }
 
 .self-data span[data-descr]:hover::after {
-    content: attr(data-descr);
+    content: " ("attr(data-descr) ")"' 'url(https://mdn.mozillademos.org/files/7691/mdn-favicon16.png) "\1f4a1";
     position: absolute;
     left: 90px;
     top: 0px;
-    min-width: 180px;
+    min-width: 218px;
     border: 1px #aaaaaa solid;
     border-radius: 10px;
-    background-color: #ffffcc;
-    padding: 2px 5px;
-    color: #000000;
+    background-color: #4c21e9;
+    padding: 2px 0 2px 5px;
+    color: #e7d8d8;
     font-size: 14px;
     z-index: 1;
 }
@@ -149,8 +149,10 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     /* rem px vh vw 都可以*/
 }
 
-
-
+.contrast>img {
+    filter: contrast(20%);
+    /* rem px vh vw %都可以*/
+}
 
 /*************************************
         阴影的写法
@@ -183,8 +185,6 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     box-shadow: 5px 5px 2px 3px red, inset 2px 2px 2px 1px rgba(133, 226, 110, 0.7);
 }
 
-
-
 /*************************************
         border 的写法
 *************************************/
@@ -210,7 +210,6 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     border-style: double;
     background-clip: content-box;
 }
-
 
 /*************************************
         表格样式
@@ -263,6 +262,10 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     height: 100px;
 }
 
+.yuanzhui>section {
+    font-size: 14px;
+}
+
 .yuanzhui>div {
     background: url('../assets/88.jpg') no-repeat left bottom/65% 65%;
     height: 140px;
@@ -288,14 +291,43 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 /* 若不想要渐变，需要明确分界 */
 .yuanzhui>p:nth-of-type(2) {
     background: conic-gradient(red 50deg, yellow 50deg, yellow 160deg, blue 160deg, blue 360deg);
-
 }
 
 .yuanzhui>p:nth-of-type(3) {
-    background: conic-gradient(#fff 90deg, #000 0.25turn 0.5turn, #fff 1rad 1.5rad, #000 300grad);
-    background-size: 25% 25%;
+    background: conic-gradient(#fff 90deg, #000 90deg 180deg, #fff 180deg 270deg, #000 270deg) left top/25% 25%;
 }
 
+/* 
+使用 ”from 角度 at 位置“ 定义渐变的起始角度和旋转圆心位置
+也可以只写 from 角度 或 at 位置
+*/
 .yuanzhui>p:nth-of-type(4) {
-    background: palevioletred;
+    background: conic-gradient(from 50deg at 25% 25%, red 90deg, yellow 180deg, blue 270deg);
+    /* background: conic-gradient(from 50deg, red 90deg, yellow 180deg, blue 270deg); */
+    /* background: conic-gradient(at 40% 30%, red 90deg, yellow 180deg, blue 270deg); */
+}
+
+/*************************************
+        鼠标样式
+*************************************/
+#div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#div p {
+    border: 1px solid rgb(241, 194, 194);
+    margin: 0 5px 5px 0;
+    padding: 0 5px;
+    color: rgb(241, 194, 194);
+}
+
+
+.yichu p {
+    width: 200px;
+    height: 100px;
+    font-size: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

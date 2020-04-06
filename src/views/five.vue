@@ -11,6 +11,8 @@
           <li>他们常通过 content 属性来为一个元素添加修饰性的内容</li>
           <li>由::before 和::after 生成的伪元素 包含在元素格式框内</li>
           <li>::after ::before 伪类元素与其他盒模型元素是可以相互影响的，就像他们是真正的元素一样，不过是被插入到相关元素中罢了</li>
+          <li>:checked 伪类选择器,表示任何处于选中状态的表单元素</li>
+          <li>:disabled 伪类表示任何被禁用的元素，为禁用元素设置样式</li>
         </ol>
       </div>
 
@@ -41,6 +43,11 @@
         </div>
         <div class="blurs">
           <p>blur(num) 将高斯模糊应用于输出图片 num>=0</p>
+          <img src="../assets/2.jpeg" />
+        </div>
+
+        <div class="contrast">
+          <p>contrast(num) 调整输入图像的对比度 num>=0</p>
           <img src="../assets/2.jpeg" />
         </div>
       </div>
@@ -90,7 +97,11 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input id="input" type="text" v-model="inp" />
+        <input
+          id="input"
+          type="text"
+          v-model="inp"
+        />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
@@ -103,6 +114,9 @@
 
       <div class="yuanzhui">
         <h3>圆锥渐变</h3>
+        <section>属于background-image属性，只有chorme支持</section>
+        <section>1 rad=180/π deg</section>
+        <section>1 turn=360 deg</section>
         <p></p>
         <p></p>
         <p></p>
@@ -115,6 +129,23 @@
           </p>
         </div>
       </div>
+
+      <div>
+        <h3>鼠标样式</h3>
+        <div id="div">
+          <p
+            v-for="k in shubiao"
+            :key="k"
+            :style="{cursor:k}"
+          >{{k}}</p>
+        </div>
+      </div>
+
+      <div class="yichu">
+        <p>One November night in the year 1782, so the story runs, two brothers sat over their winter fire in the little French town of Annonay, watching the grey smoke-wreaths from the hearth curl up the wide chimney.</p>
+
+      </div>
+
     </div>
   </div>
 </template>
@@ -124,7 +155,45 @@ export default {
   data() {
     return {
       clipContent: "",
-      inp: null
+      inp: null,
+      shubiao: [
+        "auto",
+        "default",
+        "none",
+        "context-menu",
+        "help",
+        "pointer",
+        "progress",
+        "wait",
+        "cell",
+        "crosshair",
+        "text",
+        "vertical-text",
+        "alias",
+        "copy",
+        "move",
+        "no-drop",
+        "not-allowed",
+        "e-resize",
+        "n-resize",
+        "ne-resize",
+        "nw-resize",
+        "s-resize",
+        "se-resize",
+        "sw-resize",
+        "w-resize",
+        "ew-resize",
+        "ns-resize",
+        "nesw-resize",
+        "nwse-resize",
+        "col-resize",
+        "row-resize",
+        "all-scroll",
+        "zoom-in",
+        "zoom-out",
+        "grab",
+        "grabbing"
+      ]
     };
   },
   mounted() {
