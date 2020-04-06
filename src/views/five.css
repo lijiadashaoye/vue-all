@@ -135,7 +135,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 .lvjing img {
-    width: 30%;
+    width: 80px;
     height: 70px;
 }
 
@@ -267,7 +267,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 .yuanzhui>div {
-    background: url('../assets/88.jpg') no-repeat left bottom/65% 65%;
+    background: url('../assets/88.jpg') no-repeat left bottom/50% 65%;
     height: 140px;
 }
 
