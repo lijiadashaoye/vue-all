@@ -323,11 +323,3 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 
-.yichu p {
-    width: 200px;
-    height: 100px;
-    font-size: 20px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}

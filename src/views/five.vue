@@ -141,9 +141,11 @@
         </div>
       </div>
 
-      <div class="yichu">
-        <p>One November night in the year 1782, so the story runs, two brothers sat over their winter fire in the little French town of Annonay, watching the grey smoke-wreaths from the hearth curl up the wide chimney.</p>
+      <div>
 
+        <div>
+
+        </div>
       </div>
 
     </div>
