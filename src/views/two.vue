@@ -11,17 +11,19 @@
           style="width:300px;flex-shrink: 0"
           v-on:emits="setEmit($event)"
           :msg="datas"
-          v-bind:is="which_component"
+          :is="which_component"
         ></component>
       </div>
 
       <div>
         <h3>使用加密插件</h3>
-        <input v-model="texts"><br>
+        <input v-model="texts" />
+        <br />
         <button @click="jiami">加密</button>
         <button @click="jiemi">解密</button>
         <p>
-          加密：{{forJia}}<br>
+          加密：{{forJia}}
+          <br />
           解密：{{forJie}}
         </p>
       </div>
@@ -34,7 +36,8 @@
       </div>
       <div>
         <h3>样式的切换</h3>
-        <button @click="changeClass">切换字体颜色</button>&nbsp;&nbsp;<br>
+        <button @click="changeClass">切换字体颜色</button>&nbsp;&nbsp;
+        <br />
         <p :class="{freeze:true,'active1':isActive1}">:class</p>
         <p :style="{'color':isActive1?'green':'black'}">:style</p>
       </div>
@@ -43,17 +46,13 @@
         <h3>使用axios</h3>
         <button @click="http">axios</button>
         <table v-if="httpDatas">
-          <tr
-            v-for="(item,index) in httpDatas"
-            :key="index"
-          >
+          <tr v-for="(item,index) in httpDatas" :key="index">
             <th>{{item.code}}</th>
-            <td v-html='item.symbol'></td>
+            <td v-html="item.symbol"></td>
             <td>{{item.rate_float}}</td>
             <td>{{item.description}}</td>
           </tr>
         </table>
-
       </div>
 
       <div class="maodian">
@@ -124,11 +123,15 @@ export default {
       this.forJie = secret.Decrypt(this.forJia);
     },
     changeImg: function() {
-      // this.imgs = this.imgs == img1 ? img2 : img1;
+      // 上边引入
       // import img1 from "../../../assets/1.jpeg";
       // import img2 from "../../../assets/2.jpg";
+
+      // this.imgs = this.imgs == img1 ? img2 : img1;
+
       this.imgs = require("@/assets/timg.jpg");
     },
+    // 切换样式
     changeClass() {
       this.isActive1 = !this.isActive1;
     },

@@ -97,9 +97,10 @@
 
       <div>
         <h3>动态参数路由</h3>
+        <p>观察浏览器地址栏的变化</p>
         <button @click="luyou(1)">参数：1</button>
         <button @click="luyou(2)">参数：2</button>
-        <router-view />
+        <router-view v-if="showLuYou" />
       </div>
     </div>
   </div>
@@ -154,7 +155,9 @@ export default {
       plugData: {
         component: null,
         data: "传给插件的数据"
-      }
+      },
+      // 参数路由用的是一个组件，所以需要刷新一下
+      showLuYou: false
     };
   },
   created() {
@@ -297,18 +300,15 @@ export default {
         : "testPlugPage2";
       this.plugData.show = !this.plugData.show;
     },
-    
+
     // 根据参数决定路由 path/:canshu 形式
     luyou(num) {
-      new Promise(res => {
-        this.$router.push({
-          name: "one"
-        });
-        res(num);
-      }).then(t => {
+      this.showLuYou = false;
+      setTimeout(() => {
+        this.showLuYou = true;
         this.$router.push({
           name: "canshu",
-          params: { kk: t } // kk只是一个标识，只要和路由配置处用的名字相同即可
+          params: { kk: num } // kk只是一个标识，只要和路由配置处用的名字相同即可
         });
       });
     }
