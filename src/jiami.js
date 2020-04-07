@@ -5,7 +5,7 @@ const key = CryptoJS.enc.Utf8.parse("1234123412ABCDEF"); //十六位十六进制
 const iv = CryptoJS.enc.Utf8.parse('ABCDEF1234123412'); //十六位十六进制数作为密钥偏移量
 
 //  上面的代码中的 key 是密钥 ，
-//  iv 是密钥偏移量，这个一般是接口返回的，为了方便，我们这里就直接在这里定义了。
+//  iv 是密钥偏移量，这个一般是接口返回的。
 
 //加密方法
 function Encrypt(word) {

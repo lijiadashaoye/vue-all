@@ -9,16 +9,19 @@
 
       <div>
         <h3>插槽：在父组件里引用子组件，但要从父组件里添加一些标签与子组件混合显示时使用</h3>
+        <h4>先要把子组件引入</h4>
         <slots>
           <template v-slot:header>
-            <p>父组件,v-slot:header写法找到插槽, v-slot 只能添加在&lt;template&gt; 上</p>
+            <p
+              style="color:red;"
+            >父组件,v-slot:header 写法找到插槽, v-slot 只能添加在&lt;template&gt; 上，写在子组件插入的内容用</p>
           </template>
           <template v-slot:content="{jigou}">
-            <p>父组件：父组件里定义好匹配到子组件里的插槽的名称，和要查到子组件里显示的内容</p>
+            <p style="color:red;">父组件：父组件里定义好匹配到子组件里的插槽的名称，和要查到子组件里显示的内容</p>
             {{jigou}}
           </template>
           <template #footer="g">
-            <p>父组件，#footer写法找到插槽</p>
+            <p style="color:red;">父组件，#footer写法找到插槽，并传递参数</p>
             {{g}}
           </template>
         </slots>
@@ -103,8 +106,11 @@ import forMixin from "@/components/one/one4";
 export default {
   // 同名钩子函数将合并为一个数组，因此都将被调用。
   // 另外，混入对象的钩子将在组件自身钩子之前调用。
-  mixins: [forMixin], // 写法一，混入子组件会自动执行
-  // mixins: ["forMixin"], // 写法二，混入子组件会被封装成对象，之后按需调用
+  // 写法一，混入子组件会自动执行(created、mounted 等）但如果混入组件里有 this.minMethods()这种调取方法的
+  // 如果两个组件有同名的methods，则调用当前组件里的方法，如 minMethods
+  mixins: [forMixin],
+  // 写法二，混入子组件会被封装成同名对象(forMixin)，之后按需调用
+  // mixins: ["forMixin"],
   inject: ["fuwu"],
   components: {
     selfInput,
@@ -145,19 +151,23 @@ export default {
       arr: [{ one: 100 }],
       name: "",
       plugData: {
-        show:false,
-        data:'传给插件的数据'
+        show: false,
+        data: "传给插件的数据"
       }
     };
   },
   created() {
     // 获取路由传参
     this.name = this.$route.query.name;
-    // 值为对象的选项，例如 methods、components 和 directives，将被合并为同一个对象。
-    // 两个对象键名冲突时，取组件对象的键值对。要使用混入写法一
-    this.minMethods();
 
-    // forMixin.created(); // 混入写法二时的使用方法
+    // 值为对象的选项，例如 methods、components 和 directives，将被合并为同一个对象。
+    this.minMethods(); // 两个组件有同名的方法，则调用当前组件里的方法
+
+    // 混入写法二时的使用方法
+    // forMixin.created();
+    // forMixin.methods.minMethods();
+
+    // console.log(forMixin);
   },
   filters: {
     // 组件内的管道、过滤器
@@ -194,7 +204,7 @@ export default {
   },
   methods: {
     usePlugin() {
-      this.plugData.show=!this.plugData.show
+      this.plugData.show = !this.plugData.show;
     },
     chajian() {
       this.chanianData = this.$pluginFn(9);
