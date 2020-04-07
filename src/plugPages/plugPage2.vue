@@ -1,12 +1,12 @@
 <template>
-  <div class="plugPage">vue插件页面
+  <div class="plugPage">vue插件页面 2
     <p>{{plugInputData.data}}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "testPlugPage",
+  name: "testPlugPage2",
   props:['plugInputData'],
   data(){
     return{

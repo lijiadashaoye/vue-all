@@ -35,6 +35,7 @@ const routes = [{
   //   name: 'canshu',
   //   component: () => import( /* webpackChunkName: "canshu" */ '@/components/one/canshu.vue'),
   // },
+  
   // 路由的重定向
   {
     path: '/four',

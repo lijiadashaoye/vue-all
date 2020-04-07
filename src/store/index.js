@@ -4,8 +4,9 @@ import oneStore from './useNameSpace'
 
 Vue.use(Vuex);
 
-// 自定义插件，只有一个store参数
+// 自定义插件，只有一个store参数，自动执行的
 const myPlugin = store => {
+  // console.log(store)
   setTimeout(() => { // 插件内触发状态变动
     store.commit('getAge')
   }, 3000)

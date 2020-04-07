@@ -1,6 +1,7 @@
 // 使用axios
 import http from '../axios';
-import testPanel from './plugPage.vue'
+import testPanel1 from './plugPage1.vue'
+import testPanel2 from './plugPage2.vue'
 export default {
     // 插件通常用来为 Vue 添加全局功能。 插件的功能范围没有严格的限制—— 一般有下面几种：
     // 添加全局方法或者属性。
@@ -15,7 +16,9 @@ export default {
         plugin[0].prototype.$http = http; // 将axios添加到全局
 
         // 将带有页面的插件插入全局，之后可以在任何页面使用
-        plugin[0].component(testPanel.name, testPanel)
+        [testPanel1, testPanel2].forEach(t => {
+            plugin[0].component(t.name, t)
+        });
 
     },
     pluginFn: (val) => {

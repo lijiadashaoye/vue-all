@@ -18,12 +18,10 @@ for (let i in filters) {
 import plugins from '@/plugPages/plugins';
 Vue.use(plugins)
 
-
 // 单独建立一个文件做 axios 设置后，进行挂载
 // 已经在 plugins.js 定义为 $http
 // import axios from './axios.js';
 // Vue.prototype.$axios = axios;
-
 
 Vue.config.productionTip = false
 new Vue({

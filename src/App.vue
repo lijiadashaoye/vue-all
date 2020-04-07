@@ -1,22 +1,10 @@
 <template>
   <div>
     <div class="nav">
-      <button
-        :class="{active:activeNum==='one'}"
-        @click="toRoute('one')"
-      >one</button>&nbsp;&nbsp;
-      <button
-        :class="{active:activeNum==='two'}"
-        @click="toRoute('two')"
-      >two</button>&nbsp;&nbsp;
-      <button
-        :class="{active:activeNum==='three'}"
-        @click="toRoute('four')"
-      >four</button>
-      <button
-        :class="{active:activeNum==='five'}"
-        @click="toRoute('five')"
-      >five</button>
+      <button :class="{active:activeNum==='one'}" @click="toRoute('one')">one</button>&nbsp;&nbsp;
+      <button :class="{active:activeNum==='two'}" @click="toRoute('two')">two</button>&nbsp;&nbsp;
+      <button :class="{active:activeNum==='three'}" @click="toRoute('four')">four</button>
+      <button :class="{active:activeNum==='five'}" @click="toRoute('five')">five</button>
     </div>
     <router-view />
   </div>
@@ -59,7 +47,7 @@ export default {
       return "从App组件传递的服务";
     }
   },
-  // 定义全局以来注入服务提供者
+  // 定义全局注入服务，依赖注入所提供的属性是非响应式
   provide() {
     return {
       fuwu: this.fuwu
