@@ -45,9 +45,10 @@ animation-iteration-count：配置动画应重复的次数，任何大于零的�
 animation-direction：配置动画在序列中每次运行时是否应交替显示方向或重置为起点并重复自身，
 常用值：alternate动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向，比如，ease-in 在反向时成为ease-out。
 
-animation-fill-mode 设置CSS动画在执行之前和之后如何将样式应用于其目标。
-forwards：会在动画结束时，保持最后一帧样式
-backwards：在应用于目标时立即应用第一个关键帧中定义的样式值
+animation-fill-mode 设置CSS动画在执行之前和之后如何将样式应用于其目标
+可用值：
+  forwards：会在动画结束时，保持最后一帧样式
+  backwards：在应用于目标时立即应用第一个关键帧中定义的样式值
 
 animation是以上属性的简写集合，只需将每个属性的可用值依次罗列出来即可；
 animation:  3s alternate 3 slidein; 或 animation: alternate 3s 3 slidein;
@@ -118,7 +119,8 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
            背景图缩写方法
 *************************************/
 .background2 {
-    background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 220px 120px;
+    font-size:14px;
+    background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 180px 90px;
 }
 
 
@@ -430,4 +432,45 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .box4 {
     grid-column: 2 / span 2;
     grid-row: span 3 / span 4;
+}
+
+
+/*************************************
+        剪切图形
+*************************************/
+
+.path>section {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.path>section>div {
+    width: 170px;
+    height: 170px;
+    margin: 5px;
+    background-color: rgb(243, 220, 220);
+    font-size: 12px;
+}
+
+.path>section p {
+    height: 70%;
+    background-color: rgb(157, 221, 144);
+}
+
+.path1 {
+    padding: 7px;
+    clip-path: inset(10px 50px 30px 10px);
+}
+
+.path2 {
+    clip-path: circle(50px at 80px 60px);
+}
+
+.path3 {
+    clip-path: ellipse(80px 40px at 50% 35%);
+}
+
+.path4 {
+    clip-path: polygon(40px 0px, 140px 20px, 80px 80px);
 }
