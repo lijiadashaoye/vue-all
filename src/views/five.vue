@@ -54,6 +54,12 @@
           <p>contrast(num) 调整输入图像的对比度 num>=0</p>
           <img src="../assets/2.jpeg" />
         </div>
+
+        <div class="dropShadow">
+          <p>drop-shadow(x y r color) 阴影效果输入图像<br>
+            偏离-x 偏移-y 模糊半径-r 颜色-color</p>
+          <img src="../assets/2.jpeg" />
+        </div>
       </div>
 
       <div>
@@ -101,7 +107,11 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input id="input" type="text" v-model="inp" />
+        <input
+          id="input"
+          type="text"
+          v-model="inp"
+        />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
@@ -133,7 +143,11 @@
       <div>
         <h3>鼠标样式</h3>
         <div id="div">
-          <p v-for="k in shubiao" :key="k" :style="{cursor:k}">{{k}}</p>
+          <p
+            v-for="k in shubiao"
+            :key="k"
+            :style="{cursor:k}"
+          >{{k}}</p>
         </div>
       </div>
 
@@ -155,13 +169,25 @@
           如：minmax(100px,1fr)、minmax(100px,auto)、minmax(100px,200px)
         </p>
         <div class="setKuan">
-          <label style="font-size:14px;" for="kuandu1">父元素宽度：</label>
-          <input id="kuandu1" v-model="kuan1" />
+          <label
+            style="font-size:14px;"
+            for="kuandu1"
+          >父元素宽度：</label>
+          <input
+            id="kuandu1"
+            v-model="kuan1"
+          />
           <span>px</span>
         </div>
         <div class="setKuan">
-          <label style="font-size:14px;" for="kuandu2">子元素宽度：</label>
-          <input id="kuandu2" v-model="kuan2" />
+          <label
+            style="font-size:14px;"
+            for="kuandu2"
+          >子元素宽度：</label>
+          <input
+            id="kuandu2"
+            v-model="kuan2"
+          />
           <span>px</span>
         </div>
         <div
@@ -188,6 +214,7 @@
       <div class="path">
         <h3>clip-path 背景剪切</h3>
         <p>背景剪切，是先创建背景，然后进行剪切，所以正常可以显示的内容，也会被裁剪</p>
+
         <section>
           <div>
             inset(top right bottom left): 参数写法类似margin，可写 1~4个参数
@@ -206,10 +233,21 @@
             <p class="path4"></p>
           </div>
         </section>
+
+        <p>display:flow-root 使该元素表现为一个块元素框，该框将建立新的块格式化上下文，定义格式化根所在的位置。</p>
+        <p>display:table 使该元素的行为类似于HTML &lt;table&gt;元素。它定义了一个块级框。</p>
+        <p>display:flex 使元素的行为类似于block元素，并根据flexbox模型布置其内容。</p>
+        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
+
+        <p>display:inline-block 使元素会产生一个块元素盒子，并且像内联盒子一样（表现得更像一个被替换的元素），可以融入到周围内容中。</p>
+        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
+        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
+        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
+        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
       </div>
 
       <div>
-      
+
       </div>
     </div>
   </div>

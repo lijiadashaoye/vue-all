@@ -119,7 +119,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
            背景图缩写方法
 *************************************/
 .background2 {
-    font-size:14px;
+    font-size: 14px;
     background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 180px 90px;
 }
 
@@ -128,7 +128,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
            滤镜
 *************************************/
 .lvjing>div {
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
     display: flex;
 }
 
@@ -141,7 +141,6 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     height: 70px;
 }
 
-
 .brightness>img {
     filter: brightness(1.2);
 }
@@ -153,6 +152,11 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 .contrast>img {
     filter: contrast(20%);
+    /* rem px vh vw %都可以*/
+}
+
+.dropShadow>img {
+    filter: drop-shadow(10px 10px 20px red);
     /* rem px vh vw %都可以*/
 }
 
@@ -443,6 +447,12 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+}
+
+.path>p {
+    font-size: 14px;
+    margin: 0;
+
 }
 
 .path>section>div {
