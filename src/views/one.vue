@@ -4,7 +4,11 @@
     <div class="wap">
       <div>
         <h3>自定义组件</h3>
-        <selfInput :label="'自定义组件'" v-model="selfInput" @change="selfEmit" />
+        <selfInput
+          :label="'自定义组件'"
+          v-model="selfInput"
+          @change="selfEmit"
+        />
       </div>
 
       <div>
@@ -12,9 +16,7 @@
         <h4>先要把子组件引入</h4>
         <slots>
           <template v-slot:header>
-            <p
-              style="color:red;"
-            >父组件,v-slot:header 写法找到插槽, v-slot 只能添加在&lt;template&gt; 上，写在子组件插入的内容用</p>
+            <p style="color:red;">父组件,v-slot:header 写法找到插槽, v-slot 只能添加在&lt;template&gt; 上，在子组件中插入父组件内写出的容用</p>
           </template>
           <template v-slot:content="{jigou}">
             <p style="color:red;">父组件：父组件里定义好匹配到子组件里的插槽的名称，和要查到子组件里显示的内容</p>
@@ -92,7 +94,10 @@
       <div>
         <h3>使用vue插件</h3>
         <button @click="usePlugin">插件</button>
-        <div :plugInputData="plugData" :is="plugData.component"></div>
+        <div
+          :plugInputData="plugData"
+          :is="plugData.component"
+        ></div>
       </div>
 
       <div>
