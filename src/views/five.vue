@@ -122,6 +122,48 @@
         <p>被多列布局的元素被多列布局被多列布局的元素被多列布局</p>
       </div>
 
+      <div class="tanxing">
+        <h3>弹性盒子的三种排布</h3>
+
+        <p>均匀排列每个元素,元素之间平均分配空挡</p>
+        <div class="gg ffff">
+          <p>1</p>
+          <p>justify-content: space-around</p>
+          <p>1</p>
+        </div>
+
+        <p>均匀排列每个元素,每个元素之间的间隔相等</p>
+        <div class="gg ffff1">
+          <p>1</p>
+          <p>justify-content: space-evenly</p>
+          <p>1</p>
+        </div>
+
+        <p>均匀排列每个元素,首个元素放置于起点末尾元素放置于终点</p>
+        <div class="gg ffff2">
+          <p>1</p>
+          <p>justify-content: space-between</p>
+          <p>1</p>
+        </div>
+
+        <h3>书写方向</h3>
+        <p>direction 适用于所有，弹性盒子、网格、p标签等等</p>
+        <p>从左往右</p>
+        <div class="modle writeModle1">
+          <p> direction: ltr&nbsp;</p>
+          <p>2</p>
+          <p>3</p>
+        </div>
+
+        <p>从右往左</p>
+        <div class="modle writeModle2">
+          <p>direction: rtl&nbsp;</p>
+          <p>2</p>
+          <p>3</p>
+        </div>
+
+      </div>
+
       <div class="yuanzhui">
         <h3>圆锥渐变</h3>
         <section>属于background-image属性，只有chorme支持</section>
@@ -154,7 +196,8 @@
       <div>
         <h3>网格布局</h3>
         <p class="gridTip">只需要按行或者列控制布局（一维）用弹性盒子</p>
-        <p class="gridTip">只需要同时按行和列控制布局（二维）用网格</p>
+        <p class="gridTip">需要同时按行和列控制布局（二维）用网格</p>
+
         <h4>repeat() 函数网格</h4>
         <div class="grid grid1">
           <div>One</div>
@@ -163,6 +206,7 @@
           <div>Four</div>
           <div>子元素content值较大，则会把此格单独撑开，但只有英文会把宽度撑开，中文则只把高度撑开</div>
         </div>
+
         <h4>自适应宽度弹性网格</h4>
         <p class="gridTip">
           子元素宽度可以固定，也可以使用 minmax() 设置宽度区间，但排列会随父元素宽度变化,
@@ -198,7 +242,33 @@
           <div>One</div>
           <div>Two</div>
           <div>Three</div>
+          <div>Four</div>
+          <div>Five</div>
+          <div>Six</div>
         </div>
+      </div>
+
+      <div>
+        <div style="width:370px;">
+          <h4>网格中的对齐</h4>
+          <p style="font-size:14px;">单独对齐</p>
+          <p style="font-size:14px;">用align-self justify-self 使网格内的内容相对当前网格进行位置摆放</p>
+          <div class="duiqi">
+            <div class="duiqi1">One</div>
+            <div class="duiqi2">Two</div>
+            <div class="duiqi3">Three</div>
+            <div class="duiqi4">four</div>
+          </div>
+          <p style="font-size:14px;">整体对齐</p>
+          <p style="font-size:14px;">用justify-content align-content 使网格内的网格相对当前外框进行位置摆放</p>
+          <div class="duiqiAll">
+            <div class="duiqi11">One</div>
+            <div class="duiqi21">Two</div>
+            <div class="duiqi31">Three</div>
+            <div class="duiqi41">four</div>
+          </div>
+        </div>
+
         <div>
           <p>网格的跨行、跨列</p>
           <div class="wrapper">
@@ -209,13 +279,60 @@
           </div>
           <div class="showGrid"></div>
         </div>
+
+      </div>
+
+      <div>
         <div>
           <h4>命名网格</h4>
+          <p style="font-size:14px;color:rgb(255, 162, 0);">对网格的每一格进行命名</p>
           <ul class="nameGrid">
             <li>img</li>
             <li>content</li>
           </ul>
-
+          <p style="font-size:14px;color:rgb(255, 162, 0);">对网格的每一线进行命名</p>
+          <p style="font-size:12px;color:rgb(255, 62, 36);">
+            其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了
+          </p>
+          <div class="wrapperw">
+            <div class="box1w">One</div>
+            <div class="box2w">Two</div>
+            <div class="box3w">Three</div>
+            <div class="box4w">Four</div>
+            <div class="box5w">Five</div>
+          </div>
+        </div>
+        <h4>自动排序填充网格，尽量减少参差不齐</h4>
+        <p class="titleP">适用于没有具体排版要求，只要求紧凑展示的列表</p>
+        <p class="titleP">未排序</p>
+        <div class="paixu">
+          <div>One</div>
+          <div>Two</div>
+          <div>Three</div>
+          <div>Four</div>
+          <div>Five</div>
+          <div>Six</div>
+          <div>Seven</div>
+          <div>Eight</div>
+          <div>Nine</div>
+          <div>Ten</div>
+          <div>Eleven</div>
+          <div>Twelve</div>
+        </div>
+        <p class="titleP">排序</p>
+        <div class="paixu1">
+          <div>One</div>
+          <div>Two</div>
+          <div>Three</div>
+          <div>Four</div>
+          <div>Five</div>
+          <div>Six</div>
+          <div>Seven</div>
+          <div>Eight</div>
+          <div>Nine</div>
+          <div>Ten</div>
+          <div>Eleven</div>
+          <div>Twelve</div>
         </div>
       </div>
 
@@ -246,12 +363,8 @@
         <p>display:table 使该元素的行为类似于HTML &lt;table&gt;元素。它定义了一个块级框。</p>
         <p>display:flex 使元素的行为类似于block元素，并根据flexbox模型布置其内容。</p>
         <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
-
         <p>display:inline-block 使元素会产生一个块元素盒子，并且像内联盒子一样（表现得更像一个被替换的元素），可以融入到周围内容中。</p>
-        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
-        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
-        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
-        <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
+
       </div>
 
       <div>

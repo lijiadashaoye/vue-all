@@ -259,6 +259,64 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
+        弹性盒子的三种排布
+*************************************/
+.tanxing {
+    width: 100%;
+}
+
+.tanxing>p {
+    font-size: 12px;
+    color: rgb(15, 11, 243);
+}
+
+.gg {
+    border: 1px solid red;
+    display: flex;
+    font-size: 14px;
+    padding: 2px 0;
+}
+
+.gg>p {
+    background-color: rgb(235, 204, 192);
+    padding: 2px 5px;
+}
+
+.ffff {
+    justify-content: space-around;
+}
+
+.ffff1 {
+    justify-content: space-evenly;
+}
+
+.ffff2 {
+    justify-content: space-between;
+}
+
+/*************************************
+        书写方向
+*************************************/
+.modle {
+    display: flex;
+    justify-self: start;
+    border:1px dashed ;
+}
+
+.modle p {
+    padding: 2px 10px;
+}
+
+.writeModle1 {
+    direction: ltr;
+}
+
+.writeModle2 {
+    direction: rtl;
+}
+
+
+/*************************************
         锥形渐变
 *************************************/
 .yuanzhui>p {
@@ -305,11 +363,11 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 /* 
 使用 ”from 角度 at 位置“ 定义渐变的起始角度和旋转圆心位置
-也可以只写 from 角度 或 at 位置
+也可以只写 from 角度 或 at 位置，写了 from，则会把from定义的角度定义为初始0度
 */
 .yuanzhui>p:nth-of-type(4) {
-    background: conic-gradient(from 50deg at 25% 25%, red 90deg, yellow 180deg, blue 270deg);
-    /* background: conic-gradient(from 50deg, red 90deg, yellow 180deg, blue 270deg); */
+    /* background: conic-gradient(from 50deg at 25% 25%, red 90deg, yellow 180deg, blue 270deg); */
+    background: conic-gradient(from 50deg, red 90deg, yellow 90deg, blue 270deg);
     /* background: conic-gradient(at 40% 30%, red 90deg, yellow 180deg, blue 270deg); */
 }
 
@@ -337,14 +395,14 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     margin: 0;
 }
 
-.grid {
-    background-color: rgb(218, 250, 215);
-}
-
 .setKuan {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
+}
+
+.grid {
+    background-color: rgb(218, 250, 215);
 }
 
 #kuandu {
@@ -363,26 +421,31 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     background-color: antiquewhite;
 }
 
+/* repeat() 函数网格 */
 .grid1 {
+    font-size: 12px;
+    /* 设置执行网格布局 */
     display: grid;
     /* 
-      fr 指代一个网格计算单位值，弹性值，
+      fr 指代一个网格计算单位值，弹性值，fr的总和代表将总宽或总高分多少份
       当fr用在 rows 时，如果没有给外框定义height属性，
-      则以子元素 content 高最大值，定义为 1fr 表示高时的值；
+      则以子元素 content 高最大值定义为 1fr 表示高时的值；
 
       当fr用在 columns 时，如果没有给外框定义width属性，
-      则以子元素 content 宽定义为 fr 表示宽时的值
-      若子元素的内容较多，肯定即使写了平均每格是 1fr宽度，但也会出现网格宽度不同现象
+      则以子元素 content 宽定义为 1fr 表示宽时的值；
+      若子元素的内容较多，即使写了平均每格是 1fr宽度，但也会出现网格宽度不同现象
     */
     /* 
     写法一：
       grid-template-columns: repeat(3, 1fr); 1行3列
       repeat(3, 1fr) 表示重复3次，生成1行3列，每格是 1个网格单位宽度
     写法二：
-      第一个参数表示第一列宽度，第二个参数表示第二列宽度，可以写很多个
+      第一个参数表示第一列宽度，第二个参数表示第二列宽度，依此规则可以写很多个
       每一个表示一个表格宽度，写了几个就表示一行里有几个表格，如：
       grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr; 
       表示一行里有10格，第一格和最后一个占2个单位宽度
+    写法三：使用 minmax(min,max) 定义最小宽度和最大宽度
+      grid-template-columns: 1fr minmax(30px,60px) 1fr;
     */
     grid-template-columns: repeat(3, 1fr);
     /* 
@@ -393,30 +456,110 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
       第一个参数表示第一列高度，第二个参数表示第二列高度，可以写很多个
       每一个表示一个表格高度，写了几个就表示一列里有几行表格，如：
       grid-template-rows: 2fr 1fr 1fr; 
-      表示一列里有4格，第一行占2个单位高度
+      表示一列里有4行，第一行占2个单位高度
+    写法三：使用 minmax(min,max) 定义最小高度和最大高度
+      grid-template-rows: 1fr minmax(20px,40px);
     */
     grid-template-rows: 1fr 1fr;
-    font-size: 12px;
 }
 
+/* 自适应宽度弹性网格 */
 .grid2 {
     display: grid;
-    /* 设置网格间距，写法同 margin 
-    grid-gap:  grid-row-gap grid-column-gap;
+    /* 设置网格间距:
+    grid-gap:  grid-row-gap grid-column-gap，或  grid-gap:all 距离一样
     等同于分开写：
     grid-row-gap: 2px;
     grid-column-gap: 10px;
     */
-    grid-row-gap: 2px;
-    grid-column-gap: 10px;
+    /* grid-row-gap: 2px;
+    grid-column-gap: 10px; */
+    grid-gap: 4px;
     font-size: 12px;
 }
 
+/* 网格中的对齐 */
+/* 单独一个网格的对齐 */
+.duiqi {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 设置统一默认行高 */
+    grid-auto-rows: 50px;
+}
+
+.duiqi,
+.duiqi>div {
+    border: 1px solid rgb(0, 229, 255);
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.duiqi1 {
+    align-self: stretch;
+    justify-self: end;
+}
+
+.duiqi2 {
+    align-self: start;
+}
+
+.duiqi3 {
+    align-self: end;
+}
+
+.duiqi4 {
+    /* 使网格内容在当前网格内绝对居中 */
+    align-self: center;
+    justify-self: center;
+}
+
+/* 整体网格的对齐 */
+.duiqiAll {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 30px);
+    height: 100px;
+    width: 100%;
+    grid-gap: 5px;
+
+    /* 与弹性盒子一样，可选值有：
+    start center end
+    space-between space-around space-evenly
+    */
+    justify-content: center;
+    align-content: center;
+}
+
+.duiqiAll,
+.duiqiAll>div {
+    border: 1px solid rgb(0, 229, 255);
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+
+.duiqi11 {
+    align-self: stretch;
+}
+
+.duiqi21 {
+    align-self: start;
+}
+
+.duiqi31 {
+    align-self: end;
+}
+
+.duiqi41 {
+    align-self: center;
+}
+
+/* 网格的跨行、跨列 */
 .wrapper {
+    font-size: 12px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 20px);
-    font-size: 12px;
 }
 
 .wrapper>div {
@@ -428,27 +571,31 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     /* 
     跨行写法一：grid-row: 1 / span 3;
     表示从第一行，跨3行，span 关键字表示‘跨’，前后都可以加 span (看 box4)
-    
-    跨行写法二：grid-row: 1 / span 3;
-    表示从第一行，跨到第4行，指定起始和结束行号
 
-    跨行写法三：详细指定起始和结束
+    跨行写法二：详细指定起始和结束
      grid-column-start: 1;
      grid-column-end: 2;
      grid-row-start: 1;
      grid-row-end: 4;
 
-    跨行写法四：使用 grid-area: 1 / 1 / 4 / 2; 值的顺序如下：
-    类似 margin 从 top 逆时针到 right 依次罗列
+    跨行写法三：使用 grid-area: 1 / 1 / 4 / 2; 
+    值的顺序类似 margin 从 top 逆时针到 right 依次罗列线序号
           top              left            bottom           right
     grid-row-start / grid-column-start /grid-row-end / grid-column-end
 
-    跨行写法五：反方向写
-    */
+    跨行写法四：反方向写
+
     grid-column-start: -4;
     grid-column-end: -3;
     grid-row-start: -4;
     grid-row-end: -1;
+
+    写法五：只写起始线，省略 "/"和后边的值，元素默认延伸一个轨道
+    */
+
+    grid-column: 1;
+    grid-row: 1 / span 3;
+
 }
 
 .box2 {
@@ -466,6 +613,62 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     grid-row: span 3 / span 4;
 }
 
+/* 命名网格 */
+/* 给线命名 */
+.wrapperw {
+    display: grid;
+    font-size: 12px;
+    /*
+    依次罗列线、间，没写出来的线、间就不会被渲染出来；最后一间没写，就不会出现第五格    
+                           第一线  间宽 第二线  间宽 第三线  间宽  */
+    grid-template-columns: [col1] 1fr [col2] 1fr [col3] 1fr [col4];
+    grid-template-rows: [row1] 20px [row2] 20px [row3] 20px [row4];
+}
+
+.wrapperw>div {
+    border: 1px solid rgb(9, 255, 0);
+    box-sizing: border-box;
+}
+
+.box1w {
+    grid-column-start: col1;
+    grid-column-end: col2;
+    grid-row-start: row1;
+    grid-row-end: row4;
+}
+
+.box2w {
+    grid-column-start: col3;
+    grid-column-end: col4;
+    grid-row-start: row1;
+    grid-row-end: row3;
+    background-color: blueviolet;
+    z-index: 2;
+}
+
+.box3w {
+    grid-column-start: col2;
+    grid-column-end: col3;
+    grid-row-start: row1;
+    grid-row-end: row2;
+}
+
+.box4w {
+    grid-column-start: col2;
+    grid-column-end: col4;
+    grid-row-start: row3;
+    grid-row-end: row4;
+}
+
+.box5w {
+    grid-column-start: col2;
+    grid-column-end: col4;
+    grid-row-start: row2;
+    grid-row-end: row3;
+    background-color: chartreuse;
+}
+
+/* 给格命名 */
 .nameGrid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -476,7 +679,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .nameGrid li:nth-last-of-type(1) {
     /* 对网格进行命名 */
     grid-area: content;
-    background-color: #ffd8a8;
+    background-color: #c5a8ff;
 }
 
 .nameGrid li:nth-last-of-type(2) {
@@ -484,7 +687,69 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     background: url('../assets/timg.jpg') center/cover;
 }
 
+/* 自动排序填充网格，尽量减少参差不齐 */
+.titleP {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
 
+.paixu,
+.paixu1 {
+    font-size: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 18px;
+    grid-gap: 2px;
+}
+
+.paixu>div,
+.paixu1>div {
+    background: aquamarine;
+}
+
+.paixu div:nth-child(4n + 1) {
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+    background-color: #ffa94d;
+}
+
+.paixu div:nth-child(2) {
+    grid-column: 3;
+    grid-row: 2 / 4;
+}
+
+.paixu div:nth-child(5) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+/* 经过以上设置，网格就会回填缺口，以前网格会遗留下缺口，
+而现在它会为此前的缺口找到适合它的项目，然后把项目从 DOM 中拿出来再放到缺口中去。
+对于已经重新指定过顺序的网格，这样做不会改变项目之间原有的逻辑顺序 */
+
+.paixu1 {
+    /* 创建一个密集填充的网格 */
+    grid-auto-flow: dense;
+}
+
+.paixu1 div:nth-child(4n+1) {
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+    background-color: #ffa94d;
+}
+
+.paixu1 div:nth-child(2) {
+    grid-column: 3;
+    grid-row: 2 / 4;
+}
+
+.paixu1 div:nth-child(5) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
 
 /*************************************
         剪切图形
@@ -499,19 +764,18 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .path>p {
     font-size: 14px;
     margin: 0;
-
 }
 
 .path>section>div {
     width: 170px;
-    height: 170px;
+    height: 120px;
     margin: 5px;
     background-color: rgb(243, 220, 220);
     font-size: 12px;
 }
 
 .path>section p {
-    height: 70%;
+    height: 50%;
     background-color: rgb(157, 221, 144);
 }
 
@@ -521,13 +785,13 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 .path2 {
-    clip-path: circle(50px at 80px 60px);
+    clip-path: circle(30px at 80px 30px);
 }
 
 .path3 {
-    clip-path: ellipse(80px 40px at 50% 35%);
+    clip-path: ellipse(60px 20px at 50% 55%);
 }
 
 .path4 {
-    clip-path: polygon(40px 0px, 140px 20px, 80px 80px);
+    clip-path: polygon(40px 0px, 140px 10px, 80px 30px);
 }
