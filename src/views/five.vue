@@ -147,7 +147,8 @@
         </div>
 
         <h3>书写方向</h3>
-        <p>direction 适用于所有，弹性盒子、网格、p标签等等</p>
+        <p style="font-size:14px;color:red;">direction 适用于所有，弹性盒子、网格、p标签等等<br>
+          在用到网格时，网格的第一线就变成右边的第一条线了</p>
         <p>从左往右</p>
         <div class="modle writeModle1">
           <p> direction: ltr&nbsp;</p>
