@@ -273,7 +273,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 .yuanzhui>div {
-    background: url('../assets/88.jpg') no-repeat left bottom/50% 65%;
+    background: url('../assets/88.jpg') no-repeat left bottom/55% 65%;
     height: 140px;
 }
 
@@ -352,9 +352,9 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 .showGrid {
-    width: 430px;
-    height: 200px;
-    background: url('../assets/1.png') center/contain;
+    width: 100%;
+    height: 165px;
+    background: url('../assets/1.png') center/cover;
 }
 
 .grid div {
@@ -365,30 +365,58 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 .grid1 {
     display: grid;
-    /* repeat(3, 1fr) 表示重复3次，每次是 1个网格宽度
-       fr 指代一个网格宽度的单位值
+    /* 
+      fr 指代一个网格计算单位值，弹性值，
+      当fr用在 rows 时，如果没有给外框定义height属性，
+      则以子元素 content 高最大值，定义为 1fr 表示高时的值；
+
+      当fr用在 columns 时，如果没有给外框定义width属性，
+      则以子元素 content 宽定义为 fr 表示宽时的值
+      若子元素的内容较多，肯定即使写了平均每格是 1fr宽度，但也会出现网格宽度不同现象
+    */
+    /* 
+    写法一：
+      grid-template-columns: repeat(3, 1fr); 1行3列
+      repeat(3, 1fr) 表示重复3次，生成1行3列，每格是 1个网格单位宽度
+    写法二：
+      第一个参数表示第一列宽度，第二个参数表示第二列宽度，可以写很多个
+      每一个表示一个表格宽度，写了几个就表示一行里有几个表格，如：
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr; 
+      表示一行里有10格，第一格和最后一个占2个单位宽度
     */
     grid-template-columns: repeat(3, 1fr);
+    /* 
+    写法一：
+      grid-template-rows: repeat(3, 1fr); 3行1列
+      repeat(3, 1fr) 表示重复3次，生成3行1列，每行是 1个单位网格高度
+    写法二：
+      第一个参数表示第一列高度，第二个参数表示第二列高度，可以写很多个
+      每一个表示一个表格高度，写了几个就表示一列里有几行表格，如：
+      grid-template-rows: 2fr 1fr 1fr; 
+      表示一列里有4格，第一行占2个单位高度
+    */
+    grid-template-rows: 1fr 1fr;
+    font-size: 12px;
 }
-
 
 .grid2 {
     display: grid;
     /* 设置网格间距，写法同 margin 
-    grid-gap: 2px 10px;
+    grid-gap:  grid-row-gap grid-column-gap;
     等同于分开写：
     grid-row-gap: 2px;
     grid-column-gap: 10px;
     */
     grid-row-gap: 2px;
     grid-column-gap: 10px;
-
+    font-size: 12px;
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 30px);
+    grid-template-rows: repeat(3, 20px);
+    font-size: 12px;
 }
 
 .wrapper>div {
@@ -437,6 +465,25 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     grid-column: 2 / span 2;
     grid-row: span 3 / span 4;
 }
+
+.nameGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* 命名网格的罗列顺序就是展现顺序 */
+    grid-template-areas: "content img";
+}
+
+.nameGrid li:nth-last-of-type(1) {
+    /* 对网格进行命名 */
+    grid-area: content;
+    background-color: #ffd8a8;
+}
+
+.nameGrid li:nth-last-of-type(2) {
+    grid-area: img;
+    background: url('../assets/timg.jpg') center/cover;
+}
+
 
 
 /*************************************

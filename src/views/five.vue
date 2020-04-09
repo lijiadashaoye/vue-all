@@ -161,7 +161,7 @@
           <div>Two</div>
           <div>Three</div>
           <div>Four</div>
-          <div>Five</div>
+          <div>子元素content值较大，则会把此格单独撑开，但只有英文会把宽度撑开，中文则只把高度撑开</div>
         </div>
         <h4>自适应宽度弹性网格</h4>
         <p class="gridTip">
@@ -208,6 +208,14 @@
             <div class="box4">Four</div>
           </div>
           <div class="showGrid"></div>
+        </div>
+        <div>
+          <h4>命名网格</h4>
+          <ul class="nameGrid">
+            <li>img</li>
+            <li>content</li>
+          </ul>
+
         </div>
       </div>
 
