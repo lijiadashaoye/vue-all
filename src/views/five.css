@@ -60,7 +60,7 @@ element.addEventListener("animationiteration", listener, false);
 ******************/
 
 .animation>p {
-    animation-name: slidein, rotated;
+    animation-name: slidein, colors;
     animation-duration: 3s, 3s;
     animation-iteration-count: 3, 3;
     animation-direction: alternate;
@@ -69,8 +69,8 @@ element.addEventListener("animationiteration", listener, false);
 
 @keyframes slidein {
     from {
-        margin-left: 200%;
-        width: 300%;
+        margin-left: 80%;
+        width: 40%;
     }
 
     to {
@@ -79,7 +79,7 @@ element.addEventListener("animationiteration", listener, false);
     }
 }
 
-@keyframes rotated {
+@keyframes colors {
     from {
         color: red;
         font-size: 12px;
@@ -133,32 +133,59 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 .lvjing>div>p:nth-child(1) {
-    width: 70%;
+    width: 78%;
 }
 
 .lvjing img {
     width: 80px;
     height: 70px;
+    align-self: center;
 }
 
+/* 多重滤镜效果可以写到一个filter()里 */
+/* 模糊 blur 和 对比度 grayscale*/
+.blurs>img {
+    filter: blur(0.05vw) grayscale(80%);
+    /* rem px vh vw 都可以*/
+}
+
+/* 亮度 */
 .brightness>img {
     filter: brightness(1.2);
 }
 
-.blurs>img {
-    filter: blur(0.05vw);
-    /* rem px vh vw 都可以*/
-}
-
+/* 对比度 */
 .contrast>img {
     filter: contrast(20%);
     /* rem px vh vw %都可以*/
 }
 
+/* 阴影 */
 .dropShadow>img {
     filter: drop-shadow(10px 10px 20px red);
     /* rem px vh vw %都可以*/
 }
+
+/* 灰度 */
+.grayscale>img {
+    filter: grayscale(80%);
+}
+
+/* 反转 */
+.invert>img {
+    filter: invert(100%)
+}
+
+/* 透明度 */
+.opacity>img {
+    filter: opacity(30%)
+}
+
+/* 转换为深褐色 */
+.sepia>img {
+    filter: sepia(100%)
+}
+
 
 /*************************************
         阴影的写法
@@ -300,7 +327,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .modle {
     display: flex;
     justify-self: start;
-    border:1px dashed ;
+    border: 1px dashed;
 }
 
 .modle p {

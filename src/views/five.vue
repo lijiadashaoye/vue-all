@@ -16,14 +16,13 @@
         </ol>
       </div>
 
-      <div class="animation">
-        <h3>css 动画</h3>
-        <p ref="isP">动画元素</p>
-      </div>
-
       <div class="backgrounds">
         <h3>文字轮廓剪切背景图</h3>
         <p>文字轮廓剪切背景图</p>
+        <div class="animation">
+          <h3>css 动画</h3>
+          <p ref="isP">动画元素</p>
+        </div>
       </div>
 
       <div class="background2">
@@ -41,23 +40,73 @@
 
       <div class="lvjing">
         <h3>滤镜</h3>
-        <div class="brightness">
-          <p>brightness(num) 将线性乘数应用于输入图像，使其看起来更亮或更暗，num>=0</p>
+        <p>多重滤镜效果可以写到一个filter()里</p>
+
+        <div class="blurs">
+          <p>
+            <span style="color:red;">blur(num)：模糊</span>
+            <br />将高斯模糊应用于输出图片 num>=0
+          </p>
           <img src="../assets/2.jpeg" />
         </div>
-        <div class="blurs">
-          <p>blur(num) 将高斯模糊应用于输出图片 num>=0</p>
+
+        <div class="brightness">
+          <p>
+            <span style="color:red;">brightness(num)：亮度</span>
+            <br />将线性乘数应用于输入图像，使其看起来更亮或更暗，num>=0，默认是1。
+          </p>
           <img src="../assets/2.jpeg" />
         </div>
 
         <div class="contrast">
-          <p>contrast(num) 调整输入图像的对比度 num>=0</p>
+          <p>
+            <span style="color:red;">contrast(num)：对比度</span>
+            <br />调整输入图像的对比度 num>=0，默认是1。
+          </p>
           <img src="../assets/2.jpeg" />
         </div>
 
         <div class="dropShadow">
-          <p>drop-shadow(x y r color) 阴影效果输入图像<br>
-            偏离-x 偏移-y 模糊半径-r 颜色-color</p>
+          <p>
+            <span style="color:red;">drop-shadow(x y r color)：阴影</span>
+            <br />阴影效果，偏离-x 偏移-y 模糊半径-r 颜色-color
+          </p>
+          <img src="../assets/2.jpeg" />
+        </div>
+      </div>
+
+      <div class="lvjing">
+        <div class="grayscale">
+          <p>
+            <span style="color:red;">grayscale(num)：灰度</span>
+            <br />将图像转换为灰度图像。值定义转换的比例。
+            值为100%则完全转为灰度图像，值为0%图像无变化。
+            值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0。
+          </p>
+          <img src="../assets/2.jpeg" />
+        </div>
+
+        <div class="invert">
+          <p>
+            <span style="color:red;">invert(num)：反转</span>
+            <br />反转输入图像。值定义转换的比例，num 值在0%和100%之间，值默认是0。
+          </p>
+          <img src="../assets/2.jpeg" />
+        </div>
+
+        <div class="opacity">
+          <p>
+            <span style="color:red;">opacity(num)：透明度</span>
+            <br />转化图像的透明程度。值定义转换的比例，num 值在0%和100%之间，值默认是1。
+          </p>
+          <img src="../assets/2.jpeg" />
+        </div>
+
+        <div class="sepia">
+          <p>
+            <span style="color:red;">sepia(num)：转换为深褐色</span>
+            <br />将图像转换为深褐色。值定义转换的比例，num 值在0%和100%之间，值默认是0。
+          </p>
           <img src="../assets/2.jpeg" />
         </div>
       </div>
@@ -73,13 +122,6 @@
         <h3>边框</h3>
         <p class="border border1">四个不同颜色、形状、大小的值</p>
         <p class="border border2">两个值的</p>
-      </div>
-
-      <div>
-        <h3>css 函数</h3>
-        <ol>
-          <li>calc() 允许在声明 CSS 属性值时执行一些计算，运算符的两边必须要有空白字符，比如，calc(50% + -8px)</li>
-        </ol>
       </div>
 
       <div>
@@ -99,6 +141,13 @@
             </td>
           </tr>
         </table>
+
+        <div>
+          <h3>css 函数</h3>
+          <ol>
+            <li>calc() 允许在声明 CSS 属性值时执行一些计算，运算符的两边必须要有空白字符，比如，calc(50% + -8px)</li>
+          </ol>
+        </div>
       </div>
 
       <div>
@@ -107,11 +156,7 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input
-          id="input"
-          type="text"
-          v-model="inp"
-        />
+        <input id="input" type="text" v-model="inp" />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
@@ -147,11 +192,13 @@
         </div>
 
         <h3>书写方向</h3>
-        <p style="font-size:14px;color:red;">direction 适用于所有，弹性盒子、网格、p标签等等<br>
-          在用到网格时，网格的第一线就变成右边的第一条线了</p>
+        <p style="font-size:14px;color:red;">
+          direction 适用于所有，弹性盒子、网格、p标签等等
+          <br />在用到网格时，网格的第一线就变成右边的第一条线了
+        </p>
         <p>从左往右</p>
         <div class="modle writeModle1">
-          <p> direction: ltr&nbsp;</p>
+          <p>direction: ltr&nbsp;</p>
           <p>2</p>
           <p>3</p>
         </div>
@@ -162,7 +209,6 @@
           <p>2</p>
           <p>3</p>
         </div>
-
       </div>
 
       <div class="yuanzhui">
@@ -186,11 +232,7 @@
       <div>
         <h3>鼠标样式</h3>
         <div id="div">
-          <p
-            v-for="k in shubiao"
-            :key="k"
-            :style="{cursor:k}"
-          >{{k}}</p>
+          <p v-for="k in shubiao" :key="k" :style="{cursor:k}">{{k}}</p>
         </div>
       </div>
 
@@ -214,25 +256,13 @@
           如：minmax(100px,1fr)、minmax(100px,auto)、minmax(100px,200px)
         </p>
         <div class="setKuan">
-          <label
-            style="font-size:14px;"
-            for="kuandu1"
-          >父元素宽度：</label>
-          <input
-            id="kuandu1"
-            v-model="kuan1"
-          />
+          <label style="font-size:14px;" for="kuandu1">父元素宽度：</label>
+          <input id="kuandu1" v-model="kuan1" />
           <span>px</span>
         </div>
         <div class="setKuan">
-          <label
-            style="font-size:14px;"
-            for="kuandu2"
-          >子元素宽度：</label>
-          <input
-            id="kuandu2"
-            v-model="kuan2"
-          />
+          <label style="font-size:14px;" for="kuandu2">子元素宽度：</label>
+          <input id="kuandu2" v-model="kuan2" />
           <span>px</span>
         </div>
         <div
@@ -280,7 +310,6 @@
           </div>
           <div class="showGrid"></div>
         </div>
-
       </div>
 
       <div>
@@ -292,9 +321,9 @@
             <li>content</li>
           </ul>
           <p style="font-size:14px;color:rgb(255, 162, 0);">对网格的每一线进行命名</p>
-          <p style="font-size:12px;color:rgb(255, 62, 36);">
-            其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了
-          </p>
+          <p
+            style="font-size:12px;color:rgb(255, 62, 36);"
+          >其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
           <div class="wrapperw">
             <div class="box1w">One</div>
             <div class="box2w">Two</div>
@@ -365,12 +394,9 @@
         <p>display:flex 使元素的行为类似于block元素，并根据flexbox模型布置其内容。</p>
         <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
         <p>display:inline-block 使元素会产生一个块元素盒子，并且像内联盒子一样（表现得更像一个被替换的元素），可以融入到周围内容中。</p>
-
       </div>
 
-      <div>
-
-      </div>
+      <div></div>
     </div>
   </div>
 </template>
