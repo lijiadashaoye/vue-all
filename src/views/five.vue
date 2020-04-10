@@ -13,6 +13,7 @@
           <li>::after ::before 伪类元素与其他盒模型元素是可以相互影响的，就像他们是真正的元素一样，不过是被插入到相关元素中罢了</li>
           <li>:checked 伪类选择器,表示任何处于选中状态的表单元素</li>
           <li>:disabled 伪类表示任何被禁用的元素，为禁用元素设置样式</li>
+          <li>:focus 表示获得焦点的元素（如表单输入）</li>
         </ol>
       </div>
 
@@ -162,9 +163,27 @@
         <p>{{clipContent}}</p>
       </div>
 
-      <div class="column">
-        <h3>多列布局</h3>
-        <p>被多列布局的元素被多列布局被多列布局的元素被多列布局</p>
+      <div>
+        <div class="column">
+          <h3>多列布局</h3>
+          <p>被多列布局的元素被多列布局被多列布局的元素被多列布局</p>
+        </div>
+
+        <div style="width:360px;">
+          <h3 style="text-align:center;">浮动</h3>
+
+          <div class="floats">
+            <img src="../assets/2.jpeg" />
+            <img src="../assets/2.jpeg" />
+            <p>图片是添加了 float: left/right; 从而浮动了</p>
+          </div>
+
+          <div class="floats">
+            <img src="../assets/2.jpeg" />
+            <img src="../assets/2.jpeg" />
+            <p class="clearP">p标签添加了 clear: left;清除浮动要添加到不希望受其他浮动元素影响的元素上</p>
+          </div>
+        </div>
       </div>
 
       <div class="tanxing">
@@ -395,8 +414,6 @@
         <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
         <p>display:inline-block 使元素会产生一个块元素盒子，并且像内联盒子一样（表现得更像一个被替换的元素），可以融入到周围内容中。</p>
       </div>
-
-      <div></div>
     </div>
   </div>
 </template>
