@@ -157,7 +157,11 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input id="input" type="text" v-model="inp" />
+        <input
+          id="input"
+          type="text"
+          v-model="inp"
+        />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
@@ -251,7 +255,11 @@
       <div>
         <h3>鼠标样式</h3>
         <div id="div">
-          <p v-for="k in shubiao" :key="k" :style="{cursor:k}">{{k}}</p>
+          <p
+            v-for="k in shubiao"
+            :key="k"
+            :style="{cursor:k}"
+          >{{k}}</p>
         </div>
       </div>
 
@@ -275,13 +283,25 @@
           如：minmax(100px,1fr)、minmax(100px,auto)、minmax(100px,200px)
         </p>
         <div class="setKuan">
-          <label style="font-size:14px;" for="kuandu1">父元素宽度：</label>
-          <input id="kuandu1" v-model="kuan1" />
+          <label
+            style="font-size:14px;"
+            for="kuandu1"
+          >父元素宽度：</label>
+          <input
+            id="kuandu1"
+            v-model="kuan1"
+          />
           <span>px</span>
         </div>
         <div class="setKuan">
-          <label style="font-size:14px;" for="kuandu2">子元素宽度：</label>
-          <input id="kuandu2" v-model="kuan2" />
+          <label
+            style="font-size:14px;"
+            for="kuandu2"
+          >子元素宽度：</label>
+          <input
+            id="kuandu2"
+            v-model="kuan2"
+          />
           <span>px</span>
         </div>
         <div
@@ -340,9 +360,7 @@
             <li>content</li>
           </ul>
           <p style="font-size:14px;color:rgb(255, 162, 0);">对网格的每一线进行命名</p>
-          <p
-            style="font-size:12px;color:rgb(255, 62, 36);"
-          >其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
+          <p style="font-size:12px;color:rgb(255, 62, 36);">其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
           <div class="wrapperw">
             <div class="box1w">One</div>
             <div class="box2w">Two</div>
@@ -480,7 +498,9 @@ export default {
   methods: {
     // 复制选中的内容
     copy() {
+      console.log(9);
       document.execCommand("copy");
+      // document.execCommand("cut");
     },
     copy1() {
       // 查询浏览器权限

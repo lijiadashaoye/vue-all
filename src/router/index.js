@@ -35,7 +35,7 @@ const routes = [{
   //   name: 'canshu',
   //   component: () => import( /* webpackChunkName: "canshu" */ '@/components/one/canshu.vue'),
   // },
-  
+
   // 路由的重定向
   {
     path: '/four',
@@ -49,9 +49,14 @@ const routes = [{
     component: () => import( /* webpackChunkName: "three" */ '@/views/three.vue'),
   },
   {
-    path: '/five',
-    name: 'five',
+    path: '/css',
+    name: 'css',
     component: () => import( /* webpackChunkName: "five" */ '@/views/five.vue'),
+  },
+  {
+    path: '/js',
+    name: 'js',
+    component: () => import( /* webpackChunkName: "six" */ '@/views/six.vue'),
   }
 ]
 

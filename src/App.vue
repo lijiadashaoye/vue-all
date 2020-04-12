@@ -4,19 +4,23 @@
       <button
         :class="{active:activeNum==='one'}"
         @click="toRoute('one')"
-      >one</button>&nbsp;&nbsp;
+      >one</button>
       <button
         :class="{active:activeNum==='two'}"
         @click="toRoute('two')"
-      >two</button>&nbsp;&nbsp;
+      >two</button>
       <button
         :class="{active:activeNum==='three'}"
         @click="toRoute('four')"
       >four</button>
       <button
-        :class="{active:activeNum==='five'}"
-        @click="toRoute('five')"
-      >five</button>
+        :class="{active:activeNum==='css'}"
+        @click="toRoute('css')"
+      >css</button>
+      <button
+        :class="{active:activeNum==='js'}"
+        @click="toRoute('js')"
+      >js</button>
     </div>
     <router-view />
   </div>
@@ -77,7 +81,9 @@ export default {
 }
 .nav button {
   font-size: 14px;
-  padding: 2px 8px;
+  padding: 3px 15px;
+  margin-right: 15px;
+  border-radius: 3px;
 }
 p,
 h3,
@@ -90,7 +96,7 @@ h4 {
 }
 ul {
   list-style-type: none;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 </style>
