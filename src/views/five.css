@@ -37,6 +37,7 @@ attr() 目前支持的仅有伪元素的 content 属性，把想添加的内容�
 
 .self-data>ol {
     font-size: 16px;
+    padding: 10px;
 }
 
 /****************
@@ -126,7 +127,10 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     height: 240px;
     background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 180px 100px;
 }
-
+.background2 ol{
+    padding-left:18px;
+    margin:0;
+}
 
 /*************************************
            滤镜
