@@ -24,19 +24,18 @@
           <h3>css 动画</h3>
           <p ref="isP">动画元素</p>
         </div>
-      </div>
-
-      <div class="background2">
-        <h3>背景图缩写方法</h3>
-        <ol>
-          <li>background 缩写里每个属性值无所谓出现的顺序</li>
-          <li>background 属性被指定多个背景层时，使用逗号分隔每个背景层。</li>
-          <li>
-            background-size 只能紧接着 background-position 出现，以"/"分割，即：
-            background-position / background-size
-            ，如：center/80% 、10% 20% / 100px 50px
-          </li>
-        </ol>
+        <div class="background2">
+          <h3>背景图缩写方法</h3>
+          <ol>
+            <li>background 缩写里每个属性值无所谓出现的顺序</li>
+            <li>background 属性被指定多个背景层时，使用逗号分隔每个背景层。</li>
+            <li>
+              background-size 只能紧接着 background-position 出现，以"/"分割，即：
+              background-position / background-size
+              ，如：center/80% 、10% 20% / 100px 50px
+            </li>
+          </ol>
+        </div>
       </div>
 
       <div class="lvjing">

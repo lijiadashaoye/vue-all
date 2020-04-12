@@ -35,6 +35,10 @@ attr() 目前支持的仅有伪元素的 content 属性，把想添加的内容�
     z-index: 1;
 }
 
+.self-data>ol {
+    font-size: 16px;
+}
+
 /****************
 css 动画
 animation-name：指定@keyframes描述动画关键帧的规则名称。可以依次写出多个动画
@@ -98,11 +102,10 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 .backgrounds p {
     display: inline-block;
-    width: 200px;
-    height: 180px;
+    width: 180px;
     text-align: center;
-    line-height: 60px;
-    font-size: 55px;
+    line-height: 40px;
+    font-size: 40px;
     font-weight: bold;
     letter-spacing: 10px;
     /* transparent：透明效果 */
@@ -119,8 +122,9 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
            背景图缩写方法
 *************************************/
 .background2 {
-    font-size: 14px;
-    background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 180px 90px;
+    font-size: 12px;
+    height: 240px;
+    background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 180px 100px;
 }
 
 
