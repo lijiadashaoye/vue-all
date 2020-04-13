@@ -252,6 +252,16 @@
       </div>
 
       <div>
+        <h3>重复渐变</h3>
+        <div class="chongfu1">
+          线型重复渐变
+        </div>
+        <div class="chongfu2">
+          径向重复渐变
+        </div>
+      </div>
+
+       <div>
         <h3>鼠标样式</h3>
         <div id="div">
           <p
