@@ -1102,3 +1102,7 @@ perspective-origin:x y; 指定了观察者的位置
     height: 3000px;
     background-color: teal;
 }
+/* ::selection CSS伪元素应用于文档中被用户高亮的部分 */
+.scrolls>div::selection{
+    color:red;
+}
