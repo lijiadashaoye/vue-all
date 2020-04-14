@@ -14,6 +14,11 @@
           <li>:checked 伪类选择器,表示任何处于选中状态的表单元素</li>
           <li>:disabled 伪类表示任何被禁用的元素，为禁用元素设置样式</li>
           <li>:focus 表示获得焦点的元素（如表单输入）</li>
+          <li class="nots">:not() 用来匹配不符合一组选择器的元素</li>
+          <p style="font-size:12px;">
+            :not() 伪类不能被嵌套，这意味着 :not(:not(...)) 是无效的。
+            <br />由于伪元素不是简单的选择器，他们不能被当作 :not() 中的参数，形如 :not(p::before) 这样的选择器将不会工作。
+          </p>
         </ol>
       </div>
 
@@ -133,11 +138,11 @@
             <td>Some more data</td>
           </tr>
           <tr>
-            <td colspan="2">caret-color 用来定义插入光标（caret）的颜色</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input />
+            <td colspan="2" class="inputs">
+              <p>caret-color 用来定义插入光标（caret）的颜色</p>
+              <p>::placeholder 用来定义 placeholder 文字的样式</p>
+              <input placeholder="placeholder" />
+              <input placeholder="readonly" readonly />
             </td>
           </tr>
         </table>
@@ -156,11 +161,7 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input
-          id="input"
-          type="text"
-          v-model="inp"
-        />
+        <input id="input" type="text" v-model="inp" />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
@@ -252,23 +253,35 @@
       </div>
 
       <div>
-        <h3>重复渐变</h3>
-        <div class="chongfu1">
-          线型重复渐变
+        <h3>渐变</h3>
+        <div class="chongfu1">线型重复渐变</div>
+        <div class="jingxiang">
+          <div>径向重复渐变</div>
+          <div>径向渐变</div>
+          <div>径向渐变</div>
+          <div>径向渐变</div>
         </div>
-        <div class="chongfu2">
-          径向重复渐变
-        </div>
+        <div class="xianxing">线性渐变</div>
       </div>
 
-       <div>
+      <div>
         <h3>鼠标样式</h3>
         <div id="div">
-          <p
-            v-for="k in shubiao"
-            :key="k"
-            :style="{cursor:k}"
-          >{{k}}</p>
+          <p v-for="k in shubiao" :key="k" :style="{cursor:k}">{{k}}</p>
+        </div>
+        <div>
+          <h4>图片填充</h4>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit"
+          >https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit</a>
+        </div>
+        <div>
+          <h4>图片位置</h4>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-position"
+          >https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-position</a>
         </div>
       </div>
 
@@ -292,25 +305,13 @@
           如：minmax(100px,1fr)、minmax(100px,auto)、minmax(100px,200px)
         </p>
         <div class="setKuan">
-          <label
-            style="font-size:14px;"
-            for="kuandu1"
-          >父元素宽度：</label>
-          <input
-            id="kuandu1"
-            v-model="kuan1"
-          />
+          <label style="font-size:14px;" for="kuandu1">父元素宽度：</label>
+          <input id="kuandu1" v-model="kuan1" />
           <span>px</span>
         </div>
         <div class="setKuan">
-          <label
-            style="font-size:14px;"
-            for="kuandu2"
-          >子元素宽度：</label>
-          <input
-            id="kuandu2"
-            v-model="kuan2"
-          />
+          <label style="font-size:14px;" for="kuandu2">子元素宽度：</label>
+          <input id="kuandu2" v-model="kuan2" />
           <span>px</span>
         </div>
         <div
@@ -369,7 +370,9 @@
             <li>content</li>
           </ul>
           <p style="font-size:14px;color:rgb(255, 162, 0);">对网格的每一线进行命名</p>
-          <p style="font-size:12px;color:rgb(255, 62, 36);">其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
+          <p
+            style="font-size:12px;color:rgb(255, 62, 36);"
+          >其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
           <div class="wrapperw">
             <div class="box1w">One</div>
             <div class="box2w">Two</div>
@@ -440,6 +443,22 @@
         <p>display:flex 使元素的行为类似于block元素，并根据flexbox模型布置其内容。</p>
         <p>display:grid 使元素的行为类似于块元素，并根据网格模型布置其内容。</p>
         <p>display:inline-block 使元素会产生一个块元素盒子，并且像内联盒子一样（表现得更像一个被替换的元素），可以融入到周围内容中。</p>
+      </div>
+
+      <div>
+        <h4>css 立体</h4>
+        <div class="liti">
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
+          <p>4</p>
+          <p>5</p>
+          <p>6</p>
+        </div>
+        <div>
+          <h4>使元素可调整大小</h4>
+          <div class="resizable">使用 resize 让元素可以手动调整大小</div>
+        </div>
       </div>
     </div>
   </div>

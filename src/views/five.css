@@ -10,6 +10,10 @@ attr() 目前支持的仅有伪元素的 content 属性，把想添加的内容�
     padding-left: 50px;
 }
 
+/*
+url(URL) 函数：URL 可以使用单引号或双引号包含的字符串，也可以直接书写。
+可以在此函数中使用相对地址。相对地址相对于 CSS 样式表的 URL（而不是网页的 URL）。
+*/
 .self-data span[data-descr]:hover::after {
     content: " ("attr(data-descr) ")"' 'url(https://mdn.mozillademos.org/files/7691/mdn-favicon16.png) "\1f4a1";
     position: absolute;
@@ -38,6 +42,11 @@ attr() 目前支持的仅有伪元素的 content 属性，把想添加的内容�
 .self-data>ol {
     font-size: 16px;
     padding: 10px;
+    margin: 0;
+}
+
+.self-data li:not(.nots) {
+    color: rgb(7, 182, 80);
 }
 
 /****************
@@ -269,8 +278,22 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     border: 1px solid blue;
 }
 
-.isTable input {
-    caret-color: rgba(69, 238, 134);
+.inputs input {
+    padding-left: 5px;
+    caret-color: rgb(10, 184, 76);
+    width: 40%;
+    margin: 5px;
+}
+
+.inputs>input:nth-of-type(1)::placeholder {
+    color: red;
+    font-size: 12px;
+    text-indent: 5px;
+}
+
+.inputs>input:read-only {
+    background-color: thistle;
+    color: rgb(243, 236, 236);
 }
 
 /*************************************
@@ -355,9 +378,13 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 /*************************************
         锥形渐变
 *************************************/
+.yuanzhui {
+    width: 100%;
+}
+
 .yuanzhui>p {
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 4px;
     width: 100px;
     height: 100px;
 }
@@ -414,18 +441,74 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 /* 重复多次渐变图案直到足够填满指定元素 */
 .chongfu1 {
     width: 300px;
-    height: 80px;
-    background: repeating-linear-gradient(to top left,
+    height: 50px;
+    /* 
+      to top, to bottom, to left 和 to right这些值会被转换成角度0度、180度、270度和90度。
+      其余值会被转换为一个以向顶部中央方向为起点顺时针旋转的角度。
+      渐变线的结束点与其起点中心对称。
+    
+    */
+    background: repeating-linear-gradient(30deg,
             lightpink, lightpink 5px, white 5px, white 10px);
     margin-bottom: 10px;
 }
 
-.chongfu2 {
+.jingxiang {
     width: 300px;
-    height: 300px;
-    background: repeating-radial-gradient(powderblue, powderblue 10px, red 20px, blue 30px, yellow 40px);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
 }
 
+/*
+  径向渐变时，第一个参数用来定位渐变的圆心和相应的尺寸
+*/
+
+.jingxiang>div:nth-child(1) {
+    color: white;
+    width: 148px;
+    height: 148px;
+    margin-bottom: 10px;
+    /* 默认是圆，尺寸根据外框除半 */
+    background: repeating-radial-gradient(rgb(19, 220, 247), powderblue 10px, red 20px, blue 30px, yellow 40px);
+}
+
+.jingxiang>div:nth-child(2) {
+    width: 148px;
+    height: 148px;
+    color: white;
+    background: radial-gradient(circle at 70% 20%, red 30%, blue 50%)
+}
+
+
+.jingxiang>div:nth-child(3) {
+    width: 148px;
+    height: 148px;
+    color: white;
+    /* 椭圆 x=30% y=60%, 圆心位置：40% 60% */
+    background: radial-gradient(ellipse 30% 60% at 40% 60%, red 30%, blue 50%)
+}
+
+.jingxiang>div:nth-child(4) {
+    width: 148px;
+    height: 148px;
+    color: white;
+    /* 
+       closest-side  渐变的边缘形状与容器距离渐变中心点最近的一边相切（圆形）或者至少与距离渐变中心点最近的垂直和水平边相切（椭圆）。
+       closest-corner	渐变的边缘形状与容器距离渐变中心点最近的一个角相交。
+       farthest-side  与 closest-side相反，边缘形状与容器距离渐变中心点最远的一边相切（或最远的垂直和水平边）。
+       farthest-corner	 渐变的边缘形状与容器距离渐变中心点最远的一个角相交。
+    */
+    background: radial-gradient(farthest-corner at 40% 60%, red 30%, blue 60%)
+}
+
+.xianxing {
+    width: 300px;
+    height: 50px;
+    color: white;
+    background: linear-gradient(40deg, red 30%, blue 70%);
+}
 
 
 
@@ -497,6 +580,8 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     写法一：
       grid-template-columns: repeat(3, 1fr); 1行3列
       repeat(3, 1fr) 表示重复3次，生成1行3列，每格是 1个网格单位宽度
+      grid-template-columns: repeat(3, 1fr 2fr); 1行6列
+      repeat(3, 1fr 2fr) 表示重复3次，每次都的是 1fr和2fr 的表格一起被重复
     写法二：
       第一个参数表示第一列宽度，第二个参数表示第二列宽度，依此规则可以写很多个
       每一个表示一个表格宽度，写了几个就表示一行里有几个表格，如：
@@ -575,8 +660,8 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .duiqiAll {
     display: grid;
     grid-template-columns: repeat(2, 50px);
-    grid-template-rows: repeat(2, 30px);
-    height: 100px;
+    grid-template-rows: repeat(2, 28px);
+    height: 70px;
     width: 100%;
     grid-gap: 5px;
 
@@ -861,17 +946,9 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     clip-path: polygon(40px 0px, 140px 10px, 80px 30px);
 }
 
-
-
-.resized {
-    width: 200px;
-    height: 100px;
-    background-color: palevioletred;
-    resize: horizontal;
-    display: flex;
-    justify-content: space-evenly;
-}
-
+/*************************************
+        浮动
+*************************************/
 .floats {
     width: 100%;
 }
@@ -888,4 +965,83 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 .clearP {
     clear: left;
+}
+
+/*************************************
+        css 立体
+*************************************/
+/*
+perspective：length; 指定了观察者与 z=0 平面的距离，使具有三维位置变换的元素产生透视效果，一般设置z>0
+perspective-origin:x y; 指定了观察者的位置
+
+*/
+.liti {
+    transform-style: prespective-3d;
+    perspective-origin: 400px 300px;
+    position: relative;
+    width: 300px;
+    perspective: 500px;
+    padding-top: 300px;
+}
+
+.liti>p {
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    position: absolute;
+    box-sizing: border-box;
+    margin: 0;
+    top: 100px;
+    left: 100px;
+}
+
+.liti>p:nth-child(1) {
+    background-color: sandybrown;
+    transform: translateZ(50px);
+}
+
+.liti>p:nth-child(2) {
+    background-color: rgba(192, 244, 96, 0.6);
+    /* 当平面旋转后，坐标系也跟着变 */
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+
+.liti>p:nth-child(3) {
+    background-color: rgba(96, 222, 244, 0.6);
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+.liti>p:nth-child(4) {
+    background-color: rgba(96, 111, 244, 0.6);
+    transform: rotateY(-90deg) translateZ(50px);
+}
+
+.liti>p:nth-child(5) {
+    background-color: rgba(165, 96, 244, 0.6);
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+.liti>p:nth-child(6) {
+    background-color: rgba(244, 96, 207, 0.2);
+    transform: rotateX(-90deg) translateZ(50px);
+}
+
+/*************************************
+        使元素可调整大小
+*************************************/
+.resizable {
+    /*
+      resize: both;  宽高都可以变
+      resize: horizontal;  只能变宽
+      resize: vertical;   只能变高
+    */
+    resize: vertical;
+    overflow: auto;
+    border: 1px solid black;
+    min-width: 100px;
+    min-height: 100px;
 }
