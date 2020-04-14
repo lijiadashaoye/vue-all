@@ -204,6 +204,10 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     filter: sepia(100%)
 }
 
+/* 饱和度 */
+.saturate>img {
+    filter: saturate(50%);
+}
 
 /*************************************
         阴影的写法
@@ -982,6 +986,31 @@ perspective-origin:x y; 指定了观察者的位置
     width: 300px;
     perspective: 500px;
     padding-top: 300px;
+    transform: rotate3d(0, 0, 0, 45deg) scale3d(1.2, 1.4, 0.8);
+
+    /*
+      rotate3d(x, y, z, a) CSS函数定义一个变换，它将元素围绕固定轴移动而不使其变形。
+      旋转规则的值的顺序是严格控制的。
+      运动量由指定的角度定义; 正的角度值表示顺时针旋转，负值表示逆时针旋转。
+
+      x 可以是0到1之间的数值，表示旋转轴X坐标方向的矢量。 
+        rotateX(a) 相当于 rotate3d(1, 0, 0, a).
+
+      y 可以是0到1之间的数值，表示旋转轴Y坐标方向的矢量。 
+        rotateY(a) 相当于 rotate3d(0, 1, 0, a).
+
+      z 可以是0到1之间的数值，表示旋转轴Z坐标方向的矢量。
+        rotateZ(a) 相当于 rotate3d(0, 0, 1, a)。
+
+      a 表示旋转角度。
+
+      scale3d(sx,sy,sz) 用三个值指定该函数，这三个值表示要在每个方向上应用的缩放比例。
+       sx 代表缩放向量的横坐标。
+       sy 代表缩放向量的纵坐标。
+       sz 代表缩放向量的z分量。
+
+    */
+
 }
 
 .liti>p {
@@ -1004,29 +1033,29 @@ perspective-origin:x y; 指定了观察者的位置
 }
 
 .liti>p:nth-child(2) {
-    background-color: rgba(192, 244, 96, 0.6);
+    background-color: rgba(192, 244, 96, 0.8);
     /* 当平面旋转后，坐标系也跟着变 */
     transform: rotateY(90deg) translateZ(50px);
 }
 
 
 .liti>p:nth-child(3) {
-    background-color: rgba(96, 222, 244, 0.6);
+    background-color: rgba(96, 222, 244, 0.8);
     transform: rotateY(180deg) translateZ(50px);
 }
 
 .liti>p:nth-child(4) {
-    background-color: rgba(96, 111, 244, 0.6);
+    background-color: rgba(96, 111, 244, 0.8);
     transform: rotateY(-90deg) translateZ(50px);
 }
 
 .liti>p:nth-child(5) {
-    background-color: rgba(165, 96, 244, 0.6);
+    background-color: rgba(165, 96, 244, 0.8);
     transform: rotateX(90deg) translateZ(50px);
 }
 
 .liti>p:nth-child(6) {
-    background-color: rgba(244, 96, 207, 0.2);
+    background-color: rgba(244, 96, 207, 0.8);
     transform: rotateX(-90deg) translateZ(50px);
 }
 
@@ -1044,4 +1073,32 @@ perspective-origin:x y; 指定了观察者的位置
     border: 1px solid black;
     min-width: 100px;
     min-height: 100px;
+}
+
+
+
+
+.scales {
+    width: 100px;
+    height: 50px;
+    background-color: thistle;
+    /* 
+     scale(x,y); 缩放，等同于:transform: scaleX(0.8) scaleY(1.2); 
+    */
+    transform: scale(0.8, 1.2);
+}
+
+
+.scrolls {
+    width: 200px;
+    height: 300px;
+    overflow-y: scroll;
+    scrollbar-color: red;
+    scrollbar-width: thin
+}
+
+.scrolls>div {
+    width: 150px;
+    height: 3000px;
+    background-color: teal;
 }
