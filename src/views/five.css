@@ -17,7 +17,7 @@ url(URL) 函数：URL 可以使用单引号或双引号包含的字符串，也�
 .self-data span[data-descr]:hover::after {
     content: " ("attr(data-descr) ")"' 'url(https://mdn.mozillademos.org/files/7691/mdn-favicon16.png) "\1f4a1";
     position: absolute;
-    left: 90px;
+    left: 135px;
     top: 0px;
     min-width: 218px;
     border: 1px #aaaaaa solid;
@@ -33,7 +33,7 @@ url(URL) 函数：URL 可以使用单引号或双引号包含的字符串，也�
     content: '::before';
     position: absolute;
     left: -5px;
-    top: 0px;
+    top: 3px;
     color: #000000;
     font-size: 14px;
     z-index: 1;
@@ -129,7 +129,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-           背景图缩写方法
+             背景图缩写方法
 *************************************/
 .background2 {
     font-size: 12px;
@@ -143,11 +143,12 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-           滤镜
+                 滤镜
 *************************************/
 .lvjing>div {
     margin: 0 0 5px 0;
     display: flex;
+    font-size: 16px;
 }
 
 .lvjing>div>p:nth-child(1) {
@@ -210,7 +211,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        阴影的写法
+              阴影的写法
 *************************************/
 .shadow {
     width: 150px;
@@ -241,7 +242,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        border 的写法
+            border 的写法
 *************************************/
 .border {
     width: 170px;
@@ -267,11 +268,12 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        表格样式
+               表格样式
 *************************************/
 .isTable {
     border-collapse: collapse;
     caption-side: bottom;
+    font-size: 14px;
 }
 
 .isTable>caption {
@@ -301,7 +303,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        多列布局
+               多列布局
 *************************************/
 .column {
     column-count: 2;
@@ -322,7 +324,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        浮动
+                 浮动
 *************************************/
 .floats {
     width: 100%;
@@ -343,7 +345,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        弹性盒子的三种排布
+           弹性盒子的三种排布
 *************************************/
 .tanxing {
     width: 100%;
@@ -379,7 +381,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        书写方向
+               书写方向
 *************************************/
 .modle {
     display: flex;
@@ -401,7 +403,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 
 /*************************************
-        锥形渐变
+               锥形渐变
 *************************************/
 .yuanzhui {
     width: 100%;
@@ -460,11 +462,12 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        重复渐变
+               重复渐变
 *************************************/
 
 /* 重复多次渐变图案直到足够填满指定元素 */
 .chongfu1 {
+
     width: 300px;
     height: 50px;
     /* 
@@ -506,7 +509,6 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     background: radial-gradient(circle at 70% 20%, red 30%, blue 50%)
 }
 
-
 .jingxiang>div:nth-child(3) {
     width: 148px;
     height: 148px;
@@ -538,11 +540,12 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 
 /*************************************
-        鼠标样式
+                鼠标样式
 *************************************/
 #div {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 #div p {
@@ -550,11 +553,11 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     margin: 0 5px 5px 0;
     padding: 0 5px;
     color: rgb(241, 194, 194);
+    font-size: 14px;
 }
 
-
 /*************************************
-        网格布局
+                网格布局
 *************************************/
 .gridTip {
     font-size: 14px;
@@ -927,7 +930,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 /*************************************
-        剪切图形
+               剪切图形
 *************************************/
 
 .path>section {
@@ -971,29 +974,30 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     clip-path: polygon(40px 0px, 140px 10px, 80px 30px);
 }
 
-/*************************************
-        浮动
-*************************************/
-.floats {
+/****************************************
+ 使用 clip-path 和 shape-image-threshold
+****************************************/
+.use_clipPath {
     width: 100%;
+    word-wrap: break-word;
+    font-size: 16px;
 }
 
-.floats img:nth-of-type(1) {
-    width: 50px;
-    float: left;
-}
-
-.floats img:nth-of-type(2) {
-    width: 50px;
+.use_clipPath>span {
+    width: 200px;
+    height: 130px;
     float: right;
-}
-
-.clearP {
-    clear: left;
+    clip-path: polygon(0px 0px, 190px 30px, 180px 130px, 0 130px, 80px 90px);
+    background: url('../assets/timg.jpg') no-repeat right bottom/cover;
+    shape-outside: polygon(0px 0px, 190px 30px, 180px 130px, 0 130px, 80px 90px);
+    /* 
+      shape-margin 用于设定由 shape-outside 创建的CSS形状的外边距。
+    */
+    shape-margin: 5px;
 }
 
 /*************************************
-        css 立体
+              css 立体
 *************************************/
 /*
 perspective：length; 指定了观察者与 z=0 平面的距离，使具有三维位置变换的元素产生透视效果，一般设置z>0
@@ -1006,7 +1010,7 @@ perspective-origin:x y; 指定了观察者的位置
     position: relative;
     width: 300px;
     perspective: 500px;
-    padding-top: 300px;
+    padding-top: 220px;
     transform: rotate3d(0, 0, 0, 45deg) scale3d(1.2, 1.4, 0.8);
 
     /*
@@ -1035,8 +1039,8 @@ perspective-origin:x y; 指定了观察者的位置
 }
 
 .liti>p {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     font-size: 50px;
     color: white;
     text-align: center;
@@ -1044,44 +1048,58 @@ perspective-origin:x y; 指定了观察者的位置
     position: absolute;
     box-sizing: border-box;
     margin: 0;
-    top: 100px;
-    left: 100px;
+    top: 75px;
+    left: 120px;
 }
 
 .liti>p:nth-child(1) {
     background-color: sandybrown;
-    transform: translateZ(50px);
+    transform: translateZ(40px);
 }
 
 .liti>p:nth-child(2) {
     background-color: rgba(192, 244, 96, 0.8);
     /* 当平面旋转后，坐标系也跟着变 */
-    transform: rotateY(90deg) translateZ(50px);
+    transform: rotateY(90deg) translateZ(40px);
 }
 
 
 .liti>p:nth-child(3) {
     background-color: rgba(96, 222, 244, 0.8);
-    transform: rotateY(180deg) translateZ(50px);
+    transform: rotateY(180deg) translateZ(40px);
 }
 
 .liti>p:nth-child(4) {
     background-color: rgba(96, 111, 244, 0.8);
-    transform: rotateY(-90deg) translateZ(50px);
+    transform: rotateY(-90deg) translateZ(40px);
 }
 
 .liti>p:nth-child(5) {
     background-color: rgba(165, 96, 244, 0.8);
-    transform: rotateX(90deg) translateZ(50px);
+    transform: rotateX(90deg) translateZ(40px);
 }
 
 .liti>p:nth-child(6) {
     background-color: rgba(244, 96, 207, 0.8);
-    transform: rotateX(-90deg) translateZ(50px);
+    transform: rotateX(-90deg) translateZ(40px);
 }
 
 /*************************************
-        使元素可调整大小
+               二维缩放
+*************************************/
+.scales {
+    width: 200px;
+    height: 40px;
+    background-color: thistle;
+    /* 
+     scale(x,y); 缩放，等同于:transform: scaleX(0.8) scaleY(1.2); 
+    */
+    transform: scale(0.8, 1.2);
+    margin-top: 5px;
+}
+
+/*************************************
+            使元素可调整大小
 *************************************/
 .resizable {
     /*
@@ -1089,28 +1107,31 @@ perspective-origin:x y; 指定了观察者的位置
       resize: horizontal;  只能变宽
       resize: vertical;   只能变高
     */
-    resize: vertical;
+    resize: both;
     overflow: auto;
     border: 1px solid black;
     min-width: 100px;
-    min-height: 100px;
+    min-height: 50px;
 }
 
-
-
-
-.scales {
-    width: 100px;
-    height: 50px;
-    background-color: thistle;
-    /* 
-     scale(x,y); 缩放，等同于:transform: scaleX(0.8) scaleY(1.2); 
-    */
-    transform: scale(0.8, 1.2);
+/*************************************
+            鼠标选中改变样式
+*************************************/
+.shubiaoSelect {
+    font-size: 16px;
 }
 
+/* ::selection CSS伪元素应用于文档中被用户高亮的部分 */
+.shubiaoSelect>p::selection {
+    color: red;
+    background-color: cyan;
+}
 
-.scrolls {
+/*************************************
+            鼠标选中改变样式
+*************************************/
+
+/* .scrolls {
     width: 200px;
     height: 300px;
     overflow-y: scroll;
@@ -1123,7 +1144,4 @@ perspective-origin:x y; 指定了观察者的位置
     height: 3000px;
     background-color: teal;
 }
-/* ::selection CSS伪元素应用于文档中被用户高亮的部分 */
-.scrolls>div::selection{
-    color:red;
-}
+ */

@@ -3,8 +3,8 @@
     <h2>css 学习</h2>
     <div class="content">
       <div class="self-data">
-        <h3>css 获取自定义data-*数据</h3>
-        <span data-descr="css 获取自定义data-*数据">看看</span>
+        <h3>伪类、为元素</h3>
+        <span data-descr="css 获取自定义data-*数据">鼠标放这</span>
         <ol>
           <li>::before 创建一个伪元素，其将成为匹配选中的元素的第一个子元素。</li>
           <li>::after用来创建一个伪元素，作为已选中元素的最后一个子元素</li>
@@ -52,7 +52,7 @@
             <span style="color:red;">blur(num)：模糊</span>
             <br />将高斯模糊应用于输出图片 num>=0
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
 
         <div class="brightness">
@@ -60,7 +60,7 @@
             <span style="color:red;">brightness(num)：亮度</span>
             <br />将线性乘数应用于输入图像，使其看起来更亮或更暗，num>=0，默认是1。
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
 
         <div class="contrast">
@@ -68,7 +68,7 @@
             <span style="color:red;">contrast(num)：对比度</span>
             <br />调整输入图像的对比度 num>=0，默认是1。
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
 
         <div class="dropShadow">
@@ -76,7 +76,7 @@
             <span style="color:red;">drop-shadow(x y r color)：阴影</span>
             <br />阴影效果，偏离-x 偏移-y 模糊半径-r 颜色-color
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
 
         <div class="saturate">
@@ -84,7 +84,7 @@
             <span style="color:red;">saturate(num)：饱和度</span>
             <br />值100%过低会使图像去饱和，而值过高则会使图像100%饱和
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
       </div>
 
@@ -96,7 +96,7 @@
             值为100%则完全转为灰度图像，值为0%图像无变化。
             值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0。
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
 
         <div class="invert">
@@ -104,7 +104,7 @@
             <span style="color:red;">invert(num)：反转</span>
             <br />反转输入图像。值定义转换的比例，num 值在0%和100%之间，值默认是0。
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
 
         <div class="opacity">
@@ -112,7 +112,7 @@
             <span style="color:red;">opacity(num)：透明度</span>
             <br />转化图像的透明程度。值定义转换的比例，num 值在0%和100%之间，值默认是1。
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
 
         <div class="sepia">
@@ -120,7 +120,7 @@
             <span style="color:red;">sepia(num)：转换为深褐色</span>
             <br />将图像转换为深褐色。值定义转换的比例，num 值在0%和100%之间，值默认是0。
           </p>
-          <img src="../assets/2.jpeg" />
+          <img src="../assets/2.png" />
         </div>
       </div>
 
@@ -146,11 +146,17 @@
             <td>Some more data</td>
           </tr>
           <tr>
-            <td colspan="2" class="inputs">
+            <td
+              colspan="2"
+              class="inputs"
+            >
               <p>caret-color 用来定义插入光标（caret）的颜色</p>
               <p>::placeholder 用来定义 placeholder 文字的样式</p>
               <input placeholder="placeholder" />
-              <input placeholder="readonly" readonly />
+              <input
+                placeholder="readonly"
+                readonly
+              />
             </td>
           </tr>
         </table>
@@ -169,7 +175,11 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input id="input" type="text" v-model="inp" />
+        <input
+          id="input"
+          type="text"
+          v-model="inp"
+        />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
@@ -185,14 +195,14 @@
           <h3 style="text-align:center;">浮动</h3>
 
           <div class="floats">
-            <img src="../assets/2.jpeg" />
-            <img src="../assets/2.jpeg" />
+            <img src="../assets/2.png" />
+            <img src="../assets/2.png" />
             <p>图片是添加了 float: left/right; 从而浮动了</p>
           </div>
 
           <div class="floats">
-            <img src="../assets/2.jpeg" />
-            <img src="../assets/2.jpeg" />
+            <img src="../assets/2.png" />
+            <img src="../assets/2.png" />
             <p class="clearP">p标签添加了 clear: left;清除浮动要添加到不希望受其他浮动元素影响的元素上</p>
           </div>
         </div>
@@ -275,7 +285,11 @@
       <div>
         <h3>鼠标样式</h3>
         <div id="div">
-          <p v-for="k in shubiao" :key="k" :style="{cursor:k}">{{k}}</p>
+          <p
+            v-for="k in shubiao"
+            :key="k"
+            :style="{cursor:k}"
+          >{{k}}</p>
         </div>
         <div>
           <h4>图片填充</h4>
@@ -313,13 +327,25 @@
           如：minmax(100px,1fr)、minmax(100px,auto)、minmax(100px,200px)
         </p>
         <div class="setKuan">
-          <label style="font-size:14px;" for="kuandu1">父元素宽度：</label>
-          <input id="kuandu1" v-model="kuan1" />
+          <label
+            style="font-size:14px;"
+            for="kuandu1"
+          >父元素宽度：</label>
+          <input
+            id="kuandu1"
+            v-model="kuan1"
+          />
           <span>px</span>
         </div>
         <div class="setKuan">
-          <label style="font-size:14px;" for="kuandu2">子元素宽度：</label>
-          <input id="kuandu2" v-model="kuan2" />
+          <label
+            style="font-size:14px;"
+            for="kuandu2"
+          >子元素宽度：</label>
+          <input
+            id="kuandu2"
+            v-model="kuan2"
+          />
           <span>px</span>
         </div>
         <div
@@ -378,9 +404,7 @@
             <li>content</li>
           </ul>
           <p style="font-size:14px;color:rgb(255, 162, 0);">对网格的每一线进行命名</p>
-          <p
-            style="font-size:12px;color:rgb(255, 62, 36);"
-          >其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
+          <p style="font-size:12px;color:rgb(255, 62, 36);">其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
           <div class="wrapperw">
             <div class="box1w">One</div>
             <div class="box2w">Two</div>
@@ -454,6 +478,18 @@
       </div>
 
       <div>
+        <h4>使用 clip-path 和 shape-outside </h4>
+        <p style="font-size:14px;color:red;font-size:16px;">
+          结合浮动一起使用
+        </p>
+        <div class="use_clipPath">
+          <span></span>
+          当前边的元素浮动后，后边的元素就要去挤靠浮动元素，用 clip-path 是为了剪切背景图，
+          用 shape-outside 才是让文字围绕一定的形状去排布
+        </div>
+      </div>
+
+      <div>
         <h4>css 立体</h4>
         <div class="liti">
           <p>1</p>
@@ -466,6 +502,19 @@
         <div>
           <h4>使元素可调整大小</h4>
           <div class="resizable">使用 resize 让元素可以手动调整大小</div>
+        </div>
+        <div>
+          <h4>平面二维缩放</h4>
+          <div class="scales">
+            <div>二维平面缩放</div>
+          </div>
+        </div>
+
+        <div>
+          <h4>鼠标选中改变样式</h4>
+          <div class="shubiaoSelect">
+            <p>使用 ::selection 改变被选中的部分的样式</p>
+          </div>
         </div>
       </div>
 
