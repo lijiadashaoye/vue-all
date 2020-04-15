@@ -105,6 +105,17 @@ element.addEventListener("animationiteration", listener, false);
     }
 }
 
+.transitions {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(224, 176, 176)
+}
+
+.transitions:hover {
+    transition: background-color 1s 500ms;
+    background-color: rgb(176, 224, 190)
+}
+
 /***********************
 使用文字对背景图进行剪切
 background-attachment：决定背景图像的位置是在视口内固定 fixed，还是随着包含它的区块滚动 scroll。
@@ -1007,6 +1018,10 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 /*************************************
               css 立体
 *************************************/
+.last>div {
+    margin-bottom: 10px;
+}
+
 /*
 perspective：length; 指定了观察者与 z=0 平面的距离，使具有三维位置变换的元素产生透视效果，一般设置z>0
 perspective-origin:x y; 指定了观察者的位置
@@ -1106,6 +1121,16 @@ perspective-origin:x y; 指定了观察者的位置
     margin-top: 5px;
 }
 
+.zooms>div {
+    width: 300px;
+    height: 50px;
+    background-color: rgb(226, 179, 132);
+}
+
+.zooms:hover>div {
+    zoom: 0.8
+}
+
 /*************************************
             使元素可调整大小
 *************************************/
@@ -1136,7 +1161,7 @@ perspective-origin:x y; 指定了观察者的位置
 }
 
 /*************************************
-            竖排文字
+            文字相关
 *************************************/
 .shupaiWap {
     display: flex;
@@ -1149,7 +1174,7 @@ perspective-origin:x y; 指定了观察者的位置
 
 .shupai2 {
     writing-mode: vertical-rl;
-    font: 24px serif
+    font: 24px serif;
 }
 
 .shupai2 span {
@@ -1158,11 +1183,11 @@ perspective-origin:x y; 指定了观察者的位置
 }
 
 .decoration1 {
-    text-decoration: underline darkkhaki;
+    text-decoration: underline rgb(107, 189, 121);
 }
 
 .decoration2 {
-    text-decoration: line-through darkkhaki;
+    text-decoration: line-through rgb(50, 240, 224);
 }
 
 .decoration3 {
@@ -1175,4 +1200,24 @@ perspective-origin:x y; 指定了观察者的位置
 
 .decoration5 {
     text-decoration: underline overline wavy red;
+}
+
+.textShadow {
+    font-size: 20px;
+    /* x偏移 y偏移 阴影拓展 颜色 */
+    text-shadow: 2px 2px 5px red;
+}
+
+.big {
+    text-transform: capitalize;
+}
+
+
+:root {
+    --bk: red
+}
+
+.vars {
+    height:50px;
+    background-color: var(--bk);
 }

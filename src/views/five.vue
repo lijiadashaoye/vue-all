@@ -25,10 +25,19 @@
       <div class="backgrounds">
         <h4>文字轮廓剪切背景图</h4>
         <p>文字轮廓剪切背景图</p>
-        <div class="animation">
-          <h4>css 动画</h4>
-          <p ref="isP">动画元素</p>
+        <div>
+          <div class="animation">
+            <h4>@keyframes 动画</h4>
+            <p>动画元素</p>
+          </div>
+          <div>
+            <h4>transition 动画</h4>
+            <div class="transitions">
+              鼠标滑入
+            </div>
+          </div>
         </div>
+
         <div class="background2">
           <h4>背景图缩写方法</h4>
           <ol>
@@ -514,19 +523,34 @@
               </p>
             </div>
             <div>
-              <p>text-decoration 样式</p>
+              <p style="font-size:16px;color:red;">下划线样式</p>
               <p class="decoration1">文字底下直线</p>
               <p class="decoration2">文字中间直线</p>
               <p class="decoration3">虚线 </p>
               <p class="decoration4">波浪线 </p>
               <p class="decoration5">上下都有 </p>
             </div>
+            <div>
+              <p style="font-size:16px;color:red;">文字阴影</p>
+              <p class="textShadow">文字</p>
+            </div>
+          </div>
+          <div class="shupaiWap">
+            <div>
+              <p style="font-size:16px;color:red;">单词首字母大写</p>
+              <p class="big">dog</p>
+            </div>
+            <div>
+              <p style="font-size:16px;color:red;">使用css 自定义 var()函数</p>
+              <p class="vars"></p>
+            </div>
+
           </div>
 
         </div>
       </div>
 
-      <div>
+      <div class="last">
         <h4>css 立体</h4>
         <div class="liti">
           <p>1</p>
@@ -541,9 +565,16 @@
           <div class="resizable">使用 resize 让元素可以手动调整大小</div>
         </div>
         <div>
-          <h4>平面二维缩放</h4>
+          <h4>scale() 缩放</h4>
           <div class="scales">
             <div>二维平面缩放</div>
+          </div>
+        </div>
+
+        <div class="zooms">
+          <h4>zoom 缩放</h4>
+          <div>
+            zoom 缩放会将元素和模型也缩小
           </div>
         </div>
 
@@ -555,9 +586,6 @@
         </div>
       </div>
 
-      <div>
-        sdfgsfgsdfg
-      </div>
     </div>
   </div>
 </template>
