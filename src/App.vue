@@ -86,11 +86,17 @@ export default {
   border-radius: 3px;
 }
 p,
-h3,
-h4 {
+h3 {
   padding: 2px;
   margin: 2px 0;
 }
+h4,
+h3 {
+  padding: 2px;
+  margin: 2px 0;
+  background-color: rgb(220, 217, 221);
+}
+
 .active {
   color: #657eeb;
 }

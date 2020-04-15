@@ -3,7 +3,7 @@
     <h2>css 学习</h2>
     <div class="content">
       <div class="self-data">
-        <h3>伪类、为元素</h3>
+        <h4>伪类、为元素</h4>
         <span data-descr="css 获取自定义data-*数据">鼠标放这</span>
         <ol>
           <li>::before 创建一个伪元素，其将成为匹配选中的元素的第一个子元素。</li>
@@ -23,14 +23,14 @@
       </div>
 
       <div class="backgrounds">
-        <h3>文字轮廓剪切背景图</h3>
+        <h4>文字轮廓剪切背景图</h4>
         <p>文字轮廓剪切背景图</p>
         <div class="animation">
-          <h3>css 动画</h3>
+          <h4>css 动画</h4>
           <p ref="isP">动画元素</p>
         </div>
         <div class="background2">
-          <h3>背景图缩写方法</h3>
+          <h4>背景图缩写方法</h4>
           <ol>
             <li>background 缩写里每个属性值无所谓出现的顺序</li>
             <li>background 属性被指定多个背景层时，使用逗号分隔每个背景层。</li>
@@ -44,7 +44,7 @@
       </div>
 
       <div class="lvjing">
-        <h3>滤镜</h3>
+        <h4>滤镜</h4>
         <p>多重滤镜效果可以写到一个filter()里</p>
 
         <div class="blurs">
@@ -125,22 +125,32 @@
       </div>
 
       <div>
-        <h3>阴影</h3>
+        <h4>阴影</h4>
         <p class="shadow shadow1">默认在外侧</p>
         <p class="shadow shadow2">用 inset 向内侧</p>
         <p class="shadow shadow3">多重阴影</p>
       </div>
 
       <div>
-        <h3>边框</h3>
+        <h4>边框</h4>
         <p class="border border1">四个不同颜色、形状、大小的值</p>
         <p class="border border2">两个值的</p>
       </div>
 
       <div>
-        <h3>表格</h3>
+        <h4>表格</h4>
+        <p style="font-size:14px;">当表格添加了 width 后，可以用 table-layout: fixed 限定每个表格的宽度都一样</p>
         <table class="isTable">
           <caption>Caption 表格标题</caption>
+          <tr>
+            <td
+              colspan="2"
+              class="toLong"
+            >
+              <p>当文子长度超过表格时，可以用 ... 形式，如：</p>
+              文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+            </td>
+          </tr>
           <tr>
             <td>Some data</td>
             <td>Some more data</td>
@@ -162,7 +172,7 @@
         </table>
 
         <div>
-          <h3>css 函数</h3>
+          <h4>css 函数</h4>
           <ol>
             <li>calc() 允许在声明 CSS 属性值时执行一些计算，运算符的两边必须要有空白字符，比如，calc(50% + -8px)</li>
           </ol>
@@ -170,7 +180,7 @@
       </div>
 
       <div>
-        <h3>剪切板操作</h3>
+        <h4>剪切板操作</h4>
         <p>使用 document.execCommand 复制，先选中一些内容</p>
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
@@ -187,12 +197,12 @@
 
       <div>
         <div class="column">
-          <h3>多列布局</h3>
+          <h4>多列布局</h4>
           <p>被多列布局的元素被多列布局被多列布局的元素被多列布局</p>
         </div>
 
         <div style="width:360px;">
-          <h3 style="text-align:center;">浮动</h3>
+          <h4 style="text-align:center;">浮动</h4>
 
           <div class="floats">
             <img src="../assets/2.png" />
@@ -209,7 +219,7 @@
       </div>
 
       <div class="tanxing">
-        <h3>弹性盒子的三种排布</h3>
+        <h4>弹性盒子的三种排布</h4>
 
         <p>均匀排列每个元素,元素之间平均分配空挡</p>
         <div class="gg ffff">
@@ -232,7 +242,7 @@
           <p>1</p>
         </div>
 
-        <h3>书写方向</h3>
+        <h4>书写方向</h4>
         <p style="font-size:14px;color:red;">
           direction 适用于所有，弹性盒子、网格、p标签等等
           <br />在用到网格时，网格的第一线就变成右边的第一条线了
@@ -253,7 +263,7 @@
       </div>
 
       <div class="yuanzhui">
-        <h3>圆锥渐变</h3>
+        <h4>圆锥渐变</h4>
         <section>属于background-image属性，只有chorme支持</section>
         <section>1 rad=180/π deg</section>
         <section>1 turn=360 deg</section>
@@ -271,7 +281,7 @@
       </div>
 
       <div>
-        <h3>渐变</h3>
+        <h4>渐变</h4>
         <div class="chongfu1">线型重复渐变</div>
         <div class="jingxiang">
           <div>径向重复渐变</div>
@@ -283,7 +293,7 @@
       </div>
 
       <div>
-        <h3>鼠标样式</h3>
+        <h4>鼠标样式</h4>
         <div id="div">
           <p
             v-for="k in shubiao"
@@ -308,7 +318,7 @@
       </div>
 
       <div>
-        <h3>网格布局</h3>
+        <h4>网格布局</h4>
         <p class="gridTip">只需要按行或者列控制布局（一维）用弹性盒子</p>
         <p class="gridTip">需要同时按行和列控制布局（二维）用网格</p>
 
@@ -448,7 +458,7 @@
       </div>
 
       <div class="path">
-        <h3>clip-path 背景剪切</h3>
+        <h4>clip-path 背景剪切</h4>
         <p>背景剪切，是先创建背景，然后进行剪切，所以正常可以显示的内容，也会被裁剪</p>
 
         <section>
@@ -487,6 +497,33 @@
           当前边的元素浮动后，后边的元素就要去挤靠浮动元素，用 clip-path 是为了剪切背景图，
           用 shape-outside 才是让文字围绕一定的形状去排布
         </div>
+        <div>
+          <h4>文字相关</h4>
+          <div class="shupaiWap">
+            <p class="shupai1">
+              将文字竖排显示
+            </p>
+            <div class="shupai2">
+              <p>
+                <span>2020</span>
+                年
+                <span>4</span>
+                月
+                <span>15</span>
+                日
+              </p>
+            </div>
+            <div>
+              <p>text-decoration 样式</p>
+              <p class="decoration1">文字底下直线</p>
+              <p class="decoration2">文字中间直线</p>
+              <p class="decoration3">虚线 </p>
+              <p class="decoration4">波浪线 </p>
+              <p class="decoration5">上下都有 </p>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <div>
@@ -519,9 +556,7 @@
       </div>
 
       <div>
-        <div class="scrolls">
-          <div>fasdfadfasdfasdfasdf</div>
-        </div>
+        sdfgsfgsdfg
       </div>
     </div>
   </div>
@@ -633,5 +668,6 @@ export default {
   min-width: 100px;
   max-width: 360px;
   flex-shrink: 1;
+  margin-bottom: 10px;
 }
 </style>

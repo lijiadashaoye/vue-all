@@ -274,6 +274,8 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     border-collapse: collapse;
     caption-side: bottom;
     font-size: 14px;
+    table-layout: fixed;
+    width: 340px;
 }
 
 .isTable>caption {
@@ -282,6 +284,12 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 .isTable td {
     border: 1px solid blue;
+}
+
+.toLong {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .inputs input {
@@ -1128,20 +1136,43 @@ perspective-origin:x y; 指定了观察者的位置
 }
 
 /*************************************
-            鼠标选中改变样式
+            竖排文字
 *************************************/
-
-/* .scrolls {
-    width: 200px;
-    height: 300px;
-    overflow-y: scroll;
-    scrollbar-color: red;
-    scrollbar-width: thin
+.shupaiWap {
+    display: flex;
 }
 
-.scrolls>div {
-    width: 150px;
-    height: 3000px;
-    background-color: teal;
+.shupai1 {
+    writing-mode: vertical-lr;
+    letter-spacing: 5px;
 }
- */
+
+.shupai2 {
+    writing-mode: vertical-rl;
+    font: 24px serif
+}
+
+.shupai2 span {
+    /* 尝试水平排版框中的所有连续字符 */
+    text-combine-upright: all;
+}
+
+.decoration1 {
+    text-decoration: underline darkkhaki;
+}
+
+.decoration2 {
+    text-decoration: line-through darkkhaki;
+}
+
+.decoration3 {
+    text-decoration: underline dotted red;
+}
+
+.decoration4 {
+    text-decoration: underline wavy red;
+}
+
+.decoration5 {
+    text-decoration: underline overline wavy red;
+}
