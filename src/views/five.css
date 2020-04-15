@@ -127,9 +127,10 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     height: 240px;
     background: url('../assets/timg.jpg') honeydew no-repeat 10% 100% / 180px 100px;
 }
-.background2 ol{
-    padding-left:18px;
-    margin:0;
+
+.background2 ol {
+    padding-left: 18px;
+    margin: 0;
 }
 
 /*************************************
@@ -291,6 +292,27 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .column>h3 {
     text-align: center;
     column-span: all;
+}
+
+/*************************************
+        浮动
+*************************************/
+.floats {
+    width: 100%;
+}
+
+.floats img:nth-of-type(1) {
+    width: 50px;
+    float: left;
+}
+
+.floats img:nth-of-type(2) {
+    width: 50px;
+    float: right;
+}
+
+.clearP {
+    clear: left;
 }
 
 /*************************************
@@ -831,8 +853,6 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     clip-path: polygon(40px 0px, 140px 10px, 80px 30px);
 }
 
-
-
 .resized {
     width: 200px;
     height: 100px;
@@ -840,22 +860,4 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     resize: horizontal;
     display: flex;
     justify-content: space-evenly;
-}
-
-.floats {
-    width: 100%;
-}
-
-.floats img:nth-of-type(1) {
-    width: 50px;
-    float: left;
-}
-
-.floats img:nth-of-type(2) {
-    width: 50px;
-    float: right;
-}
-
-.clearP {
-    clear: left;
 }
