@@ -10,6 +10,10 @@ attr() 目前支持的仅有伪元素的 content 属性，把想添加的内容�
     padding-left: 50px;
 }
 
+/*
+url(URL) 函数：URL 可以使用单引号或双引号包含的字符串，也可以直接书写。
+可以在此函数中使用相对地址。相对地址相对于 CSS 样式表的 URL（而不是网页的 URL）。
+*/
 .self-data span[data-descr]:hover::after {
     content: " ("attr(data-descr) ")"' 'url(https://mdn.mozillademos.org/files/7691/mdn-favicon16.png) "\1f4a1";
     position: absolute;
@@ -38,6 +42,11 @@ attr() 目前支持的仅有伪元素的 content 属性，把想添加的内容�
 .self-data>ol {
     font-size: 16px;
     padding: 10px;
+    margin: 0;
+}
+
+.self-data li:not(.nots) {
+    color: rgb(7, 182, 80);
 }
 
 /****************
@@ -195,6 +204,10 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     filter: sepia(100%)
 }
 
+/* 饱和度 */
+.saturate>img {
+    filter: saturate(50%);
+}
 
 /*************************************
         阴影的写法
@@ -269,8 +282,22 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     border: 1px solid blue;
 }
 
-.isTable input {
-    caret-color: rgba(69, 238, 134);
+.inputs input {
+    padding-left: 5px;
+    caret-color: rgb(10, 184, 76);
+    width: 40%;
+    margin: 5px;
+}
+
+.inputs>input:nth-of-type(1)::placeholder {
+    color: red;
+    font-size: 12px;
+    text-indent: 5px;
+}
+
+.inputs>input:read-only {
+    background-color: thistle;
+    color: rgb(243, 236, 236);
 }
 
 /*************************************
@@ -376,9 +403,13 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 /*************************************
         锥形渐变
 *************************************/
+.yuanzhui {
+    width: 100%;
+}
+
 .yuanzhui>p {
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 4px;
     width: 100px;
     height: 100px;
 }
@@ -427,6 +458,84 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     background: conic-gradient(from 50deg, red 90deg, yellow 90deg, blue 270deg);
     /* background: conic-gradient(at 40% 30%, red 90deg, yellow 180deg, blue 270deg); */
 }
+
+/*************************************
+        重复渐变
+*************************************/
+
+/* 重复多次渐变图案直到足够填满指定元素 */
+.chongfu1 {
+    width: 300px;
+    height: 50px;
+    /* 
+      to top, to bottom, to left 和 to right这些值会被转换成角度0度、180度、270度和90度。
+      其余值会被转换为一个以向顶部中央方向为起点顺时针旋转的角度。
+      渐变线的结束点与其起点中心对称。
+    
+    */
+    background: repeating-linear-gradient(30deg,
+            lightpink, lightpink 5px, white 5px, white 10px);
+    margin-bottom: 10px;
+}
+
+.jingxiang {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+}
+
+/*
+  径向渐变时，第一个参数用来定位渐变的圆心和相应的尺寸
+*/
+
+.jingxiang>div:nth-child(1) {
+    color: white;
+    width: 148px;
+    height: 148px;
+    margin-bottom: 10px;
+    /* 默认是圆，尺寸根据外框除半 */
+    background: repeating-radial-gradient(rgb(19, 220, 247), powderblue 10px, red 20px, blue 30px, yellow 40px);
+}
+
+.jingxiang>div:nth-child(2) {
+    width: 148px;
+    height: 148px;
+    color: white;
+    background: radial-gradient(circle at 70% 20%, red 30%, blue 50%)
+}
+
+
+.jingxiang>div:nth-child(3) {
+    width: 148px;
+    height: 148px;
+    color: white;
+    /* 椭圆 x=30% y=60%, 圆心位置：40% 60% */
+    background: radial-gradient(ellipse 30% 60% at 40% 60%, red 30%, blue 50%)
+}
+
+.jingxiang>div:nth-child(4) {
+    width: 148px;
+    height: 148px;
+    color: white;
+    /* 
+       closest-side  渐变的边缘形状与容器距离渐变中心点最近的一边相切（圆形）或者至少与距离渐变中心点最近的垂直和水平边相切（椭圆）。
+       closest-corner	渐变的边缘形状与容器距离渐变中心点最近的一个角相交。
+       farthest-side  与 closest-side相反，边缘形状与容器距离渐变中心点最远的一边相切（或最远的垂直和水平边）。
+       farthest-corner	 渐变的边缘形状与容器距离渐变中心点最远的一个角相交。
+    */
+    background: radial-gradient(farthest-corner at 40% 60%, red 30%, blue 60%)
+}
+
+.xianxing {
+    width: 300px;
+    height: 50px;
+    color: white;
+    background: linear-gradient(40deg, red 30%, blue 70%);
+}
+
+
 
 /*************************************
         鼠标样式
@@ -486,7 +595,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     /* 
       fr 指代一个网格计算单位值，弹性值，fr的总和代表将总宽或总高分多少份
       当fr用在 rows 时，如果没有给外框定义height属性，
-      则以子元素 content 高最大值定义为 1fr 表示高时的值；
+      则以子元素 content 高最大值定义为 1fr 表示高时的值，也是默认值 auto 的取值；
 
       当fr用在 columns 时，如果没有给外框定义width属性，
       则以子元素 content 宽定义为 1fr 表示宽时的值；
@@ -496,6 +605,8 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     写法一：
       grid-template-columns: repeat(3, 1fr); 1行3列
       repeat(3, 1fr) 表示重复3次，生成1行3列，每格是 1个网格单位宽度
+      grid-template-columns: repeat(3, 1fr 2fr); 1行6列
+      repeat(3, 1fr 2fr) 表示重复3次，每次都的是 1fr和2fr 的表格一起被重复
     写法二：
       第一个参数表示第一列宽度，第二个参数表示第二列宽度，依此规则可以写很多个
       每一个表示一个表格宽度，写了几个就表示一行里有几个表格，如：
@@ -524,7 +635,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .grid2 {
     display: grid;
     /* 设置网格间距:
-    grid-gap:  grid-row-gap grid-column-gap，或  grid-gap:all 距离一样
+    grid-gap:  grid-row-gap grid-column-gap，后边最多接连个表示上下、左右的尺寸值
     等同于分开写：
     grid-row-gap: 2px;
     grid-column-gap: 10px;
@@ -540,8 +651,8 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .duiqi {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* 设置统一默认行高 */
-    grid-auto-rows: 50px;
+    /* 设置默认行高 */
+    grid-auto-rows: 40px;
 }
 
 .duiqi,
@@ -574,8 +685,8 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 .duiqiAll {
     display: grid;
     grid-template-columns: repeat(2, 50px);
-    grid-template-rows: repeat(2, 30px);
-    height: 100px;
+    grid-template-rows: repeat(2, 28px);
+    height: 70px;
     width: 100%;
     grid-gap: 5px;
 
@@ -788,7 +899,14 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 对于已经重新指定过顺序的网格，这样做不会改变项目之间原有的逻辑顺序 */
 
 .paixu1 {
-    /* 创建一个密集填充的网格 */
+    /* 
+    控制着自动布局算法怎样运作，精确指定在网格中被自动布局的元素怎样排列
+    grid-auto-flow: row；逐行填充来排列元素，在必要时增加新行（优先铺满行）
+                         如果既没有指定 row 也没有 column，则默认为 row。
+    grid-auto-flow: column；指定自动布局算法通过逐列填充来排列元素，在必要时增加新列。
+    grid-auto-flow: dense；指定自动布局算法使用一种“稠密”堆积算法，如果后面出现了稍小的元素，
+                           则会试图去填充网格中前面留下的空白
+    */
     grid-auto-flow: dense;
 }
 
@@ -853,11 +971,159 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
     clip-path: polygon(40px 0px, 140px 10px, 80px 30px);
 }
 
-.resized {
-    width: 200px;
+/*************************************
+        浮动
+*************************************/
+.floats {
+    width: 100%;
+}
+
+.floats img:nth-of-type(1) {
+    width: 50px;
+    float: left;
+}
+
+.floats img:nth-of-type(2) {
+    width: 50px;
+    float: right;
+}
+
+.clearP {
+    clear: left;
+}
+
+/*************************************
+        css 立体
+*************************************/
+/*
+perspective：length; 指定了观察者与 z=0 平面的距离，使具有三维位置变换的元素产生透视效果，一般设置z>0
+perspective-origin:x y; 指定了观察者的位置
+
+*/
+.liti {
+    transform-style: prespective-3d;
+    perspective-origin: 400px 300px;
+    position: relative;
+    width: 300px;
+    perspective: 500px;
+    padding-top: 300px;
+    transform: rotate3d(0, 0, 0, 45deg) scale3d(1.2, 1.4, 0.8);
+
+    /*
+      rotate3d(x, y, z, a) CSS函数定义一个变换，它将元素围绕固定轴移动而不使其变形。
+      旋转规则的值的顺序是严格控制的。
+      运动量由指定的角度定义; 正的角度值表示顺时针旋转，负值表示逆时针旋转。
+
+      x 可以是0到1之间的数值，表示旋转轴X坐标方向的矢量。 
+        rotateX(a) 相当于 rotate3d(1, 0, 0, a).
+
+      y 可以是0到1之间的数值，表示旋转轴Y坐标方向的矢量。 
+        rotateY(a) 相当于 rotate3d(0, 1, 0, a).
+
+      z 可以是0到1之间的数值，表示旋转轴Z坐标方向的矢量。
+        rotateZ(a) 相当于 rotate3d(0, 0, 1, a)。
+
+      a 表示旋转角度。
+
+      scale3d(sx,sy,sz) 用三个值指定该函数，这三个值表示要在每个方向上应用的缩放比例。
+       sx 代表缩放向量的横坐标。
+       sy 代表缩放向量的纵坐标。
+       sz 代表缩放向量的z分量。
+
+    */
+
+}
+
+.liti>p {
+    width: 100px;
     height: 100px;
-    background-color: palevioletred;
-    resize: horizontal;
-    display: flex;
-    justify-content: space-evenly;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    position: absolute;
+    box-sizing: border-box;
+    margin: 0;
+    top: 100px;
+    left: 100px;
+}
+
+.liti>p:nth-child(1) {
+    background-color: sandybrown;
+    transform: translateZ(50px);
+}
+
+.liti>p:nth-child(2) {
+    background-color: rgba(192, 244, 96, 0.8);
+    /* 当平面旋转后，坐标系也跟着变 */
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+
+.liti>p:nth-child(3) {
+    background-color: rgba(96, 222, 244, 0.8);
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+.liti>p:nth-child(4) {
+    background-color: rgba(96, 111, 244, 0.8);
+    transform: rotateY(-90deg) translateZ(50px);
+}
+
+.liti>p:nth-child(5) {
+    background-color: rgba(165, 96, 244, 0.8);
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+.liti>p:nth-child(6) {
+    background-color: rgba(244, 96, 207, 0.8);
+    transform: rotateX(-90deg) translateZ(50px);
+}
+
+/*************************************
+        使元素可调整大小
+*************************************/
+.resizable {
+    /*
+      resize: both;  宽高都可以变
+      resize: horizontal;  只能变宽
+      resize: vertical;   只能变高
+    */
+    resize: vertical;
+    overflow: auto;
+    border: 1px solid black;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+
+
+
+.scales {
+    width: 100px;
+    height: 50px;
+    background-color: thistle;
+    /* 
+     scale(x,y); 缩放，等同于:transform: scaleX(0.8) scaleY(1.2); 
+    */
+    transform: scale(0.8, 1.2);
+}
+
+
+.scrolls {
+    width: 200px;
+    height: 300px;
+    overflow-y: scroll;
+    scrollbar-color: red;
+    scrollbar-width: thin
+}
+
+.scrolls>div {
+    width: 150px;
+    height: 3000px;
+    background-color: teal;
+}
+/* ::selection CSS伪元素应用于文档中被用户高亮的部分 */
+.scrolls>div::selection{
+    color:red;
 }
