@@ -542,7 +542,9 @@
             </div>
             <div>
               <p style="font-size:16px;color:red;">使用css 自定义 var()函数</p>
-              <p class="vars"></p>
+              <p class="vars">
+                <span>局部使用变量</span>
+              </p>
             </div>
 
           </div>

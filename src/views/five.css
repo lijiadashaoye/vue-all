@@ -1165,6 +1165,7 @@ perspective-origin:x y; 指定了观察者的位置
 *************************************/
 .shupaiWap {
     display: flex;
+    justify-content: space-around;
 }
 
 .shupai1 {
@@ -1212,12 +1213,17 @@ perspective-origin:x y; 指定了观察者的位置
     text-transform: capitalize;
 }
 
-
+/* 使用css变量 */
 :root {
     --bk: red
 }
 
 .vars {
-    height:50px;
+    height: 50px;
     background-color: var(--bk);
+    --color: blue;
+}
+
+.vars>span {
+    color: var(--color);
 }
