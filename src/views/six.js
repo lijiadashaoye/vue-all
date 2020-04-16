@@ -45,6 +45,22 @@ function guangbo() {
 function guangbo2() {
     bc.close()
 }
+// 广播方法二
+function postmessage() {
+    // 发送广播数据
+    window.postMessage(99999);
+}
+
+function fetchs() {
+    let url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
+    fetch(url).then(t => t.json())
+        .then(data => console.log(data))
+}
+
+function test() {
+    // 看到这
+    // https://developer.mozilla.org/zh-CN/docs/Web/API
+}
 
 let arr = [{
         name: '查看电池',
@@ -57,7 +73,27 @@ let arr = [{
     {
         name: '关闭广播',
         fn: guangbo2
-    }
+    },
+    {
+        name: '广播方法二',
+        fn: postmessage
+    },
+    {
+        name: '使用 fetch',
+        fn: fetchs
+    },
+
+
+
+
+
+
+    {
+        name: '测试',
+        fn: test
+    },
+
+
 
 ]
 

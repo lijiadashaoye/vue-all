@@ -46,7 +46,10 @@
         <h3>使用axios</h3>
         <button @click="http">axios</button>
         <table v-if="httpDatas">
-          <tr v-for="(item,index) in httpDatas" :key="index">
+          <tr
+            v-for="(item,index) in httpDatas"
+            :key="index"
+          >
             <th>{{item.code}}</th>
             <td v-html="item.symbol"></td>
             <td>{{item.rate_float}}</td>

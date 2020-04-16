@@ -25,9 +25,6 @@ export default {
       add.appendChild(button);
     }
     wap.appendChild(add);
-
-
-  
   },
   methods: {
     // 按钮点击变更颜色

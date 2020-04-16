@@ -42,10 +42,13 @@ export default {
     this.activeNum = this.$route.name;
 
     // 创建同域下浏览器不同页面的数据传递频道
+    // 方法一：
     var bc = new BroadcastChannel("11");
     bc.onmessage = function(ev) {
       console.log(ev);
     };
+    // 方法二：
+    // window.addEventListener("message", t => console.log(t));
   },
   methods: {
     toRoute(tar) {

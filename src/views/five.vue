@@ -146,7 +146,7 @@
         <p class="border border2">两个值的</p>
       </div>
 
-      <div>
+      <div style="width:340px;">
         <h4>表格</h4>
         <p style="font-size:14px;">当表格添加了 width 后，可以用 table-layout: fixed 限定每个表格的宽度都一样</p>
         <table class="isTable">
@@ -204,13 +204,13 @@
         <p>{{clipContent}}</p>
       </div>
 
-      <div>
+      <div  style="width:340px;">
         <div class="column">
           <h4>多列布局</h4>
           <p>被多列布局的元素被多列布局被多列布局的元素被多列布局</p>
         </div>
 
-        <div style="width:360px;">
+        <div style="width:340px;">
           <h4 style="text-align:center;">浮动</h4>
 
           <div class="floats">
@@ -381,8 +381,8 @@
         </div>
       </div>
 
-      <div>
-        <div style="width:370px;">
+      <div style="width:370px;">
+        <div >
           <h4>网格中的对齐</h4>
           <p style="font-size:14px;">单独对齐</p>
           <p style="font-size:14px;">用align-self justify-self 使网格内的内容相对当前网格进行位置摆放</p>
