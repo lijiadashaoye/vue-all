@@ -644,7 +644,7 @@ export default {
     };
   },
   mounted() {
-    // // 监听复制事件
+    // // 监听复制事件，即监听用户的 ctrl+c 复制操作
     // document.addEventListener("copy", function(e) {
     //   // 若添加了，就可以使用 setData 设置添加到剪切板的内容
     //   e.preventDefault();
@@ -654,7 +654,6 @@ export default {
   methods: {
     // 复制选中的内容
     copy() {
-      console.log(9);
       document.execCommand("copy");
       // document.execCommand("cut");
     },

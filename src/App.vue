@@ -40,6 +40,12 @@ export default {
   },
   mounted() {
     this.activeNum = this.$route.name;
+
+    // 创建同域下浏览器不同页面的数据传递频道
+    var bc = new BroadcastChannel("11");
+    bc.onmessage = function(ev) {
+      console.log(ev);
+    };
   },
   methods: {
     toRoute(tar) {
