@@ -26,7 +26,7 @@ export default {
     }
     wap.appendChild(add);
 
-    
+
   
   },
   methods: {

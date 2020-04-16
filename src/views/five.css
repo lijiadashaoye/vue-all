@@ -440,7 +440,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 }
 
 .yuanzhui>div {
-    background: url('../assets/88.jpg') no-repeat left bottom/55% 65%;
+    background: url('../assets/88.jpg') no-repeat left bottom/200px 90px;
     height: 140px;
 }
 
