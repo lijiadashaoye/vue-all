@@ -58,8 +58,7 @@ function fetchs() {
 }
 
 function test() {
-    // 看到这
-    // https://developer.mozilla.org/zh-CN/docs/Web/API
+
 }
 
 let arr = [{
