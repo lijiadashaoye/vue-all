@@ -50,16 +50,55 @@ function postmessage() {
     // 发送广播数据
     window.postMessage(99999);
 }
+// post 类型的fetch请求：
+// fetch(url, {
+//     method: 'POST',
+//     body: {datas}   // body是存放要上传的数据，要是对象或formData
+//     headers: new Headers({
+//         'Content-Type': 'application/json'
+//     })
+// }).then(res => res.json())
+
 
 function fetchs() {
     let url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
-    fetch(url).then(t => t.json())
-        .then(data => console.log(data))
+    fetch(url)
+        .then(t => t.blob()) // 必须加的，主要使用 json() 和 text() 
+        .then(data => console.log(data)) // 这一步才真正能看到请求结果数据
+}
+
+// 隐藏元素，但在dom树中还是存在的
+function yincang() {
+    var k = document.getElementById("yincang");
+    k.hidden = true
+    setTimeout(() => k.hidden = false, 2000)
+}
+
+function quanping() {
+    var k = document.getElementById("quanping");
+    k.requestFullscreen(); // 使元素全屏
+    setTimeout(() => {
+        document.exitFullscreen(); // 退出全屏
+    }, 2000) // 退出全屏
+    // 监听全屏事件
+    k.onfullscreenchange = function (e) {
+        console.log(e)
+    }
+}
+
+// 监测网络变化，可以拔掉网线看到效果
+function wangluo() {
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    connection.addEventListener('change', connection => {
+        console.log(connection);
+    });
 }
 
 function test() {
 
+    
 }
+
 
 let arr = [{
         name: '查看电池',
@@ -80,6 +119,18 @@ let arr = [{
     {
         name: '使用 fetch',
         fn: fetchs
+    },
+    {
+        name: '隐藏DOM元素',
+        fn: yincang
+    },
+    {
+        name: '全屏',
+        fn: quanping
+    },
+    {
+        name: '监测网络',
+        fn: wangluo
     },
 
 
