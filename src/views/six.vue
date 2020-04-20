@@ -2,8 +2,10 @@
   <div>
     <h2>js 学习</h2>
     <div class="content"></div>
+
   </div>
 </template>
+
 
 <script>
 import six from "./six.js";
