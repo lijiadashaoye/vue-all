@@ -94,7 +94,8 @@ function wangluo() {
     });
 }
 
-// IndexDB 学习
+/************  IndexDB 学习 *********************/
+
 // IndexedDB遵循同源策略。因此，尽管您可以访问域中存储的数据，但不能跨不同域访问数据。
 // IndexedDB是一个异步 API，可以在大多数上下文中使用，包括  Web Workers
 // IndexedDB 在浏览器的隐私模式下是被完全禁止的。 
@@ -123,10 +124,6 @@ function openDB() {
     request.onsuccess = function (event) {
         db = event.target.result; // indexDB 对象仓库
         console.log('打开数据库');
-        db.onversionchange = function (event) {
-            db.close();
-            console.log(event)
-        };
     };
 
     return request
@@ -161,11 +158,11 @@ function makeIndexDB() {
 
     // 打开数据库
     openDB()
-        // onupgradeneeded 是我们唯一可以修改数据库结构的地方。
+        // onupgradeneeded：尝试打开版本号高于其当前版本的数据库时触发。
         // 在这里面，我们可以创建和删除对象存储空间以及构建和删除索引。
         .onupgradeneeded = function (event) {
             db = db ? db : event.target.result; // indexDB 对象仓库
-            // 建立一个对象仓库来存储我们客户的相关信息（事务），并选择 ssn 作为默认键路径
+            // 建立一个对象仓库来存储数据（事务），并选择 ssn 作为默认键路径
             // 这个方法第一个参数是仓库的名称，第二个是一个参数对象
             var objectStore = db.createObjectStore("customers", {
                 keyPath: "ssn"
@@ -183,7 +180,7 @@ function makeIndexDB() {
                 unique: true
             });
 
-            // 使用事务的 oncomplete 事件确保在插入数据前对象仓库已经创建完毕
+            // oncomplete：事务成功完成时触发。确保在插入数据前对象仓库已经创建完毕
             objectStore.transaction.oncomplete = function () {
 
                 // IDBDatabase.transaction 启动一个事务。用于访问对象存储。在单独的线程中运行。
@@ -198,6 +195,11 @@ function makeIndexDB() {
                     store.add(customer);
                 });
             };
+            db.onversionchange = function (event) {
+                // db.close();
+                console.log('版本变更了！')
+                console.log(event)
+            };
         }
 }
 // 删除数据
@@ -206,6 +208,9 @@ function deleteData() {
     let store = db.transaction("customers", "readwrite")
         .objectStore("customers");
     // 操作数据
+    // IDBObjectStore.clear()：创建并立即返回一个IDBRequest对象，并在单独的线程中清除此对象存储。
+    // 这是用于从对象存储中删除所有当前记录。
+    // IDBObjectStore.delete(key)：方法IDBObjectStore返回一个IDBRequest对象，并在一个单独的线程中删除一个或多个指定记录。
     store.delete("30-30-30").onsuccess = function () {
         //    操作成功的回调
         console.log('删除数据成功！')
@@ -265,7 +270,8 @@ function useCursor() {
 function useIndex() {
     // 打开目标对象
     let store = db.transaction("customers", "readwrite")
-        .objectStore("customers").index("name").get("Bill");
+        .objectStore("customers").index("name")
+        .get("Bill"); // .getAll()  可以获取所有 
     // 获取数据
     store.onsuccess = function (event) {
         console.log(event.target.result.ssn)
@@ -276,6 +282,7 @@ function useRoundCursor() {
     // 打开目标对象
     let store = db.transaction("customers", "readwrite")
         .objectStore("customers").index('name'),
+        // IDBKeyRange.bound(x, y,true,true)：所有按键 ≥x && ≤y，后连个参数为false时，则不包含等于条件
         round = IDBKeyRange.bound('Bill', 'Bill3', false, true);
     // 获取一条
     store.openCursor(round, "prev").onsuccess = function (event) {
@@ -284,11 +291,20 @@ function useRoundCursor() {
     };
 }
 
+/************   学习 *********************/
 
-function test() {}
+function test() {
+    
+
+}
 
 
 let arr = [{
+        name: '测试',
+        fn: test
+    },
+
+    {
         name: '使用范围游标',
         fn: useRoundCursor
     },
@@ -316,13 +332,6 @@ let arr = [{
         name: '创建并打开数据库',
         fn: makeIndexDB
     },
-
-    {
-        name: '测试',
-        fn: test
-    },
-
-
     {
         name: '查看电池',
         fn: dianchi
