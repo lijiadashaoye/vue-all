@@ -110,6 +110,7 @@ function openDB() {
     // 允许你在处理函数中更新数据库模式
     // 第二个参数，就是数据库的版本号，只能用正整数，而且，同名称的数据库，版本号只能越来越大
     let request = window.indexedDB.open(dbName, 1);
+    // indexedDB.deleteDatabase(dbName);   // 删除某一个数据库
 
     // 在打开数据库时常见的可能出现的错误之一是 VER_ERR。
     // 这表明存储在磁盘上的数据库的版本高于你试图打开的版本。
@@ -185,8 +186,7 @@ function makeIndexDB() {
             // 使用事务的 oncomplete 事件确保在插入数据前对象仓库已经创建完毕
             objectStore.transaction.oncomplete = function () {
 
-                // 将数据保存到新创建的对象仓库
-                // 你需要使用 IDBDatabase.transaction 启动一个事务。
+                // IDBDatabase.transaction 启动一个事务。用于访问对象存储。在单独的线程中运行。
                 // 该方法接受两个参数：storeNames (作用域，一个你想访问的对象仓库的数组），事务模式 mode（readonly 或 readwrite）
                 // 使用 readonly 或 readwrite 模式都可以从已存在的对象仓库里读取记录。但只有在 readwrite 事务中才能修改对象仓库。
                 // 你可以同时执行多个 readnoly 事务，哪怕它们的作用域有重叠；但对于在一个对象仓库上你只能运行一个 readwrite 事务
@@ -245,8 +245,12 @@ function useCursor() {
         .objectStore("customers");
     // 获取一条
     store.openCursor().onsuccess = function (event) {
-        var value = event.target.result.value;
-        console.log(value);
+        var result = event.target.result;
+        if (result) {
+            console.log(result.value);
+            event.target.result.continue(); // 类似循环，会继续向下逐条读取所有数据
+        }
+
     };
     // 获取全部数据
     store.getAll().onsuccess = function (event) {
