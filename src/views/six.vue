@@ -16,7 +16,7 @@ export default {
   mounted() {
     let wap = document.getElementById("content"),
       add = document.createDocumentFragment();
-    for (let i = 0; i < six.arr.length; i++) {
+    for (let i = six.arr.length; i--; ) {
       let button = document.createElement("button");
       button.className = "buttons";
       button.id = six.arr[i].fn.name;
@@ -74,7 +74,6 @@ export default {
     // 普通的webworker直接使用new Worker()即可创建，这种webworker是当前页面专有的。
     // 然后还有种共享worker(SharedWorker)，这种是可以多个标签页、iframe共同使用的
     // SharedWorker可以被多个window共同使用，但必须保证这些标签页都是同源的
-    
   },
   methods: {
     // 按钮点击变更颜色
