@@ -5,6 +5,7 @@
   </div>
 </template>
 
+
 <script>
 import six from "./six.js";
 export default {
