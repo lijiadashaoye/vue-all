@@ -30,7 +30,7 @@ function dianchi() {
     });
 }
 
-// BroadcastChannel 接口通过创建一个 BroadcastChannel 对象，
+// BroadcastChannel 接口通过创建一个 BroadcastChannel 对象
 // 一个客户端就加入了某个指定的频道，
 // 它可用于检测同源网站环境中其他浏览器选项卡下的用户操作
 // 之后无论创建多少 BroadcastChannel 对象，只要频道名称相同，就会互通
@@ -74,6 +74,7 @@ function yincang() {
     setTimeout(() => k.hidden = false, 2000)
 }
 
+// 全屏
 function quanping() {
     var k = document.getElementById("quanping");
     k.requestFullscreen(); // 使元素全屏
@@ -277,7 +278,7 @@ function useIndex() {
         console.log(event.target.result.ssn)
     };
 }
-
+// 使用范围游标
 function useRoundCursor() {
     // 打开目标对象
     let store = db.transaction("customers", "readwrite")
@@ -291,11 +292,32 @@ function useRoundCursor() {
     };
 }
 
-/************   学习 *********************/
+/************  监听滚动 学习 *********************/
+
+function gundong() {
+    var options = {
+        root: document.querySelector('.wa'), // 定义父元素
+        rootMargin: '20px', // 用来设定交集区域向外扩展的距离
+        // 用来设定交集区域起始位置值，是子元素高度的百分之几，取值 0--1
+        // 如果你想要target元素在root元素的可见程度每多25%就执行一次回调
+        // 那么你可以指定一个数组[0, 0.25, 0.5, 0.75, 1]
+        threshold: 0
+    }
+    var observer = new IntersectionObserver(callback, options);
+
+    var target = document.querySelector('#fasd');
+    observer.observe(target);
+    // 达到交集时执行的回调
+    function callback(entries) {
+        console.log(entries)
+    }
+
+}
+
+/************  监听滚动 学习 *********************/
 
 function test() {
-    
-
+  
 }
 
 
@@ -304,6 +326,10 @@ let arr = [{
         fn: test
     },
 
+    {
+        name: '监听元素滚动',
+        fn: gundong
+    },
     {
         name: '使用范围游标',
         fn: useRoundCursor

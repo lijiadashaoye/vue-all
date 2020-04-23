@@ -6,9 +6,7 @@
 </template>
 
 <script>
-import vv from "./v";
 export default {
-  components: {vv},
   data() {
     return {
       name: ""

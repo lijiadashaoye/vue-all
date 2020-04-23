@@ -2,6 +2,16 @@
   <div>
     <h2>js 学习</h2>
     <div id="content"></div>
+    <div class="toFlex">
+      <div class="wa">
+        父元素内部向下滚动时，当子元素p距离父元素底边差20px时，执行一个回调
+        <div></div>
+        <p id="fasd">asdf</p>
+      </div>
+      <div>
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -93,7 +103,8 @@ export default {
 </script>
 
 <style>
-.content {
+.content,
+.toFlex {
   display: flex;
 }
 .content > div {
@@ -108,5 +119,28 @@ export default {
 }
 .beClick {
   color: red;
+}
+.wa {
+  width: 200px;
+  height: 200px;
+  border: 1px solid;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.wa p {
+  background: rgb(203, 180, 226);
+  height: 50px;
+  position: absolute;
+  top: 300px;
+  left: 0;
+  margin: 0;
+}
+.wa div {
+  width: 50px;
+  height: 20px;
+  border: 1px solid;
+  position: absolute;
+  top: 260px;
 }
 </style>
