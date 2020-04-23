@@ -107,10 +107,9 @@ export default {
 .toFlex {
   display: flex;
 }
-.content > div {
+.toFlex > div {
   width: 300px;
   margin: 5px;
-  padding: 5px;
 }
 .buttons {
   padding: 2px 10px;

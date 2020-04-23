@@ -60,10 +60,11 @@ function postmessage() {
 // }).then(res => res.json())
 
 
+
 function fetchs() {
     let url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
     fetch(url)
-        .then(t => t.blob()) // 必须加的，主要使用 json() 和 text() 
+        .then(t => t.json()) // 必须加的，主要使用 json() 和 text() 
         .then(data => console.log(data)) // 这一步才真正能看到请求结果数据
 }
 
@@ -317,7 +318,38 @@ function gundong() {
 /************  监听滚动 学习 *********************/
 
 function test() {
-  
+    // 确认权限
+    Notification.requestPermission(function (status) {
+        // default：用户还未被询问是否授权，所以通知不会被显示。
+        // granted：表示之前已经询问过用户，并且用户已经授予了显示通知的权限。
+        // denied：用户已经明确的拒绝了显示通知的权限。
+        console.log(status); // 仅当值为 "granted" 时显示通知
+        // new Notification(title, options)：title 必填，options 选填，可选参数：
+        // body: 通知中额外显示的字符串
+        // tag: 赋予通知一个ID，以便在必要的时候对通知进行刷新、替换或移除。如果tag值相同，只显示一次
+        // icon: 一个图片的URL，将被用于显示通知的图标。由于通知不是建立在当前页面的，所以要用完整的图片url
+        // vibrate：指定震动模式
+        // silent：通知是否静音，false是默认值；true使通知保持沉默。目前还未被实现
+        // requireInteraction: true,通知是否持久显示，默认false，一段时间后关闭
+        // data: 'I like peas.' 传递一些数据给监听事件
+        // renotify:true, 新通知替换旧通知后是否应通知用户。默认值为false，这意味着它们不会被通知。需要有tag属性
+        var n = new Notification("通知", {
+            vibrate: [100],
+            body: '通知内容',
+            tag: 'one',
+            data: 'I like peas.',
+            renotify: true,
+            icon: 'U+1F3B2'
+            // icon: 'https://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1588213972&t=38b9a73c6408f279df043817cf309453'
+        }); // 显示通知
+        n.onclick = function () {
+            event.preventDefault();
+            n.close();
+            console.log(n.data)
+            window.open('https://www.baidu.com/', '_blank')
+        }
+
+    });
 }
 
 
