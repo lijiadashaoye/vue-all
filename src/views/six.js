@@ -339,8 +339,7 @@ function test() {
             tag: 'one',
             data: 'I like peas.',
             renotify: true,
-            icon: 'U+1F3B2'
-            // icon: 'https://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1588213972&t=38b9a73c6408f279df043817cf309453'
+            icon: 'https://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1588213972&t=38b9a73c6408f279df043817cf309453'
         }); // 显示通知
         n.onclick = function () {
             event.preventDefault();
@@ -348,7 +347,7 @@ function test() {
             console.log(n.data)
             window.open('https://www.baidu.com/', '_blank')
         }
-
+        // https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API
     });
 }
 
