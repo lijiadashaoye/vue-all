@@ -378,7 +378,9 @@ function makeCanvas() {
 
 /************   学习 *********************/
 
-function test() {}
+function test() {
+    
+}
 
 
 let arr = [{
