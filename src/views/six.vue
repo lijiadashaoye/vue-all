@@ -9,7 +9,7 @@
         <p id="fasd">asdf</p>
       </div>
       <div>
-
+        <canvas id="canvas"></canvas>
       </div>
     </div>
   </div>

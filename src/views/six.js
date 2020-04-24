@@ -315,9 +315,9 @@ function gundong() {
 
 }
 
-/************  监听滚动 学习 *********************/
+/************  浏览器通知 学习 *********************/
 
-function test() {
+function tongzhi() {
     // 确认权限
     Notification.requestPermission(function (status) {
         // default：用户还未被询问是否授权，所以通知不会被显示。
@@ -352,11 +352,48 @@ function test() {
 }
 
 
+/************  canvas擦除 学习 *********************/
+function makeCanvas() {
+    let can = document.getElementById('canvas');
+    let ctx = can.getContext('2d');
+    can.width = 300;
+    can.height = 200;
+    can.style.border = '1px solid';
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.fillRect(0, 0, 300, 200);
+    ctx.fill();
+    can.addEventListener('mousemove', function (e) {
+        let x = e.offsetX,
+            y = e.offsetY;
+        ctx.save();
+        ctx.moveTo(x, y);
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, 2 * Math.PI);
+        ctx.clip();
+        ctx.clearRect(0, 0, 300, 200);
+        ctx.restore();
+    })
+}
+
+
+/************   学习 *********************/
+
+function test() {}
+
+
 let arr = [{
         name: '测试',
         fn: test
     },
-
+    {
+        name: '加载canvas',
+        fn: makeCanvas
+    },
+    {
+        name: '浏览器通知',
+        fn: tongzhi
+    },
     {
         name: '监听元素滚动',
         fn: gundong
