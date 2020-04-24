@@ -351,7 +351,6 @@ function tongzhi() {
     });
 }
 
-
 /************  canvas擦除 学习 *********************/
 function makeCanvas() {
     let can = document.getElementById('canvas');
