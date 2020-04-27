@@ -333,6 +333,7 @@ function tongzhi() {
         // requireInteraction: true,通知是否持久显示，默认false，一段时间后关闭
         // data: 'I like peas.' 传递一些数据给监听事件
         // renotify:true, 新通知替换旧通知后是否应通知用户。默认值为false，这意味着它们不会被通知。需要有tag属性
+        // 显示通知
         var n = new Notification("通知", {
             vibrate: [100],
             body: '通知内容',
@@ -340,7 +341,7 @@ function tongzhi() {
             data: 'I like peas.',
             renotify: true,
             icon: 'https://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1588213972&t=38b9a73c6408f279df043817cf309453'
-        }); // 显示通知
+        });
         n.onclick = function () {
             event.preventDefault();
             n.close();
@@ -375,11 +376,10 @@ function makeCanvas() {
     })
 }
 
-
 /************   学习 *********************/
 
 function test() {
-    
+
 }
 
 

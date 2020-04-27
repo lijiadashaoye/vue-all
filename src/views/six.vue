@@ -11,6 +11,11 @@
       <div>
         <canvas id="canvas"></canvas>
       </div>
+      <div>
+       
+
+      </div>
+
     </div>
   </div>
 </template>
@@ -142,4 +147,5 @@ export default {
   position: absolute;
   top: 260px;
 }
+
 </style>
