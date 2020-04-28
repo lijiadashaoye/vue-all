@@ -336,10 +336,12 @@ function tongzhi() {
         // 显示通知
         var n = new Notification("通知", {
             vibrate: [100],
+            dir: 'rtl',
             body: '通知内容',
             tag: 'one',
             data: 'I like peas.',
             renotify: true,
+            image: 'https://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1588213972&t=38b9a73c6408f279df043817cf309453',
             icon: 'https://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1588213972&t=38b9a73c6408f279df043817cf309453'
         });
         n.onclick = function () {
@@ -376,7 +378,7 @@ function makeCanvas() {
     })
 }
 
-/************   学习 *********************/
+/************  worker 学习 *********************/
 
 function test() {
 

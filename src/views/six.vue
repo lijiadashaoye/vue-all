@@ -12,10 +12,8 @@
         <canvas id="canvas"></canvas>
       </div>
       <div>
-       
-
+      
       </div>
-
     </div>
   </div>
 </template>
@@ -102,7 +100,8 @@ export default {
           tar.classList.remove("beClick");
         }
       });
-    }
+    },
+    
   }
 };
 </script>
@@ -147,5 +146,4 @@ export default {
   position: absolute;
   top: 260px;
 }
-
 </style>
