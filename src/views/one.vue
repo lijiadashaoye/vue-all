@@ -60,6 +60,8 @@
         <p>对象数据：{{wat.name}}</p>
         <p>数组数据：{{arr[0].one}}</p>
         <button @click="testWatch">深度监听</button>
+        <p>Computed：{{testComputed}}</p>
+        <button @click="SetComputed">SetComputed</button>
       </div>
 
       <div>
@@ -217,11 +219,24 @@ export default {
     }
   },
   computed: {
+    testComputed: {
+      // 读取 testComputed 时的监听函数
+      get: function(...k) {
+        let data = this.selfInput + this.val;
+        console.log(k);
+        return data;
+      },
+      // 设置 testComputed 时的监听函数
+      set: function(...k) {
+        console.log(k);
+      }
+    },
     // getter 就是将state执行过getter方法后的结果返回，使得fromGetter在组件内用作属性来读值
     ...mapGetters("oneStore", ["oneGetter2"]), // 只能用来读取数据
     // 使用可传参方式获取getter，用到this，不能用箭头函数
     oneGetter1: function() {
-      return this.$store.getters["oneStore/oneGetter1"](2);
+      let k = this.$store.getters["oneStore/oneGetter1"](2);
+      return k;
     },
 
     // 使用 mapState 辅助函数帮助我们生成计算属性，直接将store里的状态作为组件属性使用
@@ -229,6 +244,9 @@ export default {
     ...mapState("oneStore", ["num"])
   },
   methods: {
+    SetComputed() {
+      this.testComputed++;
+    },
     // 自定义组件的事件监听
     selfEmit(e) {
       console.log(e);
