@@ -102,7 +102,7 @@
         <p>观察浏览器地址栏的变化</p>
         <button @click="luyou(1)">参数：1</button>
         <button @click="luyou(2)">参数：2</button>
-        <router-view v-if="showLuYou" />
+        <router-view  />
       </div>
     </div>
   </div>
@@ -323,13 +323,9 @@ export default {
 
     // 根据参数决定路由 path/:canshu 形式
     luyou(num) {
-      this.showLuYou = false;
-      setTimeout(() => {
-        this.showLuYou = true;
-        this.$router.push({
-          name: "canshu",
-          params: { kk: num } // kk只是一个标识，只要和路由配置处用的名字相同即可
-        });
+      this.$router.push({
+        name: `canshu`,
+        params: { kk: num } // kk只是一个标识，只要和路由配置处用的名字相同即可
       });
     }
   }
