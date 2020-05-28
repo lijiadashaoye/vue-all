@@ -130,14 +130,16 @@ export default {
     selfInput,
     slots,
     // 动态按需加载组件写法二
-    AsyncComponent: () => {
-      // 只是为了体现异步延迟
-      return new Promise(res => {
-        setTimeout(() => {
-          res(import("@/components/one/one3")); // import() 其实也是 Promise
-        }, 3000);
-      });
-    }
+    AsyncComponent: async () => await import("@/components/one/one3")
+    // 动态按需加载组件写法三
+    // () => {
+    //   // 只是为了体现异步延迟
+    //   return new Promise(res => {
+    //     setTimeout(() => {
+    //       res(import("@/components/one/one3")); // import() 其实也是 Promise
+    //     }, 3000)
+    //   })
+    // }
   },
   data() {
     return {
@@ -163,9 +165,6 @@ export default {
     };
   },
   created() {
-    // 获取路由传参
-    this.name = this.$route.query.name;
-
     // 值为对象的选项，例如 methods、components 和 directives，将被合并为同一个对象。
     this.minMethods(); // 两个组件有同名的方法，则调用当前组件里的方法
 
@@ -175,17 +174,10 @@ export default {
 
     // console.log(forMixin);
   },
-  filters: {
-    // 组件内的管道、过滤器
-    filterZuJian: function(val) {
-      return {
-        year: val.getFullYear(),
-        month: val.getMonth() + 1,
-        day: val.getDate()
-      };
-    }
-  },
   mounted() {
+    // 获取路由传参
+    this.name = this.$route.query.name;
+
     // 如果data里的数据是引用类型的数据(对象、数组)，需要进行深度监听
     // 深度监听写法一：
     // this.$watch(
@@ -196,6 +188,16 @@ export default {
     //   },
     //   { deep: true, immediate: true }
     // );
+  },
+  filters: {
+    // 组件内的管道、过滤器
+    filterZuJian: function(val) {
+      return {
+        year: val.getFullYear(),
+        month: val.getMonth() + 1,
+        day: val.getDate()
+      };
+    }
   },
   watch: {
     // 表示监听组件内的值类型(数字、字符串、布尔值)数据变动
