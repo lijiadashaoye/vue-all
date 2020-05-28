@@ -1,26 +1,11 @@
 <template>
   <div>
     <div class="nav">
-      <button
-        :class="{active:activeNum==='one'}"
-        @click="toRoute('one')"
-      >one</button>
-      <button
-        :class="{active:activeNum==='two'}"
-        @click="toRoute('two')"
-      >two</button>
-      <button
-        :class="{active:activeNum==='three'}"
-        @click="toRoute('four')"
-      >four</button>
-      <button
-        :class="{active:activeNum==='css'}"
-        @click="toRoute('css')"
-      >css</button>
-      <button
-        :class="{active:activeNum==='js'}"
-        @click="toRoute('js')"
-      >js</button>
+      <button :class="{active:activeNum==='one'}" @click="toRoute('one')">one</button>
+      <button :class="{active:activeNum==='two'}" @click="toRoute('two')">two</button>
+      <button :class="{active:activeNum==='three'}" @click="toRoute('four')">four</button>
+      <button :class="{active:activeNum==='css'}" @click="toRoute('css')">css</button>
+      <button :class="{active:activeNum==='js'}" @click="toRoute('js')">js</button>
     </div>
     <router-view />
   </div>
@@ -34,6 +19,8 @@ export default {
     };
   },
   watch: {
+    // $route：用来读取路由信息
+    // $router：用来操作路由
     $route: function(...d) {
       this.activeNum = d[0].name;
     }
