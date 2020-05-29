@@ -59,11 +59,12 @@ function postmessage() {
 //     })
 // }).then(res => res.json())
 
-
-
+// 配置fetch：https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/fetch
 function fetchs() {
     let url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
-    fetch(url)
+    fetch(url, {
+            method: 'get'
+        })
         .then(t => t.json()) // 必须加的，主要使用 json() 和 text() 
         .then(data => console.log(data)) // 这一步才真正能看到请求结果数据
 }

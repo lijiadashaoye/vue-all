@@ -45,12 +45,12 @@ const routes = [{
   {
     path: '/css',
     name: 'css',
-    component: () => import( /* webpackChunkName: "five" */ '@/views/five.vue'),
+    component: () => import( /* webpackChunkName: "five" */ '@/views/css.vue'),
   },
   {
     path: '/js',
     name: 'js',
-    component: () => import( /* webpackChunkName: "six" */ '@/views/six.vue'),
+    component: () => import( /* webpackChunkName: "six" */ '@/views/js.vue'),
   }
 ]
 

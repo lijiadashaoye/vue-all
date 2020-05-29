@@ -648,7 +648,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("./five.css");
+@import url("./css.css");
 .content {
   display: flex;
   flex-wrap: wrap;
