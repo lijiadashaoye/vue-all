@@ -50,16 +50,7 @@ function postmessage() {
     // 发送广播数据
     window.postMessage(99999);
 }
-// post 类型的fetch请求：
-// fetch(url, {
-//     method: 'POST',
-//     body: {datas}   // body是存放要上传的数据，要是对象或formData
-//     headers: new Headers({
-//         'Content-Type': 'application/json'
-//     })
-// }).then(res => res.json())
-
-// 配置fetch：https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+// 使用fetch
 function fetchs() {
     let url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
     fetch(url, {
@@ -68,6 +59,15 @@ function fetchs() {
         .then(t => t.json()) // 必须加的，主要使用 json() 和 text() 
         .then(data => console.log(data)) // 这一步才真正能看到请求结果数据
 }
+// post 类型的fetch请求：
+// 配置fetch：https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+// fetch(url, {
+//     method: 'POST',
+//     body: {datas}   // body是存放要上传的数据，要是对象或formData
+//     headers: new Headers({
+//         'Content-Type': 'application/json'
+//     })
+// }).then(res => res.json())
 
 // 隐藏元素，但在dom树中还是存在的
 function yincang() {
