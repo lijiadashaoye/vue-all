@@ -78,7 +78,7 @@
         <p>使用mapState拿到state：{{num}}</p>
         <button @click="changeNum({n:3})">使用mapMutations触发commit</button>
         <br />
-        <button @click="chongmingming({n:4})">使用mapActions触发action，并重命名在当前组件里使用的action名字</button>
+        <button @click="chongmingming({n:4})">使用mapActions触发action，重命名在当前组件里使用的action名字</button>
         <br />
         <button @click="changeNum1({n:3})">触发commit</button>
         <br />
@@ -102,7 +102,7 @@
         <p>观察浏览器地址栏的变化</p>
         <button @click="luyou(1)">参数：1</button>
         <button @click="luyou(2)">参数：2</button>
-        <router-view  />
+        <router-view />
       </div>
     </div>
   </div>
@@ -314,11 +314,11 @@ export default {
     },
     // 使用vue插件
     usePlugin() {
+      this.plugData.show = !this.plugData.show;
       // 可以动态切换使用的全局插件
       this.plugData.component = this.plugData.show
         ? "testPlugPage1"
         : "testPlugPage2";
-      this.plugData.show = !this.plugData.show;
     },
 
     // 根据参数决定路由 path/:canshu 形式
