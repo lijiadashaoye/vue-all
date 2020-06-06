@@ -9,7 +9,7 @@ const routes = [{
     name: 'one',
     component: One,
     children: [{
-      path: '/one/canshu/:kk',
+      path: 'canshu/:kk',
       name: 'canshu',
       component: () => import( /* webpackChunkName: "canshu" */ '@/components/one/canshu.vue'),
     }]
@@ -30,12 +30,6 @@ const routes = [{
       }
     }
   },
-  // {
-  //   path: '/canshu/:id',
-  //   name: 'canshu',
-  //   component: () => import( /* webpackChunkName: "canshu" */ '@/components/one/canshu.vue'),
-  // },
-
   // 路由的重定向
   {
     path: '/four',
@@ -51,12 +45,12 @@ const routes = [{
   {
     path: '/css',
     name: 'css',
-    component: () => import( /* webpackChunkName: "five" */ '@/views/five.vue'),
+    component: () => import( /* webpackChunkName: "five" */ '@/views/css.vue'),
   },
   {
     path: '/js',
     name: 'js',
-    component: () => import( /* webpackChunkName: "six" */ '@/views/six.vue'),
+    component: () => import( /* webpackChunkName: "six" */ '@/views/js.vue'),
   }
 ]
 

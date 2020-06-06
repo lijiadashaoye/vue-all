@@ -32,9 +32,7 @@
           </div>
           <div>
             <h4>transition 动画</h4>
-            <div class="transitions">
-              鼠标滑入
-            </div>
+            <div class="transitions">鼠标滑入</div>
           </div>
         </div>
 
@@ -152,12 +150,8 @@
         <table class="isTable">
           <caption>Caption 表格标题</caption>
           <tr>
-            <td
-              colspan="2"
-              class="toLong"
-            >
-              <p>当文子长度超过表格时，可以用 ... 形式，如：</p>
-              文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+            <td colspan="2" class="toLong">
+              <p>当文子长度超过表格时，可以用 ... 形式，如：</p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
             </td>
           </tr>
           <tr>
@@ -165,17 +159,11 @@
             <td>Some more data</td>
           </tr>
           <tr>
-            <td
-              colspan="2"
-              class="inputs"
-            >
+            <td colspan="2" class="inputs">
               <p>caret-color 用来定义插入光标（caret）的颜色</p>
               <p>::placeholder 用来定义 placeholder 文字的样式</p>
               <input placeholder="placeholder" />
-              <input
-                placeholder="readonly"
-                readonly
-              />
+              <input placeholder="readonly" readonly />
             </td>
           </tr>
         </table>
@@ -194,17 +182,13 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input
-          id="input"
-          type="text"
-          v-model="inp"
-        />
+        <input id="input" type="text" v-model="inp" />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
       </div>
 
-      <div  style="width:340px;">
+      <div style="width:340px;">
         <div class="column">
           <h4>多列布局</h4>
           <p>被多列布局的元素被多列布局被多列布局的元素被多列布局</p>
@@ -304,11 +288,7 @@
       <div>
         <h4>鼠标样式</h4>
         <div id="div">
-          <p
-            v-for="k in shubiao"
-            :key="k"
-            :style="{cursor:k}"
-          >{{k}}</p>
+          <p v-for="k in shubiao" :key="k" :style="{cursor:k}">{{k}}</p>
         </div>
         <div>
           <h4>图片填充</h4>
@@ -346,25 +326,13 @@
           如：minmax(100px,1fr)、minmax(100px,auto)、minmax(100px,200px)
         </p>
         <div class="setKuan">
-          <label
-            style="font-size:14px;"
-            for="kuandu1"
-          >父元素宽度：</label>
-          <input
-            id="kuandu1"
-            v-model="kuan1"
-          />
+          <label style="font-size:14px;" for="kuandu1">父元素宽度：</label>
+          <input id="kuandu1" v-model="kuan1" />
           <span>px</span>
         </div>
         <div class="setKuan">
-          <label
-            style="font-size:14px;"
-            for="kuandu2"
-          >子元素宽度：</label>
-          <input
-            id="kuandu2"
-            v-model="kuan2"
-          />
+          <label style="font-size:14px;" for="kuandu2">子元素宽度：</label>
+          <input id="kuandu2" v-model="kuan2" />
           <span>px</span>
         </div>
         <div
@@ -382,7 +350,7 @@
       </div>
 
       <div style="width:370px;">
-        <div >
+        <div>
           <h4>网格中的对齐</h4>
           <p style="font-size:14px;">单独对齐</p>
           <p style="font-size:14px;">用align-self justify-self 使网格内的内容相对当前网格进行位置摆放</p>
@@ -423,7 +391,9 @@
             <li>content</li>
           </ul>
           <p style="font-size:14px;color:rgb(255, 162, 0);">对网格的每一线进行命名</p>
-          <p style="font-size:12px;color:rgb(255, 62, 36);">其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
+          <p
+            style="font-size:12px;color:rgb(255, 62, 36);"
+          >其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
           <div class="wrapperw">
             <div class="box1w">One</div>
             <div class="box2w">Two</div>
@@ -497,10 +467,8 @@
       </div>
 
       <div>
-        <h4>使用 clip-path 和 shape-outside </h4>
-        <p style="font-size:14px;color:red;font-size:16px;">
-          结合浮动一起使用
-        </p>
+        <h4>使用 clip-path 和 shape-outside</h4>
+        <p style="font-size:14px;color:red;font-size:16px;">结合浮动一起使用</p>
         <div class="use_clipPath">
           <span></span>
           当前边的元素浮动后，后边的元素就要去挤靠浮动元素，用 clip-path 是为了剪切背景图，
@@ -509,9 +477,7 @@
         <div>
           <h4>文字相关</h4>
           <div class="shupaiWap">
-            <p class="shupai1">
-              将文字竖排显示
-            </p>
+            <p class="shupai1">将文字竖排显示</p>
             <div class="shupai2">
               <p>
                 <span>2020</span>
@@ -526,9 +492,9 @@
               <p style="font-size:16px;color:red;">下划线样式</p>
               <p class="decoration1">文字底下直线</p>
               <p class="decoration2">文字中间直线</p>
-              <p class="decoration3">虚线 </p>
-              <p class="decoration4">波浪线 </p>
-              <p class="decoration5">上下都有 </p>
+              <p class="decoration3">虚线</p>
+              <p class="decoration4">波浪线</p>
+              <p class="decoration5">上下都有</p>
             </div>
             <div>
               <p style="font-size:16px;color:red;">文字阴影</p>
@@ -546,9 +512,7 @@
                 <span>局部使用变量</span>
               </p>
             </div>
-
           </div>
-
         </div>
       </div>
 
@@ -575,9 +539,7 @@
 
         <div class="zooms">
           <h4>zoom 缩放</h4>
-          <div>
-            zoom 缩放会将元素和模型也缩小
-          </div>
+          <div>zoom 缩放会将元素和模型也缩小</div>
         </div>
 
         <div>
@@ -587,7 +549,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -644,7 +605,7 @@ export default {
     };
   },
   mounted() {
-    // // 监听复制事件，即监听用户的 ctrl+c 复制操作
+    // // 监听复制事件，即监听用户的 ctrl+c 复制操作 cut:剪切 copy:复制 paste:粘贴
     // document.addEventListener("copy", function(e) {
     //   // 若添加了，就可以使用 setData 设置添加到剪切板的内容
     //   e.preventDefault();
@@ -687,7 +648,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("./five.css");
+@import url("./css.css");
 .content {
   display: flex;
   flex-wrap: wrap;

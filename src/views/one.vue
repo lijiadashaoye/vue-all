@@ -4,11 +4,7 @@
     <div class="wap">
       <div>
         <h3>自定义组件</h3>
-        <selfInput
-          :label="'自定义组件'"
-          v-model="selfInput"
-          @change="selfEmit"
-        />
+        <selfInput :label="'自定义组件'" v-model="selfInput" @change="selfEmit" />
       </div>
 
       <div>
@@ -16,7 +12,9 @@
         <h4>先要把子组件引入</h4>
         <slots>
           <template v-slot:header>
-            <p style="color:red;">父组件,v-slot:header 写法找到插槽, v-slot 只能添加在&lt;template&gt; 上，在子组件中插入父组件内写出的容用</p>
+            <p
+              style="color:red;"
+            >父组件,v-slot:header 写法找到插槽, v-slot 只能添加在&lt;template&gt; 上，在子组件中插入父组件内写出的容用</p>
           </template>
           <template v-slot:content="{jigou}">
             <p style="color:red;">父组件：父组件里定义好匹配到子组件里的插槽的名称，和要查到子组件里显示的内容</p>
@@ -62,6 +60,8 @@
         <p>对象数据：{{wat.name}}</p>
         <p>数组数据：{{arr[0].one}}</p>
         <button @click="testWatch">深度监听</button>
+        <p>Computed：{{testComputed}}</p>
+        <button @click="SetComputed">SetComputed</button>
       </div>
 
       <div>
@@ -78,7 +78,7 @@
         <p>使用mapState拿到state：{{num}}</p>
         <button @click="changeNum({n:3})">使用mapMutations触发commit</button>
         <br />
-        <button @click="chongmingming({n:4})">使用mapActions触发action，并重命名在当前组件里使用的action名字</button>
+        <button @click="chongmingming({n:4})">使用mapActions触发action，重命名在当前组件里使用的action名字</button>
         <br />
         <button @click="changeNum1({n:3})">触发commit</button>
         <br />
@@ -94,10 +94,7 @@
       <div>
         <h3>使用vue插件</h3>
         <button @click="usePlugin">插件</button>
-        <div
-          :plugInputData="plugData"
-          :is="plugData.component"
-        ></div>
+        <div :plugInputData="plugData" :is="plugData.component"></div>
       </div>
 
       <div>
@@ -105,7 +102,7 @@
         <p>观察浏览器地址栏的变化</p>
         <button @click="luyou(1)">参数：1</button>
         <button @click="luyou(2)">参数：2</button>
-        <router-view v-if="showLuYou" />
+        <router-view />
       </div>
     </div>
   </div>
@@ -133,14 +130,16 @@ export default {
     selfInput,
     slots,
     // 动态按需加载组件写法二
-    AsyncComponent: () => {
-      // 只是为了体现异步延迟
-      return new Promise(res => {
-        setTimeout(() => {
-          res(import("@/components/one/one3")); // import() 其实也是 Promise
-        }, 3000);
-      });
-    }
+    AsyncComponent: async () => await import("@/components/one/one3")
+    // 动态按需加载组件写法三
+    // () => {
+    //   // 只是为了体现异步延迟
+    //   return new Promise(res => {
+    //     setTimeout(() => {
+    //       res(import("@/components/one/one3")); // import() 其实也是 Promise
+    //     }, 3000)
+    //   })
+    // }
   },
   data() {
     return {
@@ -166,9 +165,6 @@ export default {
     };
   },
   created() {
-    // 获取路由传参
-    this.name = this.$route.query.name;
-
     // 值为对象的选项，例如 methods、components 和 directives，将被合并为同一个对象。
     this.minMethods(); // 两个组件有同名的方法，则调用当前组件里的方法
 
@@ -178,17 +174,10 @@ export default {
 
     // console.log(forMixin);
   },
-  filters: {
-    // 组件内的管道、过滤器
-    filterZuJian: function(val) {
-      return {
-        year: val.getFullYear(),
-        month: val.getMonth() + 1,
-        day: val.getDate()
-      };
-    }
-  },
   mounted() {
+    // 获取路由传参
+    this.name = this.$route.query.name;
+
     // 如果data里的数据是引用类型的数据(对象、数组)，需要进行深度监听
     // 深度监听写法一：
     // this.$watch(
@@ -200,8 +189,18 @@ export default {
     //   { deep: true, immediate: true }
     // );
   },
+  filters: {
+    // 组件内的管道、过滤器
+    filterZuJian: function(val) {
+      return {
+        year: val.getFullYear(),
+        month: val.getMonth() + 1,
+        day: val.getDate()
+      };
+    }
+  },
   watch: {
-    // 表层监听组件内的值类型(数字、字符串、布尔值)数据变动
+    // 表示监听组件内的值类型(数字、字符串、布尔值)数据变动
     val: (...d) => {
       // 参数是一个数组，[新值，旧值]
       console.log(d);
@@ -222,11 +221,24 @@ export default {
     }
   },
   computed: {
+    testComputed: {
+      // 读取 testComputed 时的监听函数
+      get: function(...k) {
+        let data = this.selfInput + this.val;
+        console.log(k);
+        return data;
+      },
+      // 设置 testComputed 时的监听函数
+      set: function(...k) {
+        console.log(k);
+      }
+    },
     // getter 就是将state执行过getter方法后的结果返回，使得fromGetter在组件内用作属性来读值
     ...mapGetters("oneStore", ["oneGetter2"]), // 只能用来读取数据
     // 使用可传参方式获取getter，用到this，不能用箭头函数
     oneGetter1: function() {
-      return this.$store.getters["oneStore/oneGetter1"](2);
+      let k = this.$store.getters["oneStore/oneGetter1"](2);
+      return k;
     },
 
     // 使用 mapState 辅助函数帮助我们生成计算属性，直接将store里的状态作为组件属性使用
@@ -234,6 +246,9 @@ export default {
     ...mapState("oneStore", ["num"])
   },
   methods: {
+    SetComputed() {
+      this.testComputed++;
+    },
     // 自定义组件的事件监听
     selfEmit(e) {
       console.log(e);
@@ -299,22 +314,18 @@ export default {
     },
     // 使用vue插件
     usePlugin() {
+      this.plugData.show = !this.plugData.show;
       // 可以动态切换使用的全局插件
       this.plugData.component = this.plugData.show
         ? "testPlugPage1"
         : "testPlugPage2";
-      this.plugData.show = !this.plugData.show;
     },
 
     // 根据参数决定路由 path/:canshu 形式
     luyou(num) {
-      this.showLuYou = false;
-      setTimeout(() => {
-        this.showLuYou = true;
-        this.$router.push({
-          name: "canshu",
-          params: { kk: num } // kk只是一个标识，只要和路由配置处用的名字相同即可
-        });
+      this.$router.push({
+        name: `canshu`,
+        params: { kk: num } // kk只是一个标识，只要和路由配置处用的名字相同即可
       });
     }
   }

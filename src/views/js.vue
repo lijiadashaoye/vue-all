@@ -11,18 +11,14 @@
       <div>
         <canvas id="canvas"></canvas>
       </div>
-      <div>
-       
-
-      </div>
-
+      <div></div>
     </div>
   </div>
 </template>
 
 
 <script>
-import six from "./six.js";
+import six from "./js.js";
 export default {
   data() {
     return {
@@ -147,5 +143,4 @@ export default {
   position: absolute;
   top: 260px;
 }
-
 </style>
