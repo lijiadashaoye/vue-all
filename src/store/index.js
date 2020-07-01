@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import oneStore from './useNameSpace'
+import useNameSpace from './useNameSpace'
 
 Vue.use(Vuex);
 
@@ -14,7 +14,7 @@ const myPlugin = store => {
 
 export default new Vuex.Store({
   modules: {
-    oneStore
+    useNameSpace
   },
   state: {
     age: 9

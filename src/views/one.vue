@@ -4,27 +4,29 @@
     <div class="wap">
       <div>
         <h3>自定义组件</h3>
-        <selfInput :label="'自定义组件'" v-model="selfInput" @change="selfEmit" />
+        <one1 :kk="'自定义组件'" v-model="selfInput" @change="selfEmit" />
       </div>
 
       <div>
         <h3>插槽：在父组件里引用子组件，但要从父组件里添加一些标签与子组件混合显示时使用</h3>
         <h4>先要把子组件引入</h4>
-        <slots>
+        <p>子组件中用&lt;slot&gt;标签，定义插槽</p>
+        <p>父组件中用&lt;template v-slot:name &gt;标签，定义往哪个名字(name)的插槽里插入什么内容</p>
+        <one2>
           <template v-slot:header>
             <p
               style="color:red;"
             >父组件,v-slot:header 写法找到插槽, v-slot 只能添加在&lt;template&gt; 上，在子组件中插入父组件内写出的容用</p>
           </template>
           <template v-slot:content="{jigou}">
-            <p style="color:red;">父组件：父组件里定义好匹配到子组件里的插槽的名称，和要查到子组件里显示的内容</p>
-            {{jigou}}
+            <p style="color:red;">父组件：父组件里定义好匹配到子组件里的插槽的名称，和要插到子组件里显示的内容</p>
+            jigou: {{jigou}}
           </template>
           <template #footer="g">
             <p style="color:red;">父组件，#footer写法找到插槽，并传递参数</p>
-            {{g}}
+            user: {{g}}
           </template>
-        </slots>
+        </one2>
       </div>
 
       <div>
@@ -73,6 +75,8 @@
 
       <div>
         <h3>使用命名空间</h3>
+        <p>mapState, mapGetters：属于属性读取</p>
+        <p>mapMutations, mapActions：属于方法读取</p>
         <p>使用mapGetters拿到getter：{{oneGetter2}}</p>
         <p>使用可传参的方式拿到getter：{{oneGetter1}}</p>
         <p>使用mapState拿到state：{{num}}</p>
@@ -112,8 +116,8 @@
 import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 
 // 动态按需加载组件写法一
-import selfInput from "@/components/one/one1";
-import slots from "@/components/one/one2";
+import one1 from "@/components/one/one1";
+import one2 from "@/components/one/one2";
 import forMixin from "@/components/one/one4";
 
 export default {
@@ -127,8 +131,8 @@ export default {
   // 依赖注入
   inject: ["fuwu"],
   components: {
-    selfInput,
-    slots,
+    one1,
+    one2,
     // 动态按需加载组件写法二
     AsyncComponent: async () => await import("@/components/one/one3")
     // 动态按需加载组件写法三
@@ -222,7 +226,7 @@ export default {
   },
   computed: {
     testComputed: {
-      // 读取 testComputed 时的监听函数
+      // 读取 testComputed 时的监听函数，只要显示出来，就会调用get函数
       get: function(...k) {
         let data = this.selfInput + this.val;
         console.log(k);
@@ -231,39 +235,33 @@ export default {
       // 设置 testComputed 时的监听函数
       set: function(...k) {
         console.log(k);
+        this.selfInput += 50;
       }
     },
     // getter 就是将state执行过getter方法后的结果返回，使得fromGetter在组件内用作属性来读值
-    ...mapGetters("oneStore", ["oneGetter2"]), // 只能用来读取数据
+    ...mapGetters("useNameSpace", ["oneGetter2"]), // 只能用来读取数据
     // 使用可传参方式获取getter，用到this，不能用箭头函数
     oneGetter1: function() {
-      let k = this.$store.getters["oneStore/oneGetter1"](2);
+      let k = this.$store.getters["useNameSpace/oneGetter1"](2);
       return k;
     },
 
     // 使用 mapState 辅助函数帮助我们生成计算属性，直接将store里的状态作为组件属性使用
     // 使用命名空间方式区分不同的 state，但不能重名（即num必须唯一）
-    ...mapState("oneStore", ["num"])
+    ...mapState("useNameSpace", ["num"])
   },
   methods: {
-    SetComputed() {
-      this.testComputed++;
-    },
     // 自定义组件的事件监听
     selfEmit(e) {
       console.log(e);
-    },
-    // 获取全局依赖注入服务提供的数据
-    getRoot() {
-      this.seeRootData = this.$root.data;
     },
     // 查看依赖注入数据
     seeFuWu() {
       this.seeFuWuData = this.fuwu();
     },
-    // 混入时重复出现的方法
-    minMethods() {
-      console.log("父组件中的对象型选项");
+    // 获取全局依赖注入服务提供的数据
+    getRoot() {
+      this.seeRootData = this.$root.data;
     },
     // 数据的深度监听使用
     testWatch() {
@@ -271,6 +269,10 @@ export default {
       this.arr[0].one++; // 只能通过this.$watch监听到
       // this.arr = [{ one: 3234 }]; // 如果 arr 指向被重新赋值了，也可以通过 watch 监听到
       this.val++;
+    },
+    // 测试 computed
+    SetComputed() {
+      ++this.testComputed;
     },
     // 状态管理
     testCommit() {
@@ -280,31 +282,36 @@ export default {
     testDispatch() {
       // this.$store.dispatch("getAge1");
       this.$store.dispatch({ type: "getAge1" }).then(v => {
-        console.log("action 后可接 then，参数：", v);
+        console.log("action 后可接action 里return 的数据：", v);
       });
     },
+    // 混入时重复出现的方法
+    minMethods() {
+      console.log("父组件中的对象型选项");
+    },
+
     // 使用 mapMutations 辅助函数将 mutations 的方法映射为 store.commit 调用
     // 直接写，省略了 this.$store.commit
     // 使用命名空间方式区分不同的 mutations
-    ...mapMutations("oneStore", ["changeNum"]),
+    ...mapMutations("useNameSpace", ["changeNum"]),
     // 使用 mapActions 辅助函数将 actions 的方法映射为 store.dispatch 调用
     // 直接写，省略了 this.$store.dispatch
     // 使用命名空间方式区分不同的 actions
     // 并重命名在当前组件里使用的action名字
-    ...mapActions("oneStore", {
+    ...mapActions("useNameSpace", {
       chongmingming: "asyncChange"
     }),
     // 以载荷形式分发
     changeNum1() {
       this.$store.commit({
-        type: "oneStore/changeNum",
+        type: "useNameSpace/changeNum",
         n: 7
       });
     },
     // 以载荷形式分发
     asyncChange1() {
       this.$store.dispatch({
-        type: "oneStore/asyncChange",
+        type: "useNameSpace/asyncChange",
         n: 5
       });
     },

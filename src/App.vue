@@ -55,6 +55,7 @@ export default {
         });
       }
     },
+    // 添加一些逻辑，生成服务数据
     fuwu() {
       return "从App组件传递的服务";
     }

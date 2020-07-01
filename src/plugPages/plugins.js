@@ -17,6 +17,7 @@ export default {
         plugin[0].prototype.$http = http; // 将axios添加到全局
 
         // 将带有页面的插件插入全局，之后可以在任何页面使用
+        // testPlugPage1 testPlugPage2
         [testPanel1, testPanel2].forEach(t => {
             plugin[0].component(t.name, t)
         });

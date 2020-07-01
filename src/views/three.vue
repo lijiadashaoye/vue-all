@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h3>通过路由接收的参数：{{name}}</h3>重定向路由，本来要去four，重定向到three页面
-    <vv></vv>
+    <h3>通过路由接收的参数：{{name}}</h3>
+重定向路由，本来要去four，重定向到three页面
   </div>
 </template>
 

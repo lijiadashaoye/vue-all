@@ -539,7 +539,7 @@
 
         <div class="zooms">
           <h4>zoom 缩放</h4>
-          <div>zoom 缩放会将元素和模型也缩小</div>
+          <div>zoom 缩放会将元素和模型也缩小，鼠标划入看效果</div>
         </div>
 
         <div>
