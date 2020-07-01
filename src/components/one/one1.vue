@@ -2,11 +2,11 @@
   <div>
     <label>{{kk}}：</label>
     <input
-      v-makeFocus="{ color: 'white', text: 'hello!' }"
+      v-makeFocus:[canshu]="{ color: 'white', text: 'hello!' }"
       type="input"
       v-bind:value="value"
       v-on:change="isChange"
-    >
+    />
   </div>
 </template>
 
@@ -20,8 +20,17 @@ export default {
   methods: {
     isChange(e) {
       // 定义监听事件
-      this.$emit("change", e.target.value); // 定义传递给父组件的值 
+      this.$emit("change", e.target.value); // 定义传递给父组件的值
     }
+  },
+  data() {
+    return {
+      canshu: "v-makeFocus:[canshu]"
+    };
+  },
+  created() {
+    console.log("$parent：", this.$parent);
+    console.log("$attrs：", this.$attrs);
   }
 };
 </script>

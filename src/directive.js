@@ -2,8 +2,8 @@ export default {
     makeFocus: {
         bind(...k) {
             // 当指令绑定到 HTML 元素上时触发.**只调用一次**
-            console.log(k)
-            console.log(k[1].value) // 自定义指令传参
+            console.log('自定义指令传参方式1：', k[1].arg)
+            console.log('自定义指令传参方式2：', k[1].value)
         },
         inserted(...k) {
             // 当绑定了指令的这个HTML元素插入到父元素上时触发.但不保证,父元素已经插入了 DOM 文档
@@ -22,5 +22,5 @@ export default {
             // 只调用一次，指令与元素解绑时调用，一般指切换页面或隐藏元素.
             console.log(k)
         }
-    }
+    },
 }

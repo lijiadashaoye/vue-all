@@ -4,7 +4,12 @@
     <div class="wap">
       <div>
         <h3>自定义组件</h3>
-        <one1 :kk="'自定义组件'" v-model="selfInput" @change="selfEmit" />
+        <one1
+          attrs="$attrs 类似data-，属于组件自己的属性"
+          :kk="'自定义组件'"
+          v-model="selfInput"
+          @change="selfEmit"
+        />
       </div>
 
       <div>

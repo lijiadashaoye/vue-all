@@ -12,7 +12,6 @@
 </template>
 
 <script>
-// https://www.w3cschool.cn/lwp2e2/ubed12ih.html
 export default {
   data() {
     return {
