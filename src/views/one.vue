@@ -41,7 +41,10 @@
 
       <div>
         <h3>依赖注入</h3>
-        <p>provide/inject 是解决组件之间的通信问题的利器，不受层级结构的限制。</p>
+        <p>
+          provide/inject 是解决组件之间的通信问题的利器，
+          <br />不受层级结构的限制，但不是响应式的。
+        </p>
         <button @click="seeFuWu">使用依赖注入调用函数</button>
         <br />
         {{seeFuWuData}}
