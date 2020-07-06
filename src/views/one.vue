@@ -5,7 +5,7 @@
       <div>
         <h3>自定义组件</h3>
         <one1
-          attrs="$attrs 类似data-，属于组件自己的属性"
+          attrs="$attrs 类似data-，属于组件自己的属性，不作为 props 被读取"
           :kk="'自定义组件'"
           v-model="selfInput"
           @change="selfEmit"
