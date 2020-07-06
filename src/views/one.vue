@@ -42,9 +42,11 @@
       <div>
         <h3>依赖注入</h3>
         <p>provide/inject 是解决组件之间的通信问题的利器，不受层级结构的限制。</p>
-        <button @click="seeFuWu">使用依赖注入</button>
+        <button @click="seeFuWu">使用依赖注入调用函数</button>
         <br />
         {{seeFuWuData}}
+        <br />
+        <span>使用依赖注入直接获取数据：{{zhuru}}</span>
       </div>
 
       <div>
@@ -134,7 +136,7 @@ export default {
   // 写法二，混入子组件会被封装成同名对象(forMixin)，之后按需调用
   // mixins: ["forMixin"],
   // 依赖注入
-  inject: ["fuwu"],
+  inject: ["fuwu", "zhuru"],
   components: {
     one1,
     one2,
@@ -341,6 +343,5 @@ export default {
       });
     }
   }
-}; 
-
+};
 </script>

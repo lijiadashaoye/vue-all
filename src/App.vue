@@ -63,7 +63,8 @@ export default {
   // 定义全局注入服务，依赖注入所提供的属性是非响应式
   provide() {
     return {
-      fuwu: this.fuwu
+      fuwu: this.fuwu,
+      zhuru: "使用依赖注入传递的数据"
     };
   }
 };

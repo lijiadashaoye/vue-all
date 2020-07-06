@@ -24,6 +24,7 @@ Vue.use(plugins)
 // Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false
+
 new Vue({
   // 定义根数据，一般用于全局
   data: {
