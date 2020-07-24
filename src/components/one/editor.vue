@@ -7,11 +7,11 @@
 <script>
 export default {
   props: {
-    inData: String,
+    inData: String, // 用来接收v-model里传递给子组件作为数据用的
   },
   model: {
-    prop: "inData",
-    event: "returnBack",
+    prop: "inData", // 定义v-model里，:value 绑定的当前组件里的属性名
+    event: "returnBack", // 定义v-model里，执行数据反馈的事件
   },
   data() {
     return {
