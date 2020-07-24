@@ -13,7 +13,6 @@ export default {
     prop: "inData",
     event: "returnBack",
   },
-
   data() {
     return {
       editor: null,

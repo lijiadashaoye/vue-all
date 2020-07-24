@@ -119,8 +119,9 @@
         />
       </div>
 
-      <div>
+      <div style="width:350px;"> 
         <h3>自定义非表单组件</h3>
+        <button @click="fff2">查看富文本数据</button>
         <Editor v-model="editorData" />
       </div>
     </div>
@@ -267,6 +268,9 @@ export default {
     ...mapState("useNameSpace", ["num"]),
   },
   methods: {
+    fff2(){
+      console.log(this.editorData)
+    },
     // 自定义组件的事件监听
     selfEmit(e) {
       console.log(e);
