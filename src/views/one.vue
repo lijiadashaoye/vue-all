@@ -3,16 +3,6 @@
     <h3>通过路由接收的参数：{{name}}</h3>
     <div class="wap">
       <div>
-        <h3>自定义组件</h3>
-        <one1
-          attrs="$attrs 类似data-，属于组件自己的属性，不作为 props 被读取"
-          :kk="'自定义组件'"
-          v-model="selfInput"
-          @change="selfEmit"
-        />
-      </div>
-
-      <div>
         <h3>插槽：在父组件里引用子组件，但要从父组件里添加一些标签与子组件混合显示时使用</h3>
         <h4>先要把子组件引入</h4>
         <p>子组件中用&lt;slot&gt;标签，定义插槽</p>
@@ -118,6 +108,21 @@
         <button @click="luyou(2)">参数：2</button>
         <router-view />
       </div>
+
+      <div>
+        <h3>自定义表单组件</h3>
+        <one1
+          attrs="$attrs 类似data-，属于组件自己的属性，不作为 props 被读取"
+          :kk="'自定义组件'"
+          v-model="selfInput"
+          @change="selfEmit"
+        />
+      </div>
+
+      <div>
+        <h3>自定义非表单组件</h3>
+        <Editor v-model="editorData" />
+      </div>
     </div>
   </div>
 </template>
@@ -129,6 +134,7 @@ import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 import one1 from "@/components/one/one1";
 import one2 from "@/components/one/one2";
 import forMixin from "@/components/one/one4";
+import Editor from "@/components/one/editor.vue";
 
 export default {
   // 同名钩子函数将合并为一个数组，因此都将被调用。
@@ -143,8 +149,9 @@ export default {
   components: {
     one1,
     one2,
+    Editor,
     // 动态按需加载组件写法二
-    AsyncComponent: async () => await import("@/components/one/one3")
+    AsyncComponent: async () => await import("@/components/one/one3"),
     // 动态按需加载组件写法三
     // () => {
     //   // 只是为了体现异步延迟
@@ -165,17 +172,16 @@ export default {
 
       val: 1,
       wat: {
-        name: 10
+        name: 10,
       },
       arr: [{ one: 100 }],
 
       name: "",
       plugData: {
         component: null,
-        data: "传给插件的数据"
+        data: "传给插件的数据",
       },
-      // 参数路由用的是一个组件，所以需要刷新一下
-      showLuYou: false
+      editorData: "<p>富文本编辑器</p>",
     };
   },
   created() {
@@ -205,13 +211,13 @@ export default {
   },
   filters: {
     // 组件内的管道、过滤器
-    filterZuJian: function(val) {
+    filterZuJian: function (val) {
       return {
         year: val.getFullYear(),
         month: val.getMonth() + 1,
-        day: val.getDate()
+        day: val.getDate(),
       };
-    }
+    },
   },
   watch: {
     // 表示监听组件内的值类型(数字、字符串、布尔值)数据变动
@@ -226,39 +232,39 @@ export default {
     },
     // 深度监听写法二：
     wat: {
-      handler: e => {
+      handler: (e) => {
         console.log(e);
       },
       deep: true,
       // 如果不设置immediate，或者将immediate设为false的话，则刷新页面后不会立即监听此对象
-      immediate: false
-    }
+      immediate: false,
+    },
   },
   computed: {
     testComputed: {
       // 读取 testComputed 时的监听函数，只要显示出来，就会调用get函数
-      get: function(...k) {
+      get: function (...k) {
         let data = this.selfInput + this.val;
         console.log(k);
         return data;
       },
       // 设置 testComputed 时的监听函数
-      set: function(...k) {
+      set: function (...k) {
         console.log(k);
         this.selfInput += 50;
-      }
+      },
     },
     // getter 就是将state执行过getter方法后的结果返回，使得fromGetter在组件内用作属性来读值
     ...mapGetters("useNameSpace", ["oneGetter2"]), // 只能用来读取数据
     // 使用可传参方式获取getter，用到this，不能用箭头函数
-    oneGetter1: function() {
+    oneGetter1: function () {
       let k = this.$store.getters["useNameSpace/oneGetter1"](2);
       return k;
     },
 
     // 使用 mapState 辅助函数帮助我们生成计算属性，直接将store里的状态作为组件属性使用
     // 使用命名空间方式区分不同的 state，但不能重名（即num必须唯一）
-    ...mapState("useNameSpace", ["num"])
+    ...mapState("useNameSpace", ["num"]),
   },
   methods: {
     // 自定义组件的事件监听
@@ -291,7 +297,7 @@ export default {
     },
     testDispatch() {
       // this.$store.dispatch("getAge1");
-      this.$store.dispatch({ type: "getAge1" }).then(v => {
+      this.$store.dispatch({ type: "getAge1" }).then((v) => {
         console.log("action 后可接action 里return 的数据：", v);
       });
     },
@@ -309,20 +315,20 @@ export default {
     // 使用命名空间方式区分不同的 actions
     // 并重命名在当前组件里使用的action名字
     ...mapActions("useNameSpace", {
-      chongmingming: "asyncChange"
+      chongmingming: "asyncChange",
     }),
     // 以载荷形式分发
     changeNum1() {
       this.$store.commit({
         type: "useNameSpace/changeNum",
-        n: 7
+        n: 7,
       });
     },
     // 以载荷形式分发
     asyncChange1() {
       this.$store.dispatch({
         type: "useNameSpace/asyncChange",
-        n: 5
+        n: 5,
       });
     },
     // 使用自定义插件
@@ -342,9 +348,9 @@ export default {
     luyou(num) {
       this.$router.push({
         name: `canshu`,
-        params: { kk: num } // kk只是一个标识，只要和路由配置处用的名字相同即可
+        params: { kk: num }, // kk只是一个标识，只要和路由配置处用的名字相同即可
       });
-    }
-  }
+    },
+  },
 };
 </script>
