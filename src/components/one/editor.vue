@@ -58,6 +58,8 @@ export default {
   width: 100%;
   box-sizing: border-box !important;
   border: 1px solid rgb(199, 196, 196);
+  z-index: 10010 !important;
+  min-height: 205px;
 }
 .w-e-text {
   overflow-y: hidden !important;
