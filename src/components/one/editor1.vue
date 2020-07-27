@@ -7,8 +7,8 @@
 <script>
 export default {
   model: {
-    prop: "inData", // 定义v-model里，:value 绑定的当前组件里的属性名，也可以理解为父组件传给子组件的值
-    event: "returnBack", // 定义v-model里，执行数据反馈的事件
+    prop: "tt", // 定义v-model里，v-bind 绑定的属性名
+    event: "returnBack", // 定义v-model里，v-on 绑定的执行数据反馈的事件
   },
   data() {
     return {
@@ -16,12 +16,12 @@ export default {
     };
   },
   computed: {
-    inData: {
+    tt: {
       set: function (t) {
         this.$emit("returnBack", t);
       },
       get: function (t) {
-        return t.$attrs.inData;
+        return t.$attrs.tt;
       },
     },
   },
@@ -32,11 +32,11 @@ export default {
     this.editor.customConfig.uploadImgShowBase64 = true;
     this.editor.customConfig.onchangeTimeout = 2000; // 定义防抖延时
     this.editor.customConfig.onchange = (html) => {
-      this.inData = html; // 设置inData的值，会同时执行上边的set函数
+      this.tt = html; // 设置inData的值，会同时执行上边的set函数
     };
     this.editor.create();
-    if (this.inData !== "") {
-      this.editor.txt.html("" + this.inData);
+    if (this.tt !== "") {
+      this.editor.txt.html("" + this.tt);
     }
   },
 };
@@ -60,7 +60,6 @@ export default {
   width: 100%;
   box-sizing: border-box !important;
   border: 1px solid rgb(199, 196, 196);
-  z-index: 10010 !important;
   min-height: 205px;
 }
 .w-e-text {

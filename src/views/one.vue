@@ -62,8 +62,6 @@
         <p>对象数据：{{wat.name}}</p>
         <p>数组数据：{{arr[0].one}}</p>
         <button @click="testWatch">深度监听</button>
-        <p>Computed：{{testComputed}}</p>
-        <button @click="SetComputed">SetComputed</button>
       </div>
 
       <div>
@@ -112,17 +110,21 @@
       <div>
         <h3>自定义表单组件</h3>
         <one1
-          attrs="$attrs 类似data-，属于组件自己的属性，不作为 props 被读取"
-          :kk="'自定义组件'"
+          attrs="$attrs 类似data-，属于组件自己的属性，不作为 props 被读取，定义到attributes"
+          :kk="'自定义组件，定义到this上'"
           v-model="selfInput"
-          @change="selfEmit"
+          @changed="selfEmit"
         />
+        <p>Computed：{{testComputed}}</p>
+        <button @click="SetComputed">SetComputed</button>
       </div>
 
-      <div style="width:350px;"> 
+      <div style="width:350px;">
         <h3>自定义非表单组件</h3>
-        <button @click="fff2">查看富文本数据</button>
+        <button @click="seeEditor">查看富文本数据</button>
         <Editor v-model="editorData" />
+        <p>把v-model拆开</p>
+        <Editor1 v-bind:tt="editorData1" v-on:returnBack="t=>editorData1=t" />
       </div>
     </div>
   </div>
@@ -136,6 +138,7 @@ import one1 from "@/components/one/one1";
 import one2 from "@/components/one/one2";
 import forMixin from "@/components/one/one4";
 import Editor from "@/components/one/editor.vue";
+import Editor1 from "@/components/one/editor1.vue";
 
 export default {
   // 同名钩子函数将合并为一个数组，因此都将被调用。
@@ -151,6 +154,7 @@ export default {
     one1,
     one2,
     Editor,
+    Editor1,
     // 动态按需加载组件写法二
     AsyncComponent: async () => await import("@/components/one/one3"),
     // 动态按需加载组件写法三
@@ -183,6 +187,7 @@ export default {
         data: "传给插件的数据",
       },
       editorData: "<p>富文本编辑器</p>",
+      editorData1: "<p>富文本编辑器</p>",
     };
   },
   created() {
@@ -268,8 +273,9 @@ export default {
     ...mapState("useNameSpace", ["num"]),
   },
   methods: {
-    fff2(){
-      console.log(this.editorData)
+    seeEditor() {
+      console.log(this.editorData);
+      console.log(this.editorData1);
     },
     // 自定义组件的事件监听
     selfEmit(e) {
