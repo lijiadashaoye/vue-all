@@ -1,9 +1,8 @@
 <template>
-  <div class="wap" @click="focusd">
+  <div class="wap">
     <div ref="toolbar" class="toolbar"></div>
-    <div ref="text" class="text">
-      <span v-if="show" class="pla">请输入</span>
-    </div>
+    <span v-if="show" class="pla">请输入</span>
+    <div ref="text" class="text"></div>
   </div>
 </template>
 <script>
@@ -19,6 +18,9 @@ export default {
         let k = t;
         if (this.checkVal(t)) {
           k = "";
+          this.show = true;
+        } else {
+          this.show = false;
         }
         this.$emit("returnBack", k);
       },
@@ -59,11 +61,6 @@ export default {
       }
       return str == "";
     },
-    focusd() {
-      if (this.show) {
-        this.show = false;
-      }
-    },
   },
 };
 </script>
@@ -96,6 +93,7 @@ export default {
 .pla {
   position: absolute;
   left: 15px;
+  top: 40px;
   color: rgb(167, 164, 164);
 }
 </style>
