@@ -6,19 +6,19 @@ axios.defaults.baseURL = 'https://api.coindesk.com';
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 // 添加一个请求拦截器
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(config => {
     // 请求成功
     return config;
-}, function (error) {
+}, error => {
     // 请求失败
     return Promise.reject(error);
 });
 
 // 添加一个响应拦截器
-axios.interceptors.response.use(function (response) {
+axios.interceptors.response.use(response => {
     // 响应成功
     return response;
-}, function (error) {
+}, error => {
     // 响应失败
     return Promise.reject(error);
 });

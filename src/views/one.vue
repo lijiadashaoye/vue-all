@@ -186,8 +186,8 @@ export default {
         component: null,
         data: "传给插件的数据",
       },
-      editorData: "<p>富文本编辑器</p>",
-      editorData1: "<p>富文本编辑器</p>",
+      editorData: "<p>富文本编辑器 editor</p>",
+      editorData1: "<p>富文本编辑器 editor1</p>",
     };
   },
   created() {
