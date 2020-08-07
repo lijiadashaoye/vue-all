@@ -1,5 +1,5 @@
 <template>
-  <div class="wap">
+  <div class="wapd">
     <div ref="toolbar" class="toolbar"></div>
     <span v-if="show" class="pla">请输入</span>
     <div ref="text" class="text"></div>
@@ -35,6 +35,7 @@ export default {
       show: true,
     };
   },
+
   mounted() {
     // 文档：https://www.kancloud.cn/wangfupeng/wangeditor3/332599
     this.editor = new E(this.$refs.toolbar, this.$refs.text);
@@ -46,6 +47,7 @@ export default {
     this.editor.create();
     if (this.inData !== "") {
       this.editor.txt.html("" + this.inData);
+      this.show = false;
     }
   },
   methods: {
@@ -64,37 +66,4 @@ export default {
   },
 };
 </script>
-
-<style>
-.wap {
-  padding: 0;
-  position: relative;
-  min-width: 420px;
-}
-.toolbar {
-  width: 50px;
-  display: flex!;
-  flex-wrap: wrap;
-  border: 1px solid rgb(199, 196, 196);
-  width: 100%;
-}
-.toolbar > div {
-  padding: 0 3px !important;
-}
-.text {
-  width: 100%;
-  box-sizing: border-box !important;
-  border: 1px solid rgb(199, 196, 196);
-  min-height: 205px;
-}
-.w-e-text {
-  overflow-y: hidden !important;
-}
-.pla {
-  position: absolute;
-  left: 15px;
-  top: 40px;
-  color: rgb(167, 164, 164);
-}
-</style>
 
