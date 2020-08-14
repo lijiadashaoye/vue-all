@@ -56,6 +56,12 @@ export default {
     //       result.data[0];
     //     insertImg(url);
     //   },
+    // before: () => {
+    //   console.log(8);
+    // },
+    // success: () => {
+    //   console.log(9);
+    // },
     // };
 
     this.editor.create();
