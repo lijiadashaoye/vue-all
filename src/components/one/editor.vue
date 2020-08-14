@@ -44,6 +44,20 @@ export default {
     this.editor.customConfig.onchange = (html) => {
       this.inData = html;
     };
+
+    //  // 上传图片到服务器
+    // this.editor.customConfig.uploadImgServer =
+    //   "http://app-test4.bicai365.com/omp/finsuitFileUpload/forUpload";
+    // this.editor.customConfig.uploadImgTimeout = 3000; // 上传超时
+    // this.editor.customConfig.uploadImgHooks = {
+    //   customInsert: function (insertImg, result) {
+    //     var url =
+    //       "http://app-test4.bicai365.com/omp/finsuitImgDisplay/show?path=" +
+    //       result.data[0];
+    //     insertImg(url);
+    //   },
+    // };
+
     this.editor.create();
     if (this.inData !== "") {
       this.editor.txt.html("" + this.inData);
