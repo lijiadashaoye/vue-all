@@ -646,7 +646,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
       第一个参数表示第一列高度，第二个参数表示第二列高度，可以写很多个
       每一个表示一个表格高度，写了几个就表示一列里有几行表格，如：
       grid-template-rows: 2fr 1fr 1fr; 
-      表示一列里有4行，第一行占2个单位高度
+      表示一列里有4行，第一行占2个单位高度，若写多个，表示有多行
     写法三：使用 minmax(min,max) 定义最小高度和最大高度
       grid-template-rows: 1fr minmax(20px,40px);
     */
@@ -800,7 +800,7 @@ background-attachment：决定背景图像的位置是在视口内固定 fixed�
 
 .box4 {
     grid-column: 2 / span 2;
-    grid-row: span 3 / span 4;
+    grid-row: 3 / span 4;
 }
 
 /* 命名网格 */
