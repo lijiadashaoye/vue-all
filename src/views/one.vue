@@ -9,9 +9,7 @@
         <p>父组件中用&lt;template v-slot:name &gt;标签，定义往哪个名字(name)的插槽里插入什么内容</p>
         <one2>
           <template v-slot:header>
-            <p
-              style="color:red;"
-            >父组件,v-slot:header 写法找到插槽, v-slot 只能添加在&lt;template&gt; 上，在子组件中插入父组件内写出的容用</p>
+            <p style="color:red;">父组件,v-slot:header 写法找到插槽, v-slot 只能添加在&lt;template&gt; 上，在子组件中插入父组件内写出的容用</p>
           </template>
           <template v-slot:content="{jigou}">
             <p style="color:red;">父组件：父组件里定义好匹配到子组件里的插槽的名称，和要插到子组件里显示的内容</p>
@@ -39,7 +37,7 @@
         <br />
         {{seeFuWuData}}
         <br />
-        <span>使用依赖注入直接获取数据：{{zhuru}}</span>
+        <p>使用依赖注入直接获取数据：<span style="color:red;">{{zhuru}}</span></p>
       </div>
 
       <div>
@@ -66,7 +64,7 @@
 
       <div>
         <h3>状态管理</h3>
-        {{$store.state.age}}
+        <p>{{$store.state.age}}</p>
         <button @click="testCommit">使用commit</button>
         <button @click="testDispatch">使用dispatch</button>
       </div>
@@ -78,6 +76,7 @@
         <p>使用mapGetters拿到getter：{{oneGetter2}}</p>
         <p>使用可传参的方式拿到getter：{{oneGetter1}}</p>
         <p>使用mapState拿到state：{{num}}</p>
+        <p>读取命名空间state：{{$store.state.useNameSpace.num}}</p>
         <button @click="changeNum({n:3})">使用mapMutations触发commit</button>
         <br />
         <button @click="chongmingming({n:4})">使用mapActions触发action，重命名在当前组件里使用的action名字</button>
@@ -96,7 +95,10 @@
       <div>
         <h3>使用vue插件</h3>
         <button @click="usePlugin">插件</button>
-        <div :plugInputData="plugData" :is="plugData.component"></div>
+        <div
+          :plugInputData="plugData"
+          :is="plugData.component"
+        ></div>
       </div>
 
       <div>
@@ -124,7 +126,10 @@
         <button @click="seeEditor">查看富文本数据</button>
         <Editor v-model="editorData" />
         <p>把v-model拆开</p>
-        <Editor1 v-bind:tt="editorData1" v-on:returnBack="t=>editorData1=t" />
+        <Editor1
+          v-bind:tt="editorData1"
+          v-on:returnBack="t=>editorData1=t"
+        />
       </div>
     </div>
   </div>

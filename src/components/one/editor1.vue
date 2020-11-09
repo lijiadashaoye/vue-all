@@ -38,9 +38,9 @@ export default {
     // 文档：https://www.kancloud.cn/wangfupeng/wangeditor3/332599
     var E = require("wangeditor");
     this.editor = new E(this.$refs.toolbar, this.$refs.text);
-    this.editor.customConfig.uploadImgShowBase64 = true;
-    this.editor.customConfig.onchangeTimeout = 200; // 定义防抖延时
-    this.editor.customConfig.onchange = (html) => {
+    this.editor.config.uploadImgShowBase64 = true;
+    this.editor.config.onchangeTimeout = 200; // 定义防抖延时
+    this.editor.config.onchange = (html) => {
       this.tt = html; // 设置inData的值，会同时执行上边的set函数
     };
     this.editor.create();

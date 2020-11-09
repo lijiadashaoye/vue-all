@@ -1,8 +1,17 @@
 <template>
   <div class="wapd">
-    <div ref="toolbar" class="toolbar"></div>
-    <span v-if="show" class="pla">请输入</span>
-    <div ref="text" class="text"></div>
+    <div
+      ref="toolbar"
+      class="toolbar"
+    ></div>
+    <span
+      v-if="show"
+      class="pla"
+    >请输入</span>
+    <div
+      ref="text"
+      class="text"
+    ></div>
   </div>
 </template>
 <script>
@@ -39,17 +48,17 @@ export default {
   mounted() {
     // 文档：https://www.kancloud.cn/wangfupeng/wangeditor3/332599
     this.editor = new E(this.$refs.toolbar, this.$refs.text);
-    this.editor.customConfig.uploadImgShowBase64 = true;
-    this.editor.customConfig.onchangeTimeout = 200;
-    this.editor.customConfig.onchange = (html) => {
+    this.editor.config.uploadImgShowBase64 = true;
+    this.editor.config.onchangeTimeout = 200;
+    this.editor.config.onchange = (html) => {
       this.inData = html;
     };
 
     //  // 上传图片到服务器
-    // this.editor.customConfig.uploadImgServer =
+    // this.editor.config.uploadImgServer =
     //   "http://app-test4.bicai365.com/omp/finsuitFileUpload/forUpload";
-    // this.editor.customConfig.uploadImgTimeout = 3000; // 上传超时
-    // this.editor.customConfig.uploadImgHooks = {
+    // this.editor.config.uploadImgTimeout = 3000; // 上传超时
+    // this.editor.config.uploadImgHooks = {
     //   customInsert: function (insertImg, result) {
     //     var url =
     //       "http://app-test4.bicai365.com/omp/finsuitImgDisplay/show?path=" +
