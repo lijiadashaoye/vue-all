@@ -248,7 +248,8 @@ export default {
       },
       deep: true,
       // 如果不设置immediate，或者将immediate设为false的话，则刷新页面后不会立即监听此对象
-      immediate: false,
+      // 在第一次就监听变化，需要加上
+      immediate: true,
     },
   },
   computed: {
