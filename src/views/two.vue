@@ -69,14 +69,14 @@
 <script>
 import two1 from "@/components/two/two1";
 import two2 from "@/components/two/two2";
-import jindutiao from "@/components/two/jindutiao";
+// import jindutiao from "@/components/two/jindutiao";
 import secret from "@/jiami";
 
 export default {
   components: {
     two1,
     two2,
-    jindutiao
+    // jindutiao,
   },
   data() {
     return {
@@ -90,7 +90,7 @@ export default {
 
       imgs: "", // 图片
       isActive1: false,
-      httpDatas: null
+      httpDatas: null,
     };
   },
   created() {
@@ -115,7 +115,8 @@ export default {
         this.datas = "传递给组件2的数据";
         this.which_component = two1;
       } else {
-        this.which_component = jindutiao;
+        this.which_component = async () =>
+          await require("../components/two/jindutiao.vue");
       }
     },
     // 加密、解密
@@ -125,7 +126,7 @@ export default {
     jiemi() {
       this.forJie = secret.Decrypt(this.forJia);
     },
-    changeImg: function() {
+    changeImg: function () {
       // 上边引入
       // import img1 from "../../../assets/1.jpeg";
       // import img2 from "../../../assets/2.jpg";
@@ -141,11 +142,11 @@ export default {
     // 使用axios
     http() {
       this.httpDatas = null;
-      this.$http.getData().then(res => {
+      this.$http.getData().then((res) => {
         this.httpDatas = res.bpi;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
