@@ -1,5 +1,5 @@
 // 使用axios
-import http from '../axios';
+
 import testPanel1 from './plugPage1.vue';
 import testPanel2 from './plugPage2.vue';
 
@@ -14,7 +14,6 @@ export default {
     install: function (...plugin) {
         // console.log(plugin) // 参数是vue构造器
         plugin[0].prototype.$pluginFn = this.pluginFn;
-        plugin[0].prototype.$http = http; // 将axios添加到全局
 
         // 将带有页面的插件插入全局，之后可以在任何页面使用
         // testPlugPage1 testPlugPage2

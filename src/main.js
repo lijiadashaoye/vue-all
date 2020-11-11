@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import http from './api/axiosSet';
+Vue.prototype.$http = http;
+
+
 // 插入自定义指令
 import directives from './directive';
 for (let i in directives) {
