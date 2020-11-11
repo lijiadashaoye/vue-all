@@ -7,6 +7,7 @@ axios.defaults.baseURL = 'https://api.coindesk.com';
 
 // 添加一个请求拦截器
 axios.interceptors.request.use(config => {
+    // console.log(config)
     // 请求成功
     return config;
 }, error => {
