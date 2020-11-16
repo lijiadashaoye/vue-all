@@ -14,12 +14,12 @@
       </div>
       <div></div>
 
-     <div>
-       <p>多行文字用 ... 收尾</p>
+      <div>
+        <p>多行文字用 ... 收尾</p>
         <div class="ell">
-        父元素内部向下滚动时，当子元素p距离父元素底边差20px时快快快
+          父元素内部向下滚动时，当子元素p距离父元素底边差20px时快快快
+        </div>
       </div>
-     </div>
     </div>
   </div>
 </template>
@@ -167,6 +167,13 @@ select:-webkit-autofill {
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
+/* 消除transition闪屏 */
+.css {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
+
 .ell {
   width: 150px;
   height: 113px;
