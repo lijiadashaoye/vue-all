@@ -13,6 +13,13 @@
         <canvas id="canvas"></canvas>
       </div>
       <div></div>
+
+     <div>
+       <p>多行文字用 ... 收尾</p>
+        <div class="ell">
+        父元素内部向下滚动时，当子元素p距离父元素底边差20px时快快快
+      </div>
+     </div>
     </div>
   </div>
 </template>
@@ -159,5 +166,16 @@ select:-webkit-autofill {
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+}
+.ell {
+  width: 150px;
+  height: 113px;
+  background: rgb(192, 190, 194);
+  display: box !important;
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /*第几行出现省略号*/
 }
 </style>
