@@ -23,7 +23,7 @@ import six from "./js.js";
 export default {
   data() {
     return {
-      isClick: ""
+      isClick: "",
     };
   },
   mounted() {
@@ -92,15 +92,15 @@ export default {
     // 按钮点击变更颜色
     isClicked(str) {
       let buttons = document.querySelectorAll(".content button");
-      buttons.forEach(tar => {
+      buttons.forEach((tar) => {
         if (tar.innerHTML === str) {
           tar.classList.add("beClick");
         } else {
           tar.classList.remove("beClick");
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -143,5 +143,21 @@ export default {
   border: 1px solid;
   position: absolute;
   top: 260px;
+}
+
+/* 修改chrome记住密码后自动填充表单的黄色背景 */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: rgb(250, 255, 189); /* #FAFFBD; */
+  background-image: none;
+  color: rgb(0, 0, 0);
+}
+/* 开启硬件加速 */
+.css {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 </style>
