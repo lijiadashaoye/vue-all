@@ -72,4 +72,11 @@ const router = new VueRouter({
   }
 })
 
+// 路由导航钩子的用法，每次路由跳转都会调用
+router.beforeEach((to, from, next) => {
+  // console.log(to)
+  // console.log(from)
+  next();
+})
+
 export default router
