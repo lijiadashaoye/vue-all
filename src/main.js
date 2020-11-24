@@ -6,6 +6,9 @@ import store from './store'
 import http from './api/axiosSet';
 Vue.prototype.$http = http;
 
+// 添加IE兼容 npm i --save @babel/polyfill
+import '@babel/polyfill';
+
 
 // 插入自定义指令
 import directives from './directive';

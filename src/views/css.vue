@@ -150,7 +150,10 @@
         <table class="isTable">
           <caption>Caption 表格标题</caption>
           <tr>
-            <td colspan="2" class="toLong">
+            <td
+              colspan="2"
+              class="toLong"
+            >
               <p>当文子长度超过表格时，可以用 ... 形式，如：</p>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
             </td>
           </tr>
@@ -159,11 +162,17 @@
             <td>Some more data</td>
           </tr>
           <tr>
-            <td colspan="2" class="inputs">
+            <td
+              colspan="2"
+              class="inputs"
+            >
               <p>caret-color 用来定义插入光标（caret）的颜色</p>
               <p>::placeholder 用来定义 placeholder 文字的样式</p>
               <input placeholder="placeholder" />
-              <input placeholder="readonly" readonly />
+              <input
+                placeholder="readonly"
+                readonly
+              />
             </td>
           </tr>
         </table>
@@ -182,7 +191,11 @@
         <button @click="copy">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>使用 Clipboard API 复制</p>
-        <input id="input" type="text" v-model="inp" />
+        <input
+          id="input"
+          type="text"
+          v-model="inp"
+        />
         <button @click="copy1">复制</button>&nbsp;&nbsp;
         <button @click="seeClip">查看剪切板内容</button>
         <p>{{clipContent}}</p>
@@ -288,7 +301,11 @@
       <div>
         <h4>鼠标样式</h4>
         <div id="div">
-          <p v-for="k in shubiao" :key="k" :style="{cursor:k}">{{k}}</p>
+          <p
+            v-for="k in shubiao"
+            :key="k"
+            :style="{cursor:k}"
+          >{{k}}</p>
         </div>
         <div>
           <h4>图片填充</h4>
@@ -326,13 +343,25 @@
           如：minmax(100px,1fr)、minmax(100px,auto)、minmax(100px,200px)
         </p>
         <div class="setKuan">
-          <label style="font-size:14px;" for="kuandu1">父元素宽度：</label>
-          <input id="kuandu1" v-model="kuan1" />
+          <label
+            style="font-size:14px;"
+            for="kuandu1"
+          >父元素宽度：</label>
+          <input
+            id="kuandu1"
+            v-model="kuan1"
+          />
           <span>px</span>
         </div>
         <div class="setKuan">
-          <label style="font-size:14px;" for="kuandu2">子元素宽度：</label>
-          <input id="kuandu2" v-model="kuan2" />
+          <label
+            style="font-size:14px;"
+            for="kuandu2"
+          >子元素宽度：</label>
+          <input
+            id="kuandu2"
+            v-model="kuan2"
+          />
           <span>px</span>
         </div>
         <div
@@ -391,9 +420,7 @@
             <li>content</li>
           </ul>
           <p style="font-size:14px;color:rgb(255, 162, 0);">对网格的每一线进行命名</p>
-          <p
-            style="font-size:12px;color:rgb(255, 62, 36);"
-          >其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
+          <p style="font-size:12px;color:rgb(255, 62, 36);">其中，第五格定义在第二格后边，但第二格用了 z-index:2，这样第二格就到第五格上层了</p>
           <div class="wrapperw">
             <div class="box1w">One</div>
             <div class="box2w">Two</div>
@@ -548,6 +575,10 @@
             <p>使用 ::selection 改变被选中的部分的样式</p>
           </div>
         </div>
+
+        <div>
+          <span class="testScss">testScss</span>
+        </div>
       </div>
     </div>
   </div>
@@ -597,11 +628,11 @@ export default {
         "zoom-in",
         "zoom-out",
         "grab",
-        "grabbing"
+        "grabbing",
       ],
       // 网格宽度
       kuan1: 260,
-      kuan2: 80
+      kuan2: 80,
     };
   },
   mounted() {
@@ -620,35 +651,43 @@ export default {
     },
     copy1() {
       // 查询浏览器权限
-      navigator.permissions.query({ name: "clipboard-write" }).then(result => {
-        // console.log(result);
-        // console.log(  navigator.clipboard);
-        // navigator.clipboard.writeText() 和 navigator.clipboard.write()
-        // 方法让你往剪贴板写入任意文本或二进制数据。
-        if (result.state == "granted" || result.state == "prompt") {
-          navigator.clipboard.writeText(this.inp).then(
-            function() {
-              console.log("写入成功");
-            },
-            function() {
-              console.log("写入失败");
-            }
-          );
-        }
-      });
+      navigator.permissions
+        .query({ name: "clipboard-write" })
+        .then((result) => {
+          // console.log(result);
+          // console.log(  navigator.clipboard);
+          // navigator.clipboard.writeText() 和 navigator.clipboard.write()
+          // 方法让你往剪贴板写入任意文本或二进制数据。
+          if (result.state == "granted" || result.state == "prompt") {
+            navigator.clipboard.writeText(this.inp).then(
+              function () {
+                console.log("写入成功");
+              },
+              function () {
+                console.log("写入失败");
+              }
+            );
+          }
+        });
     },
     // 查看剪切板
     seeClip() {
       // navigator.clipboard.readText() 和 navigator.clipboard.read()
       // 方法让你从剪贴板读取任意文本或二进制数据。
-      navigator.clipboard.readText().then(t => (this.clipContent = t));
-    }
-  }
+      navigator.clipboard.readText().then((t) => (this.clipContent = t));
+    },
+  },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 @import url("./css.css");
+
+.testScss {
+  font-size: 50px;
+  color: $primary-color;
+}
+
 .content {
   display: flex;
   flex-wrap: wrap;
