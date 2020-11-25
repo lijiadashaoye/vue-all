@@ -578,6 +578,7 @@
 
         <div>
           <span class="testScss">testScss</span>
+          <p class="pp">用 @import</p>
         </div>
       </div>
     </div>
@@ -685,7 +686,7 @@ export default {
 
 .testScss {
   font-size: 50px;
-  color: $primary-color;
+  color: $primary;
 }
 
 .content {

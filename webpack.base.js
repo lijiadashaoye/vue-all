@@ -161,6 +161,5 @@ module.exports = {
             }
         },
         usedExports: true // 使得tree shaking能够生效,将css从代码中拆分出来
-    },
-    plugins
+    }
 }
